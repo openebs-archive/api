@@ -157,6 +157,236 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}); err != nil {
 		return err
 	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolume)(nil), (*cstor.CStorVolume)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolume_To_cstor_CStorVolume(a.(*v1.CStorVolume), b.(*cstor.CStorVolume), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolume)(nil), (*v1.CStorVolume)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolume_To_v1_CStorVolume(a.(*cstor.CStorVolume), b.(*v1.CStorVolume), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeCapacityAttr)(nil), (*cstor.CStorVolumeCapacityAttr)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeCapacityAttr_To_cstor_CStorVolumeCapacityAttr(a.(*v1.CStorVolumeCapacityAttr), b.(*cstor.CStorVolumeCapacityAttr), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeCapacityAttr)(nil), (*v1.CStorVolumeCapacityAttr)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeCapacityAttr_To_v1_CStorVolumeCapacityAttr(a.(*cstor.CStorVolumeCapacityAttr), b.(*v1.CStorVolumeCapacityAttr), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeClaim)(nil), (*cstor.CStorVolumeClaim)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeClaim_To_cstor_CStorVolumeClaim(a.(*v1.CStorVolumeClaim), b.(*cstor.CStorVolumeClaim), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeClaim)(nil), (*v1.CStorVolumeClaim)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeClaim_To_v1_CStorVolumeClaim(a.(*cstor.CStorVolumeClaim), b.(*v1.CStorVolumeClaim), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeClaimCondition)(nil), (*cstor.CStorVolumeClaimCondition)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeClaimCondition_To_cstor_CStorVolumeClaimCondition(a.(*v1.CStorVolumeClaimCondition), b.(*cstor.CStorVolumeClaimCondition), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeClaimCondition)(nil), (*v1.CStorVolumeClaimCondition)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeClaimCondition_To_v1_CStorVolumeClaimCondition(a.(*cstor.CStorVolumeClaimCondition), b.(*v1.CStorVolumeClaimCondition), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeClaimList)(nil), (*cstor.CStorVolumeClaimList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeClaimList_To_cstor_CStorVolumeClaimList(a.(*v1.CStorVolumeClaimList), b.(*cstor.CStorVolumeClaimList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeClaimList)(nil), (*v1.CStorVolumeClaimList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeClaimList_To_v1_CStorVolumeClaimList(a.(*cstor.CStorVolumeClaimList), b.(*v1.CStorVolumeClaimList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeClaimPublish)(nil), (*cstor.CStorVolumeClaimPublish)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeClaimPublish_To_cstor_CStorVolumeClaimPublish(a.(*v1.CStorVolumeClaimPublish), b.(*cstor.CStorVolumeClaimPublish), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeClaimPublish)(nil), (*v1.CStorVolumeClaimPublish)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeClaimPublish_To_v1_CStorVolumeClaimPublish(a.(*cstor.CStorVolumeClaimPublish), b.(*v1.CStorVolumeClaimPublish), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeClaimSpec)(nil), (*cstor.CStorVolumeClaimSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeClaimSpec_To_cstor_CStorVolumeClaimSpec(a.(*v1.CStorVolumeClaimSpec), b.(*cstor.CStorVolumeClaimSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeClaimSpec)(nil), (*v1.CStorVolumeClaimSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeClaimSpec_To_v1_CStorVolumeClaimSpec(a.(*cstor.CStorVolumeClaimSpec), b.(*v1.CStorVolumeClaimSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeClaimStatus)(nil), (*cstor.CStorVolumeClaimStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeClaimStatus_To_cstor_CStorVolumeClaimStatus(a.(*v1.CStorVolumeClaimStatus), b.(*cstor.CStorVolumeClaimStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeClaimStatus)(nil), (*v1.CStorVolumeClaimStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeClaimStatus_To_v1_CStorVolumeClaimStatus(a.(*cstor.CStorVolumeClaimStatus), b.(*v1.CStorVolumeClaimStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeCondition)(nil), (*cstor.CStorVolumeCondition)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeCondition_To_cstor_CStorVolumeCondition(a.(*v1.CStorVolumeCondition), b.(*cstor.CStorVolumeCondition), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeCondition)(nil), (*v1.CStorVolumeCondition)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeCondition_To_v1_CStorVolumeCondition(a.(*cstor.CStorVolumeCondition), b.(*v1.CStorVolumeCondition), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeList)(nil), (*cstor.CStorVolumeList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeList_To_cstor_CStorVolumeList(a.(*v1.CStorVolumeList), b.(*cstor.CStorVolumeList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeList)(nil), (*v1.CStorVolumeList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeList_To_v1_CStorVolumeList(a.(*cstor.CStorVolumeList), b.(*v1.CStorVolumeList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumePolicy)(nil), (*cstor.CStorVolumePolicy)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumePolicy_To_cstor_CStorVolumePolicy(a.(*v1.CStorVolumePolicy), b.(*cstor.CStorVolumePolicy), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumePolicy)(nil), (*v1.CStorVolumePolicy)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumePolicy_To_v1_CStorVolumePolicy(a.(*cstor.CStorVolumePolicy), b.(*v1.CStorVolumePolicy), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumePolicyList)(nil), (*cstor.CStorVolumePolicyList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumePolicyList_To_cstor_CStorVolumePolicyList(a.(*v1.CStorVolumePolicyList), b.(*cstor.CStorVolumePolicyList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumePolicyList)(nil), (*v1.CStorVolumePolicyList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumePolicyList_To_v1_CStorVolumePolicyList(a.(*cstor.CStorVolumePolicyList), b.(*v1.CStorVolumePolicyList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumePolicySpec)(nil), (*cstor.CStorVolumePolicySpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumePolicySpec_To_cstor_CStorVolumePolicySpec(a.(*v1.CStorVolumePolicySpec), b.(*cstor.CStorVolumePolicySpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumePolicySpec)(nil), (*v1.CStorVolumePolicySpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumePolicySpec_To_v1_CStorVolumePolicySpec(a.(*cstor.CStorVolumePolicySpec), b.(*v1.CStorVolumePolicySpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumePolicyStatus)(nil), (*cstor.CStorVolumePolicyStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumePolicyStatus_To_cstor_CStorVolumePolicyStatus(a.(*v1.CStorVolumePolicyStatus), b.(*cstor.CStorVolumePolicyStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumePolicyStatus)(nil), (*v1.CStorVolumePolicyStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumePolicyStatus_To_v1_CStorVolumePolicyStatus(a.(*cstor.CStorVolumePolicyStatus), b.(*v1.CStorVolumePolicyStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeReplica)(nil), (*cstor.CStorVolumeReplica)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeReplica_To_cstor_CStorVolumeReplica(a.(*v1.CStorVolumeReplica), b.(*cstor.CStorVolumeReplica), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeReplica)(nil), (*v1.CStorVolumeReplica)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeReplica_To_v1_CStorVolumeReplica(a.(*cstor.CStorVolumeReplica), b.(*v1.CStorVolumeReplica), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeReplicaDetails)(nil), (*cstor.CStorVolumeReplicaDetails)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeReplicaDetails_To_cstor_CStorVolumeReplicaDetails(a.(*v1.CStorVolumeReplicaDetails), b.(*cstor.CStorVolumeReplicaDetails), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeReplicaDetails)(nil), (*v1.CStorVolumeReplicaDetails)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeReplicaDetails_To_v1_CStorVolumeReplicaDetails(a.(*cstor.CStorVolumeReplicaDetails), b.(*v1.CStorVolumeReplicaDetails), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeReplicaList)(nil), (*cstor.CStorVolumeReplicaList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeReplicaList_To_cstor_CStorVolumeReplicaList(a.(*v1.CStorVolumeReplicaList), b.(*cstor.CStorVolumeReplicaList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeReplicaList)(nil), (*v1.CStorVolumeReplicaList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeReplicaList_To_v1_CStorVolumeReplicaList(a.(*cstor.CStorVolumeReplicaList), b.(*v1.CStorVolumeReplicaList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeReplicaSpec)(nil), (*cstor.CStorVolumeReplicaSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeReplicaSpec_To_cstor_CStorVolumeReplicaSpec(a.(*v1.CStorVolumeReplicaSpec), b.(*cstor.CStorVolumeReplicaSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeReplicaSpec)(nil), (*v1.CStorVolumeReplicaSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeReplicaSpec_To_v1_CStorVolumeReplicaSpec(a.(*cstor.CStorVolumeReplicaSpec), b.(*v1.CStorVolumeReplicaSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeReplicaStatus)(nil), (*cstor.CStorVolumeReplicaStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeReplicaStatus_To_cstor_CStorVolumeReplicaStatus(a.(*v1.CStorVolumeReplicaStatus), b.(*cstor.CStorVolumeReplicaStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeReplicaStatus)(nil), (*v1.CStorVolumeReplicaStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeReplicaStatus_To_v1_CStorVolumeReplicaStatus(a.(*cstor.CStorVolumeReplicaStatus), b.(*v1.CStorVolumeReplicaStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeSpec)(nil), (*cstor.CStorVolumeSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeSpec_To_cstor_CStorVolumeSpec(a.(*v1.CStorVolumeSpec), b.(*cstor.CStorVolumeSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeSpec)(nil), (*v1.CStorVolumeSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeSpec_To_v1_CStorVolumeSpec(a.(*cstor.CStorVolumeSpec), b.(*v1.CStorVolumeSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeStatus)(nil), (*cstor.CStorVolumeStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeStatus_To_cstor_CStorVolumeStatus(a.(*v1.CStorVolumeStatus), b.(*cstor.CStorVolumeStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeStatus)(nil), (*v1.CStorVolumeStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeStatus_To_v1_CStorVolumeStatus(a.(*cstor.CStorVolumeStatus), b.(*v1.CStorVolumeStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CVStatus)(nil), (*cstor.CVStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CVStatus_To_cstor_CVStatus(a.(*v1.CVStatus), b.(*cstor.CVStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CVStatus)(nil), (*v1.CVStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CVStatus_To_v1_CVStatus(a.(*cstor.CVStatus), b.(*v1.CVStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CVStatusResponse)(nil), (*cstor.CVStatusResponse)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CVStatusResponse_To_cstor_CVStatusResponse(a.(*v1.CVStatusResponse), b.(*cstor.CVStatusResponse), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CVStatusResponse)(nil), (*v1.CVStatusResponse)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CVStatusResponse_To_v1_CVStatusResponse(a.(*cstor.CVStatusResponse), b.(*v1.CVStatusResponse), scope)
+	}); err != nil {
+		return err
+	}
 	if err := s.AddGeneratedConversionFunc((*v1.PoolConfig)(nil), (*cstor.PoolConfig)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_v1_PoolConfig_To_cstor_PoolConfig(a.(*v1.PoolConfig), b.(*cstor.PoolConfig), scope)
 	}); err != nil {
@@ -177,6 +407,16 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}); err != nil {
 		return err
 	}
+	if err := s.AddGeneratedConversionFunc((*v1.Provision)(nil), (*cstor.Provision)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_Provision_To_cstor_Provision(a.(*v1.Provision), b.(*cstor.Provision), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.Provision)(nil), (*v1.Provision)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_Provision_To_v1_Provision(a.(*cstor.Provision), b.(*v1.Provision), scope)
+	}); err != nil {
+		return err
+	}
 	if err := s.AddGeneratedConversionFunc((*v1.RaidGroup)(nil), (*cstor.RaidGroup)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_v1_RaidGroup_To_cstor_RaidGroup(a.(*v1.RaidGroup), b.(*cstor.RaidGroup), scope)
 	}); err != nil {
@@ -184,6 +424,36 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}
 	if err := s.AddGeneratedConversionFunc((*cstor.RaidGroup)(nil), (*v1.RaidGroup)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_cstor_RaidGroup_To_v1_RaidGroup(a.(*cstor.RaidGroup), b.(*v1.RaidGroup), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.ReplicaSpec)(nil), (*cstor.ReplicaSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_ReplicaSpec_To_cstor_ReplicaSpec(a.(*v1.ReplicaSpec), b.(*cstor.ReplicaSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.ReplicaSpec)(nil), (*v1.ReplicaSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_ReplicaSpec_To_v1_ReplicaSpec(a.(*cstor.ReplicaSpec), b.(*v1.ReplicaSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.ReplicaStatus)(nil), (*cstor.ReplicaStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_ReplicaStatus_To_cstor_ReplicaStatus(a.(*v1.ReplicaStatus), b.(*cstor.ReplicaStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.ReplicaStatus)(nil), (*v1.ReplicaStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_ReplicaStatus_To_v1_ReplicaStatus(a.(*cstor.ReplicaStatus), b.(*v1.ReplicaStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.TargetSpec)(nil), (*cstor.TargetSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_TargetSpec_To_cstor_TargetSpec(a.(*v1.TargetSpec), b.(*cstor.TargetSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.TargetSpec)(nil), (*v1.TargetSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_TargetSpec_To_v1_TargetSpec(a.(*cstor.TargetSpec), b.(*v1.TargetSpec), scope)
 	}); err != nil {
 		return err
 	}
@@ -556,6 +826,662 @@ func Convert_cstor_CStorPoolInstanceStatus_To_v1_CStorPoolInstanceStatus(in *cst
 	return autoConvert_cstor_CStorPoolInstanceStatus_To_v1_CStorPoolInstanceStatus(in, out, s)
 }
 
+func autoConvert_v1_CStorVolume_To_cstor_CStorVolume(in *v1.CStorVolume, out *cstor.CStorVolume, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1_CStorVolumeSpec_To_cstor_CStorVolumeSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_v1_CStorVolumeStatus_To_cstor_CStorVolumeStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	if err := Convert_v1_VersionDetails_To_cstor_VersionDetails(&in.VersionDetails, &out.VersionDetails, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1_CStorVolume_To_cstor_CStorVolume is an autogenerated conversion function.
+func Convert_v1_CStorVolume_To_cstor_CStorVolume(in *v1.CStorVolume, out *cstor.CStorVolume, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolume_To_cstor_CStorVolume(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolume_To_v1_CStorVolume(in *cstor.CStorVolume, out *v1.CStorVolume, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_cstor_CStorVolumeSpec_To_v1_CStorVolumeSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_cstor_CStorVolumeStatus_To_v1_CStorVolumeStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	if err := Convert_cstor_VersionDetails_To_v1_VersionDetails(&in.VersionDetails, &out.VersionDetails, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_cstor_CStorVolume_To_v1_CStorVolume is an autogenerated conversion function.
+func Convert_cstor_CStorVolume_To_v1_CStorVolume(in *cstor.CStorVolume, out *v1.CStorVolume, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolume_To_v1_CStorVolume(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeCapacityAttr_To_cstor_CStorVolumeCapacityAttr(in *v1.CStorVolumeCapacityAttr, out *cstor.CStorVolumeCapacityAttr, s conversion.Scope) error {
+	out.TotalAllocated = in.TotalAllocated
+	out.Used = in.Used
+	return nil
+}
+
+// Convert_v1_CStorVolumeCapacityAttr_To_cstor_CStorVolumeCapacityAttr is an autogenerated conversion function.
+func Convert_v1_CStorVolumeCapacityAttr_To_cstor_CStorVolumeCapacityAttr(in *v1.CStorVolumeCapacityAttr, out *cstor.CStorVolumeCapacityAttr, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeCapacityAttr_To_cstor_CStorVolumeCapacityAttr(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeCapacityAttr_To_v1_CStorVolumeCapacityAttr(in *cstor.CStorVolumeCapacityAttr, out *v1.CStorVolumeCapacityAttr, s conversion.Scope) error {
+	out.TotalAllocated = in.TotalAllocated
+	out.Used = in.Used
+	return nil
+}
+
+// Convert_cstor_CStorVolumeCapacityAttr_To_v1_CStorVolumeCapacityAttr is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeCapacityAttr_To_v1_CStorVolumeCapacityAttr(in *cstor.CStorVolumeCapacityAttr, out *v1.CStorVolumeCapacityAttr, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeCapacityAttr_To_v1_CStorVolumeCapacityAttr(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeClaim_To_cstor_CStorVolumeClaim(in *v1.CStorVolumeClaim, out *cstor.CStorVolumeClaim, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1_CStorVolumeClaimSpec_To_cstor_CStorVolumeClaimSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_v1_CStorVolumeClaimPublish_To_cstor_CStorVolumeClaimPublish(&in.Publish, &out.Publish, s); err != nil {
+		return err
+	}
+	if err := Convert_v1_CStorVolumeClaimStatus_To_cstor_CStorVolumeClaimStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	if err := Convert_v1_VersionDetails_To_cstor_VersionDetails(&in.VersionDetails, &out.VersionDetails, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1_CStorVolumeClaim_To_cstor_CStorVolumeClaim is an autogenerated conversion function.
+func Convert_v1_CStorVolumeClaim_To_cstor_CStorVolumeClaim(in *v1.CStorVolumeClaim, out *cstor.CStorVolumeClaim, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeClaim_To_cstor_CStorVolumeClaim(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeClaim_To_v1_CStorVolumeClaim(in *cstor.CStorVolumeClaim, out *v1.CStorVolumeClaim, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_cstor_CStorVolumeClaimSpec_To_v1_CStorVolumeClaimSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_cstor_CStorVolumeClaimPublish_To_v1_CStorVolumeClaimPublish(&in.Publish, &out.Publish, s); err != nil {
+		return err
+	}
+	if err := Convert_cstor_CStorVolumeClaimStatus_To_v1_CStorVolumeClaimStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	if err := Convert_cstor_VersionDetails_To_v1_VersionDetails(&in.VersionDetails, &out.VersionDetails, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_cstor_CStorVolumeClaim_To_v1_CStorVolumeClaim is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeClaim_To_v1_CStorVolumeClaim(in *cstor.CStorVolumeClaim, out *v1.CStorVolumeClaim, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeClaim_To_v1_CStorVolumeClaim(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeClaimCondition_To_cstor_CStorVolumeClaimCondition(in *v1.CStorVolumeClaimCondition, out *cstor.CStorVolumeClaimCondition, s conversion.Scope) error {
+	out.Type = cstor.CStorVolumeClaimConditionType(in.Type)
+	out.LastProbeTime = in.LastProbeTime
+	out.LastTransitionTime = in.LastTransitionTime
+	out.Reason = in.Reason
+	out.Message = in.Message
+	return nil
+}
+
+// Convert_v1_CStorVolumeClaimCondition_To_cstor_CStorVolumeClaimCondition is an autogenerated conversion function.
+func Convert_v1_CStorVolumeClaimCondition_To_cstor_CStorVolumeClaimCondition(in *v1.CStorVolumeClaimCondition, out *cstor.CStorVolumeClaimCondition, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeClaimCondition_To_cstor_CStorVolumeClaimCondition(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeClaimCondition_To_v1_CStorVolumeClaimCondition(in *cstor.CStorVolumeClaimCondition, out *v1.CStorVolumeClaimCondition, s conversion.Scope) error {
+	out.Type = v1.CStorVolumeClaimConditionType(in.Type)
+	out.LastProbeTime = in.LastProbeTime
+	out.LastTransitionTime = in.LastTransitionTime
+	out.Reason = in.Reason
+	out.Message = in.Message
+	return nil
+}
+
+// Convert_cstor_CStorVolumeClaimCondition_To_v1_CStorVolumeClaimCondition is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeClaimCondition_To_v1_CStorVolumeClaimCondition(in *cstor.CStorVolumeClaimCondition, out *v1.CStorVolumeClaimCondition, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeClaimCondition_To_v1_CStorVolumeClaimCondition(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeClaimList_To_cstor_CStorVolumeClaimList(in *v1.CStorVolumeClaimList, out *cstor.CStorVolumeClaimList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]cstor.CStorVolumeClaim)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1_CStorVolumeClaimList_To_cstor_CStorVolumeClaimList is an autogenerated conversion function.
+func Convert_v1_CStorVolumeClaimList_To_cstor_CStorVolumeClaimList(in *v1.CStorVolumeClaimList, out *cstor.CStorVolumeClaimList, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeClaimList_To_cstor_CStorVolumeClaimList(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeClaimList_To_v1_CStorVolumeClaimList(in *cstor.CStorVolumeClaimList, out *v1.CStorVolumeClaimList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]v1.CStorVolumeClaim)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_cstor_CStorVolumeClaimList_To_v1_CStorVolumeClaimList is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeClaimList_To_v1_CStorVolumeClaimList(in *cstor.CStorVolumeClaimList, out *v1.CStorVolumeClaimList, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeClaimList_To_v1_CStorVolumeClaimList(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeClaimPublish_To_cstor_CStorVolumeClaimPublish(in *v1.CStorVolumeClaimPublish, out *cstor.CStorVolumeClaimPublish, s conversion.Scope) error {
+	out.NodeID = in.NodeID
+	return nil
+}
+
+// Convert_v1_CStorVolumeClaimPublish_To_cstor_CStorVolumeClaimPublish is an autogenerated conversion function.
+func Convert_v1_CStorVolumeClaimPublish_To_cstor_CStorVolumeClaimPublish(in *v1.CStorVolumeClaimPublish, out *cstor.CStorVolumeClaimPublish, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeClaimPublish_To_cstor_CStorVolumeClaimPublish(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeClaimPublish_To_v1_CStorVolumeClaimPublish(in *cstor.CStorVolumeClaimPublish, out *v1.CStorVolumeClaimPublish, s conversion.Scope) error {
+	out.NodeID = in.NodeID
+	return nil
+}
+
+// Convert_cstor_CStorVolumeClaimPublish_To_v1_CStorVolumeClaimPublish is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeClaimPublish_To_v1_CStorVolumeClaimPublish(in *cstor.CStorVolumeClaimPublish, out *v1.CStorVolumeClaimPublish, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeClaimPublish_To_v1_CStorVolumeClaimPublish(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeClaimSpec_To_cstor_CStorVolumeClaimSpec(in *v1.CStorVolumeClaimSpec, out *cstor.CStorVolumeClaimSpec, s conversion.Scope) error {
+	out.Capacity = *(*corev1.ResourceList)(unsafe.Pointer(&in.Capacity))
+	out.ReplicaCount = in.ReplicaCount
+	out.CStorVolumeRef = (*corev1.ObjectReference)(unsafe.Pointer(in.CStorVolumeRef))
+	out.CstorVolumeSource = in.CstorVolumeSource
+	if err := Convert_v1_CStorVolumePolicySpec_To_cstor_CStorVolumePolicySpec(&in.Policy, &out.Policy, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1_CStorVolumeClaimSpec_To_cstor_CStorVolumeClaimSpec is an autogenerated conversion function.
+func Convert_v1_CStorVolumeClaimSpec_To_cstor_CStorVolumeClaimSpec(in *v1.CStorVolumeClaimSpec, out *cstor.CStorVolumeClaimSpec, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeClaimSpec_To_cstor_CStorVolumeClaimSpec(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeClaimSpec_To_v1_CStorVolumeClaimSpec(in *cstor.CStorVolumeClaimSpec, out *v1.CStorVolumeClaimSpec, s conversion.Scope) error {
+	out.Capacity = *(*corev1.ResourceList)(unsafe.Pointer(&in.Capacity))
+	out.ReplicaCount = in.ReplicaCount
+	out.CStorVolumeRef = (*corev1.ObjectReference)(unsafe.Pointer(in.CStorVolumeRef))
+	out.CstorVolumeSource = in.CstorVolumeSource
+	if err := Convert_cstor_CStorVolumePolicySpec_To_v1_CStorVolumePolicySpec(&in.Policy, &out.Policy, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_cstor_CStorVolumeClaimSpec_To_v1_CStorVolumeClaimSpec is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeClaimSpec_To_v1_CStorVolumeClaimSpec(in *cstor.CStorVolumeClaimSpec, out *v1.CStorVolumeClaimSpec, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeClaimSpec_To_v1_CStorVolumeClaimSpec(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeClaimStatus_To_cstor_CStorVolumeClaimStatus(in *v1.CStorVolumeClaimStatus, out *cstor.CStorVolumeClaimStatus, s conversion.Scope) error {
+	out.Phase = cstor.CStorVolumeClaimPhase(in.Phase)
+	out.Capacity = *(*corev1.ResourceList)(unsafe.Pointer(&in.Capacity))
+	out.Conditions = *(*[]cstor.CStorVolumeClaimCondition)(unsafe.Pointer(&in.Conditions))
+	return nil
+}
+
+// Convert_v1_CStorVolumeClaimStatus_To_cstor_CStorVolumeClaimStatus is an autogenerated conversion function.
+func Convert_v1_CStorVolumeClaimStatus_To_cstor_CStorVolumeClaimStatus(in *v1.CStorVolumeClaimStatus, out *cstor.CStorVolumeClaimStatus, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeClaimStatus_To_cstor_CStorVolumeClaimStatus(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeClaimStatus_To_v1_CStorVolumeClaimStatus(in *cstor.CStorVolumeClaimStatus, out *v1.CStorVolumeClaimStatus, s conversion.Scope) error {
+	out.Phase = v1.CStorVolumeClaimPhase(in.Phase)
+	out.Capacity = *(*corev1.ResourceList)(unsafe.Pointer(&in.Capacity))
+	out.Conditions = *(*[]v1.CStorVolumeClaimCondition)(unsafe.Pointer(&in.Conditions))
+	return nil
+}
+
+// Convert_cstor_CStorVolumeClaimStatus_To_v1_CStorVolumeClaimStatus is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeClaimStatus_To_v1_CStorVolumeClaimStatus(in *cstor.CStorVolumeClaimStatus, out *v1.CStorVolumeClaimStatus, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeClaimStatus_To_v1_CStorVolumeClaimStatus(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeCondition_To_cstor_CStorVolumeCondition(in *v1.CStorVolumeCondition, out *cstor.CStorVolumeCondition, s conversion.Scope) error {
+	out.Type = cstor.CStorVolumeConditionType(in.Type)
+	out.Status = cstor.ConditionStatus(in.Status)
+	out.LastProbeTime = in.LastProbeTime
+	out.LastTransitionTime = in.LastTransitionTime
+	out.Reason = in.Reason
+	out.Message = in.Message
+	return nil
+}
+
+// Convert_v1_CStorVolumeCondition_To_cstor_CStorVolumeCondition is an autogenerated conversion function.
+func Convert_v1_CStorVolumeCondition_To_cstor_CStorVolumeCondition(in *v1.CStorVolumeCondition, out *cstor.CStorVolumeCondition, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeCondition_To_cstor_CStorVolumeCondition(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeCondition_To_v1_CStorVolumeCondition(in *cstor.CStorVolumeCondition, out *v1.CStorVolumeCondition, s conversion.Scope) error {
+	out.Type = v1.CStorVolumeConditionType(in.Type)
+	out.Status = v1.ConditionStatus(in.Status)
+	out.LastProbeTime = in.LastProbeTime
+	out.LastTransitionTime = in.LastTransitionTime
+	out.Reason = in.Reason
+	out.Message = in.Message
+	return nil
+}
+
+// Convert_cstor_CStorVolumeCondition_To_v1_CStorVolumeCondition is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeCondition_To_v1_CStorVolumeCondition(in *cstor.CStorVolumeCondition, out *v1.CStorVolumeCondition, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeCondition_To_v1_CStorVolumeCondition(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeList_To_cstor_CStorVolumeList(in *v1.CStorVolumeList, out *cstor.CStorVolumeList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]cstor.CStorVolume)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1_CStorVolumeList_To_cstor_CStorVolumeList is an autogenerated conversion function.
+func Convert_v1_CStorVolumeList_To_cstor_CStorVolumeList(in *v1.CStorVolumeList, out *cstor.CStorVolumeList, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeList_To_cstor_CStorVolumeList(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeList_To_v1_CStorVolumeList(in *cstor.CStorVolumeList, out *v1.CStorVolumeList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]v1.CStorVolume)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_cstor_CStorVolumeList_To_v1_CStorVolumeList is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeList_To_v1_CStorVolumeList(in *cstor.CStorVolumeList, out *v1.CStorVolumeList, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeList_To_v1_CStorVolumeList(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumePolicy_To_cstor_CStorVolumePolicy(in *v1.CStorVolumePolicy, out *cstor.CStorVolumePolicy, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1_CStorVolumePolicySpec_To_cstor_CStorVolumePolicySpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_v1_CStorVolumePolicyStatus_To_cstor_CStorVolumePolicyStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1_CStorVolumePolicy_To_cstor_CStorVolumePolicy is an autogenerated conversion function.
+func Convert_v1_CStorVolumePolicy_To_cstor_CStorVolumePolicy(in *v1.CStorVolumePolicy, out *cstor.CStorVolumePolicy, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumePolicy_To_cstor_CStorVolumePolicy(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumePolicy_To_v1_CStorVolumePolicy(in *cstor.CStorVolumePolicy, out *v1.CStorVolumePolicy, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_cstor_CStorVolumePolicySpec_To_v1_CStorVolumePolicySpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_cstor_CStorVolumePolicyStatus_To_v1_CStorVolumePolicyStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_cstor_CStorVolumePolicy_To_v1_CStorVolumePolicy is an autogenerated conversion function.
+func Convert_cstor_CStorVolumePolicy_To_v1_CStorVolumePolicy(in *cstor.CStorVolumePolicy, out *v1.CStorVolumePolicy, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumePolicy_To_v1_CStorVolumePolicy(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumePolicyList_To_cstor_CStorVolumePolicyList(in *v1.CStorVolumePolicyList, out *cstor.CStorVolumePolicyList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]cstor.CStorVolumePolicy)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1_CStorVolumePolicyList_To_cstor_CStorVolumePolicyList is an autogenerated conversion function.
+func Convert_v1_CStorVolumePolicyList_To_cstor_CStorVolumePolicyList(in *v1.CStorVolumePolicyList, out *cstor.CStorVolumePolicyList, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumePolicyList_To_cstor_CStorVolumePolicyList(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumePolicyList_To_v1_CStorVolumePolicyList(in *cstor.CStorVolumePolicyList, out *v1.CStorVolumePolicyList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]v1.CStorVolumePolicy)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_cstor_CStorVolumePolicyList_To_v1_CStorVolumePolicyList is an autogenerated conversion function.
+func Convert_cstor_CStorVolumePolicyList_To_v1_CStorVolumePolicyList(in *cstor.CStorVolumePolicyList, out *v1.CStorVolumePolicyList, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumePolicyList_To_v1_CStorVolumePolicyList(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumePolicySpec_To_cstor_CStorVolumePolicySpec(in *v1.CStorVolumePolicySpec, out *cstor.CStorVolumePolicySpec, s conversion.Scope) error {
+	if err := Convert_v1_Provision_To_cstor_Provision(&in.Provision, &out.Provision, s); err != nil {
+		return err
+	}
+	if err := Convert_v1_TargetSpec_To_cstor_TargetSpec(&in.Target, &out.Target, s); err != nil {
+		return err
+	}
+	if err := Convert_v1_ReplicaSpec_To_cstor_ReplicaSpec(&in.Replica, &out.Replica, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1_CStorVolumePolicySpec_To_cstor_CStorVolumePolicySpec is an autogenerated conversion function.
+func Convert_v1_CStorVolumePolicySpec_To_cstor_CStorVolumePolicySpec(in *v1.CStorVolumePolicySpec, out *cstor.CStorVolumePolicySpec, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumePolicySpec_To_cstor_CStorVolumePolicySpec(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumePolicySpec_To_v1_CStorVolumePolicySpec(in *cstor.CStorVolumePolicySpec, out *v1.CStorVolumePolicySpec, s conversion.Scope) error {
+	if err := Convert_cstor_Provision_To_v1_Provision(&in.Provision, &out.Provision, s); err != nil {
+		return err
+	}
+	if err := Convert_cstor_TargetSpec_To_v1_TargetSpec(&in.Target, &out.Target, s); err != nil {
+		return err
+	}
+	if err := Convert_cstor_ReplicaSpec_To_v1_ReplicaSpec(&in.Replica, &out.Replica, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_cstor_CStorVolumePolicySpec_To_v1_CStorVolumePolicySpec is an autogenerated conversion function.
+func Convert_cstor_CStorVolumePolicySpec_To_v1_CStorVolumePolicySpec(in *cstor.CStorVolumePolicySpec, out *v1.CStorVolumePolicySpec, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumePolicySpec_To_v1_CStorVolumePolicySpec(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumePolicyStatus_To_cstor_CStorVolumePolicyStatus(in *v1.CStorVolumePolicyStatus, out *cstor.CStorVolumePolicyStatus, s conversion.Scope) error {
+	out.Phase = in.Phase
+	return nil
+}
+
+// Convert_v1_CStorVolumePolicyStatus_To_cstor_CStorVolumePolicyStatus is an autogenerated conversion function.
+func Convert_v1_CStorVolumePolicyStatus_To_cstor_CStorVolumePolicyStatus(in *v1.CStorVolumePolicyStatus, out *cstor.CStorVolumePolicyStatus, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumePolicyStatus_To_cstor_CStorVolumePolicyStatus(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumePolicyStatus_To_v1_CStorVolumePolicyStatus(in *cstor.CStorVolumePolicyStatus, out *v1.CStorVolumePolicyStatus, s conversion.Scope) error {
+	out.Phase = in.Phase
+	return nil
+}
+
+// Convert_cstor_CStorVolumePolicyStatus_To_v1_CStorVolumePolicyStatus is an autogenerated conversion function.
+func Convert_cstor_CStorVolumePolicyStatus_To_v1_CStorVolumePolicyStatus(in *cstor.CStorVolumePolicyStatus, out *v1.CStorVolumePolicyStatus, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumePolicyStatus_To_v1_CStorVolumePolicyStatus(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeReplica_To_cstor_CStorVolumeReplica(in *v1.CStorVolumeReplica, out *cstor.CStorVolumeReplica, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1_CStorVolumeReplicaSpec_To_cstor_CStorVolumeReplicaSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_v1_CStorVolumeReplicaStatus_To_cstor_CStorVolumeReplicaStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	if err := Convert_v1_VersionDetails_To_cstor_VersionDetails(&in.VersionDetails, &out.VersionDetails, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1_CStorVolumeReplica_To_cstor_CStorVolumeReplica is an autogenerated conversion function.
+func Convert_v1_CStorVolumeReplica_To_cstor_CStorVolumeReplica(in *v1.CStorVolumeReplica, out *cstor.CStorVolumeReplica, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeReplica_To_cstor_CStorVolumeReplica(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeReplica_To_v1_CStorVolumeReplica(in *cstor.CStorVolumeReplica, out *v1.CStorVolumeReplica, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_cstor_CStorVolumeReplicaSpec_To_v1_CStorVolumeReplicaSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_cstor_CStorVolumeReplicaStatus_To_v1_CStorVolumeReplicaStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	if err := Convert_cstor_VersionDetails_To_v1_VersionDetails(&in.VersionDetails, &out.VersionDetails, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_cstor_CStorVolumeReplica_To_v1_CStorVolumeReplica is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeReplica_To_v1_CStorVolumeReplica(in *cstor.CStorVolumeReplica, out *v1.CStorVolumeReplica, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeReplica_To_v1_CStorVolumeReplica(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeReplicaDetails_To_cstor_CStorVolumeReplicaDetails(in *v1.CStorVolumeReplicaDetails, out *cstor.CStorVolumeReplicaDetails, s conversion.Scope) error {
+	out.KnownReplicas = *(*map[cstor.ReplicaID]string)(unsafe.Pointer(&in.KnownReplicas))
+	return nil
+}
+
+// Convert_v1_CStorVolumeReplicaDetails_To_cstor_CStorVolumeReplicaDetails is an autogenerated conversion function.
+func Convert_v1_CStorVolumeReplicaDetails_To_cstor_CStorVolumeReplicaDetails(in *v1.CStorVolumeReplicaDetails, out *cstor.CStorVolumeReplicaDetails, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeReplicaDetails_To_cstor_CStorVolumeReplicaDetails(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeReplicaDetails_To_v1_CStorVolumeReplicaDetails(in *cstor.CStorVolumeReplicaDetails, out *v1.CStorVolumeReplicaDetails, s conversion.Scope) error {
+	out.KnownReplicas = *(*map[v1.ReplicaID]string)(unsafe.Pointer(&in.KnownReplicas))
+	return nil
+}
+
+// Convert_cstor_CStorVolumeReplicaDetails_To_v1_CStorVolumeReplicaDetails is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeReplicaDetails_To_v1_CStorVolumeReplicaDetails(in *cstor.CStorVolumeReplicaDetails, out *v1.CStorVolumeReplicaDetails, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeReplicaDetails_To_v1_CStorVolumeReplicaDetails(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeReplicaList_To_cstor_CStorVolumeReplicaList(in *v1.CStorVolumeReplicaList, out *cstor.CStorVolumeReplicaList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]cstor.CStorVolumeReplica)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1_CStorVolumeReplicaList_To_cstor_CStorVolumeReplicaList is an autogenerated conversion function.
+func Convert_v1_CStorVolumeReplicaList_To_cstor_CStorVolumeReplicaList(in *v1.CStorVolumeReplicaList, out *cstor.CStorVolumeReplicaList, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeReplicaList_To_cstor_CStorVolumeReplicaList(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeReplicaList_To_v1_CStorVolumeReplicaList(in *cstor.CStorVolumeReplicaList, out *v1.CStorVolumeReplicaList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]v1.CStorVolumeReplica)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_cstor_CStorVolumeReplicaList_To_v1_CStorVolumeReplicaList is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeReplicaList_To_v1_CStorVolumeReplicaList(in *cstor.CStorVolumeReplicaList, out *v1.CStorVolumeReplicaList, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeReplicaList_To_v1_CStorVolumeReplicaList(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeReplicaSpec_To_cstor_CStorVolumeReplicaSpec(in *v1.CStorVolumeReplicaSpec, out *cstor.CStorVolumeReplicaSpec, s conversion.Scope) error {
+	out.TargetIP = in.TargetIP
+	out.Capacity = in.Capacity
+	out.ZvolWorkers = in.ZvolWorkers
+	out.ReplicaID = in.ReplicaID
+	return nil
+}
+
+// Convert_v1_CStorVolumeReplicaSpec_To_cstor_CStorVolumeReplicaSpec is an autogenerated conversion function.
+func Convert_v1_CStorVolumeReplicaSpec_To_cstor_CStorVolumeReplicaSpec(in *v1.CStorVolumeReplicaSpec, out *cstor.CStorVolumeReplicaSpec, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeReplicaSpec_To_cstor_CStorVolumeReplicaSpec(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeReplicaSpec_To_v1_CStorVolumeReplicaSpec(in *cstor.CStorVolumeReplicaSpec, out *v1.CStorVolumeReplicaSpec, s conversion.Scope) error {
+	out.TargetIP = in.TargetIP
+	out.Capacity = in.Capacity
+	out.ZvolWorkers = in.ZvolWorkers
+	out.ReplicaID = in.ReplicaID
+	return nil
+}
+
+// Convert_cstor_CStorVolumeReplicaSpec_To_v1_CStorVolumeReplicaSpec is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeReplicaSpec_To_v1_CStorVolumeReplicaSpec(in *cstor.CStorVolumeReplicaSpec, out *v1.CStorVolumeReplicaSpec, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeReplicaSpec_To_v1_CStorVolumeReplicaSpec(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeReplicaStatus_To_cstor_CStorVolumeReplicaStatus(in *v1.CStorVolumeReplicaStatus, out *cstor.CStorVolumeReplicaStatus, s conversion.Scope) error {
+	out.Phase = cstor.CStorVolumeReplicaPhase(in.Phase)
+	if err := Convert_v1_CStorVolumeCapacityAttr_To_cstor_CStorVolumeCapacityAttr(&in.Capacity, &out.Capacity, s); err != nil {
+		return err
+	}
+	out.LastTransitionTime = in.LastTransitionTime
+	out.LastUpdateTime = in.LastUpdateTime
+	out.Message = in.Message
+	return nil
+}
+
+// Convert_v1_CStorVolumeReplicaStatus_To_cstor_CStorVolumeReplicaStatus is an autogenerated conversion function.
+func Convert_v1_CStorVolumeReplicaStatus_To_cstor_CStorVolumeReplicaStatus(in *v1.CStorVolumeReplicaStatus, out *cstor.CStorVolumeReplicaStatus, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeReplicaStatus_To_cstor_CStorVolumeReplicaStatus(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeReplicaStatus_To_v1_CStorVolumeReplicaStatus(in *cstor.CStorVolumeReplicaStatus, out *v1.CStorVolumeReplicaStatus, s conversion.Scope) error {
+	out.Phase = v1.CStorVolumeReplicaPhase(in.Phase)
+	if err := Convert_cstor_CStorVolumeCapacityAttr_To_v1_CStorVolumeCapacityAttr(&in.Capacity, &out.Capacity, s); err != nil {
+		return err
+	}
+	out.LastTransitionTime = in.LastTransitionTime
+	out.LastUpdateTime = in.LastUpdateTime
+	out.Message = in.Message
+	return nil
+}
+
+// Convert_cstor_CStorVolumeReplicaStatus_To_v1_CStorVolumeReplicaStatus is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeReplicaStatus_To_v1_CStorVolumeReplicaStatus(in *cstor.CStorVolumeReplicaStatus, out *v1.CStorVolumeReplicaStatus, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeReplicaStatus_To_v1_CStorVolumeReplicaStatus(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeSpec_To_cstor_CStorVolumeSpec(in *v1.CStorVolumeSpec, out *cstor.CStorVolumeSpec, s conversion.Scope) error {
+	out.Capacity = in.Capacity
+	out.TargetIP = in.TargetIP
+	out.TargetPort = in.TargetPort
+	out.Iqn = in.Iqn
+	out.TargetPortal = in.TargetPortal
+	out.Status = in.Status
+	out.NodeBase = in.NodeBase
+	out.ReplicationFactor = in.ReplicationFactor
+	out.ConsistencyFactor = in.ConsistencyFactor
+	out.DesiredReplicationFactor = in.DesiredReplicationFactor
+	if err := Convert_v1_CStorVolumeReplicaDetails_To_cstor_CStorVolumeReplicaDetails(&in.ReplicaDetails, &out.ReplicaDetails, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1_CStorVolumeSpec_To_cstor_CStorVolumeSpec is an autogenerated conversion function.
+func Convert_v1_CStorVolumeSpec_To_cstor_CStorVolumeSpec(in *v1.CStorVolumeSpec, out *cstor.CStorVolumeSpec, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeSpec_To_cstor_CStorVolumeSpec(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeSpec_To_v1_CStorVolumeSpec(in *cstor.CStorVolumeSpec, out *v1.CStorVolumeSpec, s conversion.Scope) error {
+	out.Capacity = in.Capacity
+	out.TargetIP = in.TargetIP
+	out.TargetPort = in.TargetPort
+	out.Iqn = in.Iqn
+	out.TargetPortal = in.TargetPortal
+	out.Status = in.Status
+	out.NodeBase = in.NodeBase
+	out.ReplicationFactor = in.ReplicationFactor
+	out.ConsistencyFactor = in.ConsistencyFactor
+	out.DesiredReplicationFactor = in.DesiredReplicationFactor
+	if err := Convert_cstor_CStorVolumeReplicaDetails_To_v1_CStorVolumeReplicaDetails(&in.ReplicaDetails, &out.ReplicaDetails, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_cstor_CStorVolumeSpec_To_v1_CStorVolumeSpec is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeSpec_To_v1_CStorVolumeSpec(in *cstor.CStorVolumeSpec, out *v1.CStorVolumeSpec, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeSpec_To_v1_CStorVolumeSpec(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeStatus_To_cstor_CStorVolumeStatus(in *v1.CStorVolumeStatus, out *cstor.CStorVolumeStatus, s conversion.Scope) error {
+	out.Phase = cstor.CStorVolumePhase(in.Phase)
+	out.ReplicaStatuses = *(*[]cstor.ReplicaStatus)(unsafe.Pointer(&in.ReplicaStatuses))
+	out.Capacity = in.Capacity
+	out.LastTransitionTime = in.LastTransitionTime
+	out.LastUpdateTime = in.LastUpdateTime
+	out.Message = in.Message
+	out.Conditions = *(*[]cstor.CStorVolumeCondition)(unsafe.Pointer(&in.Conditions))
+	if err := Convert_v1_CStorVolumeReplicaDetails_To_cstor_CStorVolumeReplicaDetails(&in.ReplicaDetails, &out.ReplicaDetails, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1_CStorVolumeStatus_To_cstor_CStorVolumeStatus is an autogenerated conversion function.
+func Convert_v1_CStorVolumeStatus_To_cstor_CStorVolumeStatus(in *v1.CStorVolumeStatus, out *cstor.CStorVolumeStatus, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeStatus_To_cstor_CStorVolumeStatus(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeStatus_To_v1_CStorVolumeStatus(in *cstor.CStorVolumeStatus, out *v1.CStorVolumeStatus, s conversion.Scope) error {
+	out.Phase = v1.CStorVolumePhase(in.Phase)
+	out.ReplicaStatuses = *(*[]v1.ReplicaStatus)(unsafe.Pointer(&in.ReplicaStatuses))
+	out.Capacity = in.Capacity
+	out.LastTransitionTime = in.LastTransitionTime
+	out.LastUpdateTime = in.LastUpdateTime
+	out.Message = in.Message
+	out.Conditions = *(*[]v1.CStorVolumeCondition)(unsafe.Pointer(&in.Conditions))
+	if err := Convert_cstor_CStorVolumeReplicaDetails_To_v1_CStorVolumeReplicaDetails(&in.ReplicaDetails, &out.ReplicaDetails, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_cstor_CStorVolumeStatus_To_v1_CStorVolumeStatus is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeStatus_To_v1_CStorVolumeStatus(in *cstor.CStorVolumeStatus, out *v1.CStorVolumeStatus, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeStatus_To_v1_CStorVolumeStatus(in, out, s)
+}
+
+func autoConvert_v1_CVStatus_To_cstor_CVStatus(in *v1.CVStatus, out *cstor.CVStatus, s conversion.Scope) error {
+	out.Name = in.Name
+	out.Status = in.Status
+	out.ReplicaStatuses = *(*[]cstor.ReplicaStatus)(unsafe.Pointer(&in.ReplicaStatuses))
+	return nil
+}
+
+// Convert_v1_CVStatus_To_cstor_CVStatus is an autogenerated conversion function.
+func Convert_v1_CVStatus_To_cstor_CVStatus(in *v1.CVStatus, out *cstor.CVStatus, s conversion.Scope) error {
+	return autoConvert_v1_CVStatus_To_cstor_CVStatus(in, out, s)
+}
+
+func autoConvert_cstor_CVStatus_To_v1_CVStatus(in *cstor.CVStatus, out *v1.CVStatus, s conversion.Scope) error {
+	out.Name = in.Name
+	out.Status = in.Status
+	out.ReplicaStatuses = *(*[]v1.ReplicaStatus)(unsafe.Pointer(&in.ReplicaStatuses))
+	return nil
+}
+
+// Convert_cstor_CVStatus_To_v1_CVStatus is an autogenerated conversion function.
+func Convert_cstor_CVStatus_To_v1_CVStatus(in *cstor.CVStatus, out *v1.CVStatus, s conversion.Scope) error {
+	return autoConvert_cstor_CVStatus_To_v1_CVStatus(in, out, s)
+}
+
+func autoConvert_v1_CVStatusResponse_To_cstor_CVStatusResponse(in *v1.CVStatusResponse, out *cstor.CVStatusResponse, s conversion.Scope) error {
+	out.CVStatuses = *(*[]cstor.CVStatus)(unsafe.Pointer(&in.CVStatuses))
+	return nil
+}
+
+// Convert_v1_CVStatusResponse_To_cstor_CVStatusResponse is an autogenerated conversion function.
+func Convert_v1_CVStatusResponse_To_cstor_CVStatusResponse(in *v1.CVStatusResponse, out *cstor.CVStatusResponse, s conversion.Scope) error {
+	return autoConvert_v1_CVStatusResponse_To_cstor_CVStatusResponse(in, out, s)
+}
+
+func autoConvert_cstor_CVStatusResponse_To_v1_CVStatusResponse(in *cstor.CVStatusResponse, out *v1.CVStatusResponse, s conversion.Scope) error {
+	out.CVStatuses = *(*[]v1.CVStatus)(unsafe.Pointer(&in.CVStatuses))
+	return nil
+}
+
+// Convert_cstor_CVStatusResponse_To_v1_CVStatusResponse is an autogenerated conversion function.
+func Convert_cstor_CVStatusResponse_To_v1_CVStatusResponse(in *cstor.CVStatusResponse, out *v1.CVStatusResponse, s conversion.Scope) error {
+	return autoConvert_cstor_CVStatusResponse_To_v1_CVStatusResponse(in, out, s)
+}
+
 func autoConvert_v1_PoolConfig_To_cstor_PoolConfig(in *v1.PoolConfig, out *cstor.PoolConfig, s conversion.Scope) error {
 	out.DataRaidGroupType = in.DataRaidGroupType
 	out.WriteCacheGroupType = in.WriteCacheGroupType
@@ -620,6 +1546,26 @@ func Convert_cstor_PoolSpec_To_v1_PoolSpec(in *cstor.PoolSpec, out *v1.PoolSpec,
 	return autoConvert_cstor_PoolSpec_To_v1_PoolSpec(in, out, s)
 }
 
+func autoConvert_v1_Provision_To_cstor_Provision(in *v1.Provision, out *cstor.Provision, s conversion.Scope) error {
+	out.ReplicaAffinity = in.ReplicaAffinity
+	return nil
+}
+
+// Convert_v1_Provision_To_cstor_Provision is an autogenerated conversion function.
+func Convert_v1_Provision_To_cstor_Provision(in *v1.Provision, out *cstor.Provision, s conversion.Scope) error {
+	return autoConvert_v1_Provision_To_cstor_Provision(in, out, s)
+}
+
+func autoConvert_cstor_Provision_To_v1_Provision(in *cstor.Provision, out *v1.Provision, s conversion.Scope) error {
+	out.ReplicaAffinity = in.ReplicaAffinity
+	return nil
+}
+
+// Convert_cstor_Provision_To_v1_Provision is an autogenerated conversion function.
+func Convert_cstor_Provision_To_v1_Provision(in *cstor.Provision, out *v1.Provision, s conversion.Scope) error {
+	return autoConvert_cstor_Provision_To_v1_Provision(in, out, s)
+}
+
 func autoConvert_v1_RaidGroup_To_cstor_RaidGroup(in *v1.RaidGroup, out *cstor.RaidGroup, s conversion.Scope) error {
 	out.BlockDevices = *(*[]cstor.CStorPoolClusterBlockDevice)(unsafe.Pointer(&in.BlockDevices))
 	return nil
@@ -638,6 +1584,100 @@ func autoConvert_cstor_RaidGroup_To_v1_RaidGroup(in *cstor.RaidGroup, out *v1.Ra
 // Convert_cstor_RaidGroup_To_v1_RaidGroup is an autogenerated conversion function.
 func Convert_cstor_RaidGroup_To_v1_RaidGroup(in *cstor.RaidGroup, out *v1.RaidGroup, s conversion.Scope) error {
 	return autoConvert_cstor_RaidGroup_To_v1_RaidGroup(in, out, s)
+}
+
+func autoConvert_v1_ReplicaSpec_To_cstor_ReplicaSpec(in *v1.ReplicaSpec, out *cstor.ReplicaSpec, s conversion.Scope) error {
+	out.ZvolWorkers = in.ZvolWorkers
+	out.Affinity = (*corev1.PodAffinity)(unsafe.Pointer(in.Affinity))
+	return nil
+}
+
+// Convert_v1_ReplicaSpec_To_cstor_ReplicaSpec is an autogenerated conversion function.
+func Convert_v1_ReplicaSpec_To_cstor_ReplicaSpec(in *v1.ReplicaSpec, out *cstor.ReplicaSpec, s conversion.Scope) error {
+	return autoConvert_v1_ReplicaSpec_To_cstor_ReplicaSpec(in, out, s)
+}
+
+func autoConvert_cstor_ReplicaSpec_To_v1_ReplicaSpec(in *cstor.ReplicaSpec, out *v1.ReplicaSpec, s conversion.Scope) error {
+	out.ZvolWorkers = in.ZvolWorkers
+	out.Affinity = (*corev1.PodAffinity)(unsafe.Pointer(in.Affinity))
+	return nil
+}
+
+// Convert_cstor_ReplicaSpec_To_v1_ReplicaSpec is an autogenerated conversion function.
+func Convert_cstor_ReplicaSpec_To_v1_ReplicaSpec(in *cstor.ReplicaSpec, out *v1.ReplicaSpec, s conversion.Scope) error {
+	return autoConvert_cstor_ReplicaSpec_To_v1_ReplicaSpec(in, out, s)
+}
+
+func autoConvert_v1_ReplicaStatus_To_cstor_ReplicaStatus(in *v1.ReplicaStatus, out *cstor.ReplicaStatus, s conversion.Scope) error {
+	out.ID = in.ID
+	out.Mode = in.Mode
+	out.CheckpointedIOSeq = in.CheckpointedIOSeq
+	out.InflightRead = in.InflightRead
+	out.InflightWrite = in.InflightWrite
+	out.InflightSync = in.InflightSync
+	out.UpTime = in.UpTime
+	out.Quorum = in.Quorum
+	return nil
+}
+
+// Convert_v1_ReplicaStatus_To_cstor_ReplicaStatus is an autogenerated conversion function.
+func Convert_v1_ReplicaStatus_To_cstor_ReplicaStatus(in *v1.ReplicaStatus, out *cstor.ReplicaStatus, s conversion.Scope) error {
+	return autoConvert_v1_ReplicaStatus_To_cstor_ReplicaStatus(in, out, s)
+}
+
+func autoConvert_cstor_ReplicaStatus_To_v1_ReplicaStatus(in *cstor.ReplicaStatus, out *v1.ReplicaStatus, s conversion.Scope) error {
+	out.ID = in.ID
+	out.Mode = in.Mode
+	out.CheckpointedIOSeq = in.CheckpointedIOSeq
+	out.InflightRead = in.InflightRead
+	out.InflightWrite = in.InflightWrite
+	out.InflightSync = in.InflightSync
+	out.UpTime = in.UpTime
+	out.Quorum = in.Quorum
+	return nil
+}
+
+// Convert_cstor_ReplicaStatus_To_v1_ReplicaStatus is an autogenerated conversion function.
+func Convert_cstor_ReplicaStatus_To_v1_ReplicaStatus(in *cstor.ReplicaStatus, out *v1.ReplicaStatus, s conversion.Scope) error {
+	return autoConvert_cstor_ReplicaStatus_To_v1_ReplicaStatus(in, out, s)
+}
+
+func autoConvert_v1_TargetSpec_To_cstor_TargetSpec(in *v1.TargetSpec, out *cstor.TargetSpec, s conversion.Scope) error {
+	out.QueueDepth = in.QueueDepth
+	out.LuWorkers = in.LuWorkers
+	out.Monitor = in.Monitor
+	out.ReplicationFactor = in.ReplicationFactor
+	out.Resources = (*corev1.ResourceRequirements)(unsafe.Pointer(in.Resources))
+	out.AuxResources = (*corev1.ResourceRequirements)(unsafe.Pointer(in.AuxResources))
+	out.Tolerations = *(*[]corev1.Toleration)(unsafe.Pointer(&in.Tolerations))
+	out.Affinity = (*corev1.PodAffinity)(unsafe.Pointer(in.Affinity))
+	out.NodeSelector = *(*map[string]string)(unsafe.Pointer(&in.NodeSelector))
+	out.PriorityClassName = in.PriorityClassName
+	return nil
+}
+
+// Convert_v1_TargetSpec_To_cstor_TargetSpec is an autogenerated conversion function.
+func Convert_v1_TargetSpec_To_cstor_TargetSpec(in *v1.TargetSpec, out *cstor.TargetSpec, s conversion.Scope) error {
+	return autoConvert_v1_TargetSpec_To_cstor_TargetSpec(in, out, s)
+}
+
+func autoConvert_cstor_TargetSpec_To_v1_TargetSpec(in *cstor.TargetSpec, out *v1.TargetSpec, s conversion.Scope) error {
+	out.QueueDepth = in.QueueDepth
+	out.LuWorkers = in.LuWorkers
+	out.Monitor = in.Monitor
+	out.ReplicationFactor = in.ReplicationFactor
+	out.Resources = (*corev1.ResourceRequirements)(unsafe.Pointer(in.Resources))
+	out.AuxResources = (*corev1.ResourceRequirements)(unsafe.Pointer(in.AuxResources))
+	out.Tolerations = *(*[]corev1.Toleration)(unsafe.Pointer(&in.Tolerations))
+	out.Affinity = (*corev1.PodAffinity)(unsafe.Pointer(in.Affinity))
+	out.NodeSelector = *(*map[string]string)(unsafe.Pointer(&in.NodeSelector))
+	out.PriorityClassName = in.PriorityClassName
+	return nil
+}
+
+// Convert_cstor_TargetSpec_To_v1_TargetSpec is an autogenerated conversion function.
+func Convert_cstor_TargetSpec_To_v1_TargetSpec(in *cstor.TargetSpec, out *v1.TargetSpec, s conversion.Scope) error {
+	return autoConvert_cstor_TargetSpec_To_v1_TargetSpec(in, out, s)
 }
 
 func autoConvert_v1_VersionDetails_To_cstor_VersionDetails(in *v1.VersionDetails, out *cstor.VersionDetails, s conversion.Scope) error {
