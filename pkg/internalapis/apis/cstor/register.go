@@ -42,6 +42,14 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&CStorPoolClusterList{},
 		&CStorPoolInstance{},
 		&CStorPoolInstanceList{},
+		&CStorVolume{},
+		&CStorVolumeList{},
+		&CStorVolumeReplica{},
+		&CStorVolumeReplicaList{},
+		&CStorVolumeClaim{},
+		&CStorVolumeClaimList{},
+		&CStorVolumePolicy{},
+		&CStorVolumePolicyList{},
 	)
 	return nil
 }

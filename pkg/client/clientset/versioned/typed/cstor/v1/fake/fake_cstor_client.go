@@ -40,6 +40,14 @@ func (c *FakeCstorV1) CStorVolumes(namespace string) v1.CStorVolumeInterface {
 	return &FakeCStorVolumes{c, namespace}
 }
 
+func (c *FakeCstorV1) CStorVolumeClaims(namespace string) v1.CStorVolumeClaimInterface {
+	return &FakeCStorVolumeClaims{c, namespace}
+}
+
+func (c *FakeCstorV1) CStorVolumePolicies(namespace string) v1.CStorVolumePolicyInterface {
+	return &FakeCStorVolumePolicies{c, namespace}
+}
+
 func (c *FakeCstorV1) CStorVolumeReplicas(namespace string) v1.CStorVolumeReplicaInterface {
 	return &FakeCStorVolumeReplicas{c, namespace}
 }
