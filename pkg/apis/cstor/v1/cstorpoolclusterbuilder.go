@@ -17,13 +17,12 @@ limitations under the License.
 package v1
 
 import (
-	"github.com/openebs/maya/pkg/util"
+	"github.com/openebs/api/pkg/util"
 )
 
-func NewCStorPoolCluster()*CStorPoolCluster  {
+func NewCStorPoolCluster() *CStorPoolCluster {
 	return &CStorPoolCluster{}
 }
-
 
 // WithName sets the Name field of cspc with provided value.
 func (cspc *CStorPoolCluster) WithName(name string) *CStorPoolCluster {
@@ -60,7 +59,7 @@ func (cspc *CStorPoolCluster) WithAnnotations(annotations map[string]string) *CS
 }
 
 // WithLabelsNew sets the Labels field of cspc with provided arguments
-func (cspc *CStorPoolCluster)WithLabelsNew(labels map[string]string) *CStorPoolCluster {
+func (cspc *CStorPoolCluster) WithLabelsNew(labels map[string]string) *CStorPoolCluster {
 	cspc.Labels = make(map[string]string)
 	for key, value := range labels {
 		cspc.Labels[key] = value
@@ -80,7 +79,6 @@ func (cspc *CStorPoolCluster) WithLabels(labels map[string]string) *CStorPoolClu
 	return cspc
 }
 
-
 // WithFinalizer sets the finalizer field in the BDC
 func (cspc *CStorPoolCluster) WithFinalizer(finalizers ...string) *CStorPoolCluster {
 	cspc.Finalizers = append(cspc.Finalizers, finalizers...)
@@ -94,7 +92,7 @@ func (cspc *CStorPoolCluster) HasFinalizer(finalizer string) bool {
 }
 
 // RemoveFinalizer removes the given finalizer from the object.
-func (cspc *CStorPoolCluster) RemoveFinalizer(finalizer string)  {
+func (cspc *CStorPoolCluster) RemoveFinalizer(finalizer string) {
 	cspc.Finalizers = util.RemoveString(cspc.Finalizers, finalizer)
 }
 
