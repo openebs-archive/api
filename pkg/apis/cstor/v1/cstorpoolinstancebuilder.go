@@ -16,10 +16,9 @@ limitations under the License.
 
 package v1
 
-import 	(
+import (
+	"github.com/openebs/api/pkg/util"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"github.com/openebs/maya/pkg/util"
-
 )
 
 const (
@@ -28,10 +27,9 @@ const (
 	APIVersion = "cstor.openebs.io/v1"
 )
 
-func NewCStorPoolInstance()*CStorPoolInstance  {
+func NewCStorPoolInstance() *CStorPoolInstance {
 	return &CStorPoolInstance{}
 }
-
 
 // WithName sets the Name field of CSPI with provided value.
 func (cspi *CStorPoolInstance) WithName(name string) *CStorPoolInstance {
@@ -68,7 +66,7 @@ func (cspi *CStorPoolInstance) WithAnnotations(annotations map[string]string) *C
 }
 
 // WithLabelsNew sets the Labels field of CSPI with provided arguments
-func (cspi *CStorPoolInstance)WithLabelsNew(labels map[string]string) *CStorPoolInstance {
+func (cspi *CStorPoolInstance) WithLabelsNew(labels map[string]string) *CStorPoolInstance {
 	cspi.Labels = make(map[string]string)
 	for key, value := range labels {
 		cspi.Labels[key] = value
@@ -118,7 +116,6 @@ func (cspi *CStorPoolInstance) WithFinalizer(finalizers ...string) *CStorPoolIns
 	return cspi
 }
 
-
 // WithCSPCOwnerReference sets the OwnerReference field in CSPI with required
 //fields
 func (cspi *CStorPoolInstance) WithCSPCOwnerReference(reference metav1.OwnerReference) *CStorPoolInstance {
@@ -147,7 +144,7 @@ func (cspi *CStorPoolInstance) HasFinalizer(finalizer string) bool {
 }
 
 // RemoveFinalizer removes the given finalizer from the object.
-func (cspi *CStorPoolInstance) RemoveFinalizer(finalizer string)  {
+func (cspi *CStorPoolInstance) RemoveFinalizer(finalizer string) {
 	cspi.Finalizers = util.RemoveString(cspi.Finalizers, finalizer)
 }
 
@@ -170,4 +167,3 @@ func (cspi *CStorPoolInstance) HasLabel(key, value string) bool {
 	}
 	return false
 }
-

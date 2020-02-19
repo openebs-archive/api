@@ -1,6 +1,6 @@
 /*
 Copyright 2015 The Kubernetes Authors.
-Copyright 2018 The OpenEBS Authors.
+Copyright 2020 The OpenEBS Authors.
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -28,8 +28,9 @@ package util
 
 import (
 	"fmt"
-	"k8s.io/apimachinery/pkg/util/json"
 	"strings"
+
+	"k8s.io/apimachinery/pkg/util/json"
 )
 
 // GetNestedField returns a nested field from the provided map
