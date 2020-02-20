@@ -12,33 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
-
-# Default arguments for code gen script
-
-# OUTPUT_PKG is the path of directory where you want to keep the generated code
-OUTPUT_PKG=github.com/openebs/api/pkg/client/generated
-
-# APIS_PKG is the path where apis group and schema exists.
-APIS_PKG=github.com/openebs/api/pkg/apis
-INTERNAL_APIS_PKG=github.com/openebs/api/pkg/internal/apis
-
-# GENS is an argument which generates different type of code.
-# Possible values: all, deepcopy, client, informers, listers.
-GENS=all
-# GROUPS_WITH_VERSIONS is the group containing different versions of the resources.
-GROUPS_WITH_VERSIONS="cstor:v1 openebs.io:v1alpha1"
-INTERNAL_GROUPS_WITH_VERSIONS="cstor:v1"
-
-# BOILERPLATE_TEXT_PATH is the boilerplate text(go comment) that is put at the top of every generated file.
-# This boilerplate text is nothing but the license information.
-BOILERPLATE_TEXT_PATH=hack/custom-boilerplate.go.txt
-
 .PHONY: kubegen
 # code generation for custom resources
-kubegen: 
-	./hack/code-gen.sh ${GENS} ${OUTPUT_PKG} ${APIS_PKG} ${GROUPS_WITH_VERSIONS} --go-header-file ${BOILERPLATE_TEXT_PATH}
+kubegen:
+	./hack/update-codegen.sh
+
+.PHONY: verify_kubegen
+verify_kubegen:
+	./hack/verify-codegen.sh
 
 .PHONY: generated_files
 generated_files: kubegen protobuf
 
+# deps ensures fresh go.mod and go.sum.
+.PHONY: deps
+deps:
+	@go mod tidy
+	@go mod verify
