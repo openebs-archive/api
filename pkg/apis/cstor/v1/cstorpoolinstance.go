@@ -52,12 +52,48 @@ type CStorPoolInstanceSpec struct {
 	// PoolConfig is the default pool config that applies to the
 	// pool on node.
 	PoolConfig PoolConfig `json:"poolConfig"`
-	// RaidGroups is the group containing block devices
-	RaidGroups []RaidGroup `json:"raidGroup"`
+	// DataRaidGroups is the raid group configuration for the given pool.
+	DataRaidGroups []RaidGroup `json:"dataRaidGroups"`
+	// WriteCacheRaidGroups is the write cache raid group.
+	WriteCacheRaidGroups []RaidGroup `json:"writeCacheRaidGroups"`
 }
 
 // CStorPoolInstancePhase is the phase for CStorPoolInstance resource.
 type CStorPoolInstancePhase string
+
+// Status written onto CStorPool and CStorVolumeReplica objects.
+// Resetting state to either Init or CreateFailed need to be done with care,
+// as, label clear and pool creation depends on this state.
+const (
+	// CStorPoolStatusEmpty ensures the create operation is to be done, if import fails.
+	CStorPoolStatusEmpty CStorPoolInstancePhase = ""
+	// CStorPoolStatusOnline signifies that the pool is online.
+	CStorPoolStatusOnline CStorPoolInstancePhase = "Healthy"
+	// CStorPoolStatusOffline signifies that the pool is offline.
+	CStorPoolStatusOffline CStorPoolInstancePhase = "Offline"
+	// CStorPoolStatusDegraded signifies that the pool is degraded.
+	CStorPoolStatusDegraded CStorPoolInstancePhase = "Degraded"
+	// CStorPoolStatusFaulted signifies that the pool is faulted.
+	CStorPoolStatusFaulted CStorPoolInstancePhase = "Faulted"
+	// CStorPoolStatusRemoved signifies that the pool is removed.
+	CStorPoolStatusRemoved CStorPoolInstancePhase = "Removed"
+	// CStorPoolStatusUnavail signifies that the pool is not available.
+	CStorPoolStatusUnavail CStorPoolInstancePhase = "Unavail"
+	// CStorPoolStatusError signifies that the pool status could not be fetched.
+	CStorPoolStatusError CStorPoolInstancePhase = "Error"
+	// CStorPoolStatusDeletionFailed ensures the resource deletion has failed.
+	CStorPoolStatusDeletionFailed CStorPoolInstancePhase = "DeletionFailed"
+	// CStorPoolStatusInvalid ensures invalid resource.
+	CStorPoolStatusInvalid CStorPoolInstancePhase = "Invalid"
+	// CStorPoolStatusErrorDuplicate ensures error due to duplicate resource.
+	CStorPoolStatusErrorDuplicate CStorPoolInstancePhase = "ErrorDuplicate"
+	// CStorPoolStatusPending ensures pending task for cstorpool.
+	CStorPoolStatusPending CStorPoolInstancePhase = "Pending"
+	// CStorPoolStatusInit is initial state of CSP, before pool creation.
+	CStorPoolStatusInit CStorPoolInstancePhase = "Init"
+	// CStorPoolStatusCreateFailed is state when pool creation failed
+	CStorPoolStatusCreateFailed CStorPoolInstancePhase = "PoolCreationFailed"
+)
 
 // CStorPoolInstanceStatus is for handling status of pool.
 type CStorPoolInstanceStatus struct {
@@ -67,16 +103,14 @@ type CStorPoolInstanceStatus struct {
 	//  node.
 	Phase CStorPoolInstancePhase `json:"phase"`
 	// Capacity describes the capacity details of a cstor pool
-	Capacity           CStorPoolInstacneCapacity `json:"capacity"`
-	LastTransitionTime metav1.Time               `json:"lastTransitionTime,omitempty"`
-	LastUpdateTime     metav1.Time               `json:"lastUpdateTime,omitempty"`
+	Capacity CStorPoolInstanceCapacity `json:"capacity"`
 	// A human readable message indicating details about why the CSPI is in this
 	// condition.
 	Message string `json:"message,omitempty"`
 }
 
 // CStorPoolCapacityAttr stores the pool capacity related attributes.
-type CStorPoolInstacneCapacity struct {
+type CStorPoolInstanceCapacity struct {
 	Total resource.Quantity `json:"total"`
 	Free  resource.Quantity `json:"free"`
 	Used  resource.Quantity `json:"used"`

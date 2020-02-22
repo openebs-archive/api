@@ -104,9 +104,15 @@ func (cspi *CStorPoolInstance) WithPoolConfig(poolConfig PoolConfig) *CStorPoolI
 	return cspi
 }
 
-// WithRaidGroups sets the raid group field of the CSPI with the provided raid groups.
-func (cspi *CStorPoolInstance) WithRaidGroups(raidGroup []RaidGroup) *CStorPoolInstance {
-	cspi.Spec.RaidGroups = raidGroup
+// WithDataRaidGroups sets the DataRaidGroups of the CSPI with the provided raid groups.
+func (cspi *CStorPoolInstance) WithDataRaidGroups(raidGroup []RaidGroup) *CStorPoolInstance {
+	cspi.Spec.DataRaidGroups = raidGroup
+	return cspi
+}
+
+// WithWriteCacheRaidGroups sets the WriteCacheRaidGroups of the CSPI with the provided raid groups.
+func (cspi *CStorPoolInstance) WithWriteCacheRaidGroups(raidGroup []RaidGroup) *CStorPoolInstance {
+	cspi.Spec.WriteCacheRaidGroups = raidGroup
 	return cspi
 }
 

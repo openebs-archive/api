@@ -34,6 +34,10 @@ const (
 
 	// CASTypeLabelKey is the label key to fetch storage engine for the volume
 	CASTypeLabelKey = "openebs.io/cas-type"
+
+	// PredecessorBDKey is the key to fetch the predecessor BD in case of
+	// block device replacement.
+	PredecessorBDLabelKey = "openebs.io/bd-predecessor"
 )
 
 const  (
@@ -52,4 +56,9 @@ const  (
 
 	// CasTypeJiva is the key for cas type jiva
 	CasTypeJiva = "jiva"
+)
+
+const (
+	CStorPoolBasePath = "/var/openebs/cstor-pool"
+	CacheFileName     = "pool.cache"
 )
