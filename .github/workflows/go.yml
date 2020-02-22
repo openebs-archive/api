@@ -1,5 +1,5 @@
 name: Go
-on: [push]
+on: [push, pull_request]
 jobs:
 
   build:
@@ -10,14 +10,19 @@ jobs:
     - name: Set up Go 1.13
       uses: actions/setup-go@v1
       with:
-        go-version: 1.13
+        go-version: 1.13.6
       id: go
 
     - name: Check out code into the Go module directory
-      uses: actions/checkout@v2
+      uses: actions/checkout@v1
+      with:
+        fetch-depth: 1
+        path: go/src/github.com/openebs/api
 
     - name: verify dependencies
       run: make deps
 
     - name: verify kubegen
       run: make verify_kubegen
+      env:
+        GOPATH: /home/runner/work/api/go
