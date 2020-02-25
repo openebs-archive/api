@@ -173,3 +173,57 @@ func (cspi *CStorPoolInstance) HasLabel(key, value string) bool {
 	}
 	return false
 }
+
+// HasNodeName returns true if the CSPI belongs
+// to the provided node name.
+func (cspi *CStorPoolInstance) HasNodeName(nodeName string) bool {
+	return cspi.Spec.HostName == nodeName
+}
+
+// HasNodeName is predicate to filter out based on
+// node name of CSPI instances.
+func HasNodeName(nodeName string) CSPIPredicate {
+	return func(cspi *CStorPoolInstance) bool {
+		return cspi.HasNodeName(nodeName)
+	}
+}
+
+// Predicate defines an abstraction to determine conditional checks against the
+// provided CStorPoolInstance
+type CSPIPredicate func(*CStorPoolInstance) bool
+
+
+// PredicateList holds the list of Predicates
+type cspiPredicateList []CSPIPredicate
+
+// all returns true if all the predicates succeed against the provided block
+// device instance.
+func (l cspiPredicateList) all(cspi *CStorPoolInstance) bool {
+	for _, pred := range l {
+		if !pred(cspi) {
+			return false
+		}
+	}
+	return true
+}
+
+// Filter will filter the csp instances
+// if all the predicates succeed against that
+// csp.
+func (cspiList *CStorPoolInstanceList) Filter(p ...CSPIPredicate) *CStorPoolInstanceList {
+	var plist cspiPredicateList
+	plist = append(plist, p...)
+	if len(plist) == 0 {
+		return cspiList
+	}
+
+	filtered := &CStorPoolInstanceList{}
+	for _, cspi := range cspiList.Items {
+		cspi := cspi // pin it
+		if plist.all(&cspi) {
+			filtered.Items = append(filtered.Items, cspi)
+		}
+	}
+	return filtered
+}
+

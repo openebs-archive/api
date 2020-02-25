@@ -17,6 +17,8 @@ limitations under the License.
 package v1alpha1
 
 import (
+	"github.com/openebs/api/pkg/util"
+	"github.com/pkg/errors"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
@@ -141,3 +143,23 @@ func (bdc *BlockDeviceClaim) WithBlockVolumeMode(mode corev1.PersistentVolumeMod
 	}
 	return bdc
 }
+
+// RemoveFinalizer removes the given finalizer from the object.
+func (bdc *BlockDeviceClaim) RemoveFinalizer(finalizer string) {
+	bdc.Finalizers = util.RemoveString(bdc.Finalizers, finalizer)
+}
+
+// GetBlockDeviceClaimFromBDName return block device claim if claim exists for
+// provided blockdevice name in claim list else return error
+func (bdcl *BlockDeviceClaimList) GetBlockDeviceClaimFromBDName(
+	bdName string) (*BlockDeviceClaim, error) {
+	for _, bdc := range bdcl.Items {
+		// pin it
+		bdc := bdc
+		if bdc.Spec.BlockDeviceName == bdName {
+			return &bdc, nil
+		}
+	}
+	return nil, errors.Errorf("claim doesn't exist for blockdevice %s", bdName)
+}
+
