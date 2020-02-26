@@ -92,8 +92,13 @@ const (
 type CStorVolumeClaimStatus struct {
 	// Phase represents the current phase of CStorVolumeClaim.
 	Phase CStorVolumeClaimPhase `json:"phase"`
+
+	// PoolInfo represents current pool names where volume replicas exists
+	PoolInfo []string `json:"poolInfo"`
+
 	// Capacity the actual resources of the underlying volume.
-	Capacity   corev1.ResourceList         `json:"capacity,omitempty"`
+	Capacity corev1.ResourceList `json:"capacity,omitempty"`
+
 	Conditions []CStorVolumeClaimCondition `json:"condition,omitempty"`
 }
 

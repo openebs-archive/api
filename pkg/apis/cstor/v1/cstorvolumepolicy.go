@@ -41,10 +41,16 @@ type CStorVolumePolicySpec struct {
 	// replicaAffinity is set to true then volume replica resources need to be
 	// distributed across the pool instances
 	Provision Provision `json:"provision"`
+
 	// TargetSpec represents configuration related to cstor target and its resources
 	Target TargetSpec `json:"target"`
+
 	// ReplicaSpec represents configuration related to replicas resources
 	Replica ReplicaSpec `json:"replica"`
+
+	// ReplicaPoolInfo holds the pool information of volume replicas.
+	// Ex: If volume is provisioned on which CStor pool volume replicas exist
+	ReplicaPoolInfo []ReplicaPoolInfo `json:"replicaPoolInfo"`
 }
 
 // TargetSpec represents configuration related to cstor target and its resources
@@ -90,9 +96,9 @@ type TargetSpec struct {
 // ReplicaSpec represents configuration related to replicas resources
 type ReplicaSpec struct {
 	// ZvolWorkers represents number of threads that executes client IOs
-	ZvolWorkers string `json:"zvolWorkers"`
+	ZvolWorkers string `json:"zvolWorkers,omitempty"`
 	// Affinity if specified, are the replica affinities
-	Affinity *corev1.PodAffinity `json:"affinity"`
+	Affinity *corev1.PodAffinity `json:"affinity,omitempty"`
 }
 
 // Provision represents volume provisioning configuration
@@ -100,6 +106,13 @@ type Provision struct {
 	// replicaAffinity is set to true then volume replica resources need to be
 	// distributed across the cstor pool instances based on the given topology
 	ReplicaAffinity bool `json:"replicaAffinity"`
+}
+
+// ReplicaPoolInfo represents the pool information of volume replica
+type ReplicaPoolInfo struct {
+	// PoolName represents the pool name where volume replica exists
+	PoolName string `json:"poolName"`
+	// UID also can be added
 }
 
 // CStorVolumePolicyStatus is for handling status of CstorVolumePolicy
