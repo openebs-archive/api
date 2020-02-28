@@ -17,7 +17,9 @@ limitations under the License.
 package v1
 
 import (
+	"github.com/openebs/api/pkg/apis/types"
 	"github.com/openebs/api/pkg/util"
+
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
@@ -25,8 +27,12 @@ import (
 const (
 	//CStorNodeBase nodeBase for cstor volume
 	CStorNodeBase string = "iqn.2016-09.com.openebs.cstor"
+
 	// TargetPort is port for cstor volume
 	TargetPort string = "3260"
+
+	// CStorVolumeReplicaFinalizer is the name of finalizer on CStorVolumeClaim
+	CStorVolumeReplicaFinalizer = "cstorvolumereplica.openebs.io/finalizer"
 )
 
 func NewCStorVolumeClaim() *CStorVolumeClaim {
@@ -443,4 +449,13 @@ func (cvr *CStorVolumeReplica) HasFinalizer(finalizer string) bool {
 // RemoveFinalizer removes the given finalizer from the ocvrject.
 func (cvr *CStorVolumeReplica) RemoveFinalizer(finalizer string) {
 	cvr.Finalizers = util.RemoveString(cvr.Finalizers, finalizer)
+}
+
+// GetPoolNames returns list of pool names from cStor volume replcia list
+func GetPoolNames(cvrList *CStorVolumeReplicaList) []string {
+	poolNames := []string{}
+	for _, cvrObj := range cvrList.Items {
+		poolNames = append(poolNames, cvrObj.Labels[string(types.CStorPoolInstanceNameLabelKey)])
+	}
+	return poolNames
 }

@@ -148,7 +148,6 @@ func (p *PodTemplateSpec) WithTolerations(tolerations ...corev1.Toleration) *Pod
 	return p
 }
 
-
 // WithTolerationsNew sets the tolerations field of podtemplatespec
 func (p *PodTemplateSpec) WithTolerationsNew(tolerations ...corev1.Toleration) *PodTemplateSpec {
 	if len(tolerations) == 0 {
@@ -167,7 +166,7 @@ func (p *PodTemplateSpec) WithTolerationsNew(tolerations ...corev1.Toleration) *
 // provided and merges it to the containers field of the podtemplatespec
 func (p *PodTemplateSpec) WithContainers(containersList ...*Container) *PodTemplateSpec {
 	for _, container := range containersList {
-		containerObj:= container.Build()
+		containerObj := container.Build()
 		p.Spec.Containers = append(
 			p.Spec.Containers,
 			*containerObj,
@@ -176,16 +175,16 @@ func (p *PodTemplateSpec) WithContainers(containersList ...*Container) *PodTempl
 	return p
 }
 
-// WithVolumeBuilders builds the list of volumebuilders provided
+// WithVolumes builds the list of volumebuilders provided
 // and merges it to the volumes field of podtemplatespec.
-func (p *PodTemplateSpec) WithVolumeBuilders(volumerList ...*Volume) *PodTemplateSpec {
+func (p *PodTemplateSpec) WithVolumes(volumerList ...*Volume) *PodTemplateSpec {
 	for _, volume := range volumerList {
-		vol:= volume.Build()
-		p.Spec.Volumes = append(p.Spec.Volumes,*vol)
+		vol := volume.Build()
+		p.Spec.Volumes = append(p.Spec.Volumes, *vol)
 	}
 	return p
 }
 
-func (p *PodTemplateSpec)Build()*corev1.PodTemplateSpec  {
+func (p *PodTemplateSpec) Build() *corev1.PodTemplateSpec {
 	return p.PodTemplateSpec
 }
