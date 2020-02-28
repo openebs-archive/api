@@ -25,7 +25,7 @@ type Volume struct {
 	*corev1.Volume
 }
 
-// NewVolume returns a new instance of volume.
+// NewVolume returns a new instance of volume
 func NewVolume() *Volume {
 	return &Volume{
 		&corev1.Volume{},

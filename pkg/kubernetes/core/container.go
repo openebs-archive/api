@@ -17,13 +17,14 @@ package core
 import (
 	corev1 "k8s.io/api/core/v1"
 )
+
 // container encapsulates kubernetes container type
 type Container struct {
-	*corev1.Container 
+	*corev1.Container
 }
 
 // NewContainer returns a new instance of container
-func NewContainer()*Container  {
+func NewContainer() *Container {
 	return &Container{
 		&corev1.Container{},
 	}
@@ -31,13 +32,13 @@ func NewContainer()*Container  {
 
 // WithName sets the name of the container
 func (c *Container) WithName(name string) *Container {
-	c.Name=name
+	c.Name = name
 	return c
 }
 
 // WithImage sets the image of the container
 func (c *Container) WithImage(img string) *Container {
-	c.Image=img
+	c.Image = img
 	return c
 }
 
@@ -97,6 +98,12 @@ func (c *Container) WithResources(resources corev1.ResourceRequirements) *Contai
 	return c
 }
 
+func (c *Container) WithResourcesByRef(resources *corev1.ResourceRequirements) *Container {
+	newresources := *resources
+	c.Resources = newresources
+	return c
+}
+
 // WithPortsNew sets ports of the container
 func (c *Container) WithPortsNew(ports []corev1.ContainerPort) *Container {
 	newports := []corev1.ContainerPort{}
@@ -131,6 +138,6 @@ func (c *Container) WithLifeCycle(lc *corev1.Lifecycle) *Container {
 	return c
 }
 
-func (c *Container)Build()*corev1.Container  {
+func (c *Container) Build() *corev1.Container {
 	return c.Container
 }
