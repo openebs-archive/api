@@ -25,6 +25,13 @@ type Volume struct {
 	*corev1.Volume
 }
 
+// NewVolume returns a new instance of volume.
+func NewVolume() *Volume {
+	return &Volume{
+		&corev1.Volume{},
+	}
+}
+
 // WithName sets the Name field of Volume with provided value.
 func (v *Volume) WithName(name string) *Volume {
 	v.Name = name
@@ -75,7 +82,6 @@ func (v *Volume) WithEmptyDir(dir *corev1.EmptyDirVolumeSource) *Volume {
 	return v
 }
 
-func (v *Volume)Build()*corev1.Volume  {
+func (v *Volume) Build() *corev1.Volume {
 	return v.Volume
 }
-
