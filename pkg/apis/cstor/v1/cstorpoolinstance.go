@@ -111,9 +111,12 @@ type CStorPoolInstanceStatus struct {
 
 // CStorPoolCapacityAttr stores the pool capacity related attributes.
 type CStorPoolInstanceCapacity struct {
+	// Total capacity of the pool, equal to the sum of the all data raidgroups
 	Total resource.Quantity `json:"total"`
-	Free  resource.Quantity `json:"free"`
-	Used  resource.Quantity `json:"used"`
+	// Unsed capacity in the pool
+	Free resource.Quantity `json:"free"`
+	// The amount of capacity allocated to all datasets and internal metadata
+	Used resource.Quantity `json:"used"`
 }
 
 type CSPIConditionType string
