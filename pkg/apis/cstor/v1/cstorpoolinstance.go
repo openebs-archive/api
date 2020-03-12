@@ -104,6 +104,10 @@ type CStorPoolInstanceStatus struct {
 	Phase CStorPoolInstancePhase `json:"phase"`
 	// Capacity describes the capacity details of a cstor pool
 	Capacity CStorPoolInstanceCapacity `json:"capacity"`
+
+	//ReadOnly if pool is readOnly or not
+	ReadOnly bool `json:"readOnly"`
+
 	// A human readable message indicating details about why the CSPI is in this
 	// condition.
 	Message string `json:"message,omitempty"`
