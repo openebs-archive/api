@@ -120,6 +120,15 @@ type PoolConfig struct {
 	// (See CStorPoolClusterSpec.DefaultPriorityClassName)
 	// If both are empty, not priority class is applied.
 	PriorityClassName string `json:"priorityClassName"`
+
+	// ROThresholdLimit is threshold(percentage base) limit
+	// for pool read only mode. If ROThresholdLimit(%) amount
+	// of pool storage is reached then pool will set to readonly.
+	// NOTE:
+	// 1. If ROThresholdLimit is set to 100 then entire
+	//    pool storage will be used by default it will be set to 85%.
+	// 2. ROThresholdLimit value will be 0 < ROThresholdLimit <= 100.
+	ROThresholdLimit int `json:"roThresholdLimit"` //optional
 }
 
 // RaidGroup contains the details of a raid group for the pool
