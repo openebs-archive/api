@@ -106,6 +106,9 @@ type CStorPoolInstanceStatus struct {
 	// A human readable message indicating details about why the CSPI is in this
 	// condition.
 	Message string `json:"message,omitempty"`
+
+	//ReadOnly if pool is readOnly or not
+	ReadOnly bool `json:"readOnly"`
 }
 
 // CStorPoolCapacityAttr stores the pool capacity related attributes.
