@@ -4,7 +4,7 @@
 
 * [Introduction](#introduction)
 * [Goals](#goals)
-* [CSPC and CSPI Schema Proposal](#cspc-schema-proposal)
+* [CSPC and CSPI Schema Proposal](#cspc-and-cspi-schema-proposal)
 
 ## Introduction
 
@@ -32,7 +32,7 @@ The schema proposed in this document encompasses the following requirements:
 
 ## CSPC and CSPI Schema Proposal
 
-###CSPC Schema
+### CSPC Schema
 
 ```go
 // CStorPoolCluster describes a CStorPoolCluster custom resource.
@@ -200,7 +200,7 @@ type CStorPoolClusterList struct {
 
 ```
 
-###CSPI Schema
+### CSPI Schema
 
 ```go
 // CStorPoolInstance describes a cstor pool instance resource.
