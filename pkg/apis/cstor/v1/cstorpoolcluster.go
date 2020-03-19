@@ -127,8 +127,8 @@ type PoolConfig struct {
 	// NOTE:
 	// 1. If ROThresholdLimit is set to 100 then entire
 	//    pool storage will be used by default it will be set to 85%.
-	// 2. ROThresholdLimit value will be 0 < ROThresholdLimit <= 100.
-	ROThresholdLimit int `json:"roThresholdLimit"` //optional
+	// 2. ROThresholdLimit value will be 0 <= ROThresholdLimit <= 100.
+	ROThresholdLimit *int `json:"roThresholdLimit"` //optional
 }
 
 // RaidGroup contains the details of a raid group for the pool
