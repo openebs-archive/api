@@ -19,6 +19,9 @@ jobs:
         fetch-depth: 1
         path: go/src/github.com/openebs/api
 
+    - name: Run go test
+      run: make test
+
     - name: verify dependencies
       run: make deps
 

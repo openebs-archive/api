@@ -29,3 +29,7 @@ generated_files: kubegen protobuf
 deps:
 	@go mod tidy
 	@go mod verify
+
+.PHONY: test
+test:
+	go test ./...
