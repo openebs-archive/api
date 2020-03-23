@@ -60,17 +60,21 @@ As a OpenEBS user I should be able to expand the pool when underlying disk got e
 
 ### Current Implementation
 
-When user creates the CSPC, CSPC controller which is watching for CSPC will get create request and creats cstorpoolinstances and cstorpooldeployments. CstorPoolInstance is responsible for holding the blockdevice information and other pool configurations while cStor pool deployment contains following containers cstor-pool-mgmt, cstor-pool container and m-exporter as name conveyes cstor-pool-mgmt is responsible for managing the pool. cstor-pool container creates pool(ZFS file system) on top of the blockdevices. If any changes need to make on pool configuration like adding blockdevices, adding raid groups and replacing blockdevice cstor-pool-mgmt container will look into CstorPoolInstance for pool information and verifies are there any pending actions to be performed then cstor-pool-mgmt will prforms corresponding operation on the pool. Below info is hight level info to know how the operation is detected
+- When user creates the CSPC, CSPC controller which is watching for CSPC will get create request and creates cstorpoolinstances and cstorpooldeployments. CstorPoolInstance is responsible for holding the blockdevice information and other pool configurations while cStor pool deployment have 3 containers cstor-pool-mgmt, cstor-pool and m-exporter as name conveyes cstor-pool container creates pool(ZFS file system) on top of the blockdevices, where as cstor-pool-mgmt sidecar container is responsible for managing these pool. If any changes required as of day 2 operations on the pool then pool configurations will be updated by adding BlockDevices, adding RaidGroup and replacing blockdevices cstor-pool-mgmt looks for any pending pool operations for CStorPoolInstance then performs requested operation on the pool.
 
-- Pool Expansion When blockdevice/raid group added:	
-	cstor-pool-mgmt will iterate over all the blockdevices present in CstorPoolInstance and then verifies whether corresponding blockdevice is in use in the pool. If that blockdevice/raid group doesn’t exist then trigger is for pool expansion by adding blockdevice/raid group.
+Below are high level info to explain the Day2 operations that are currently supported.
 
-- BlockDevice replacement:
-	cstor-pool-mgmt will iterate over all the blockdevices present in CstorPoolInstance and the verifies is that blockdevice is for replacement(We are maintaining annotation called openebs.io/predecessor: <replaced_blockdevice_name> on the claim of that blockdevice) if that block device is for replacement then the it will perform replacement operation on the pool.
+- Pool Expansion When BlockDevice/raid group added:
+	cstor-pool-mgmt will iterate over all the BlockDevices that exists in CStorPoolInstance resource and verify whether the corresponding BlockDevice/raid group is part of the pool. If that BlockDevice/raid group is not part of the pool then pool expansion will be triggered on newly added BlockDevice/raid group.
+
+- BlockDevice Replacement In Pool:
+    cstor-pool manager will iterate over all the BlockDevices present in CstorPoolInstance and verifies the requested BlockDevice replacement request (we are maintaining annotation called openebs.io/predecessor: <replaced_blockdevice_name> on the claim of that blockdevice). If requested BlockDevice is valid for replacement then the pool managet will perform BlockDevice replacement operation on the pool.
 
 ### Proposed Implementations
 
-CStor-pool-mgmt has CSPI controller for every sync operation cstor-pool-mgmt will iterate over all the blockdevices exist on CSPI by iterating over CstorPoolInstanceBlockDevices of all raid groups. Now if the capacity exist on blockdevice CR is greater than the  capacity exists on CstorPoolInstanceBlockDevice then we can follow the steps to perform the pool expansion. But anyways it is not good practice to perform expansion of pool with out getting the permission from user. So to get the input from the user we will be introducing a new field under CstorPoolInstanceBlockDevice called IsBlockDeviceExpanded. If  IsBlockDeviceExpanded sets true then it is something like user/admin is requesting to perform pool expansion steps. If IsBlockDeviceExpanded sets false then NoOps will be performed.
+- CStor-pool Manger inbuilt CSPI controller watches for CSPI resources and tries to get the desired state via every sync operation. It will iterate over all the BlockDevices that exist on CStorPoolInstance resource and if BlockDevice resource capacity(considerable changes) is greater than the existing capacity of BlockDevice on CstorPoolInstanceBlockDevice then we can follow below-mentioned steps to perform the pool expansion:
+1. If IsBlockDeviceExpanded flag sets true then it is something like user/admin is requesting to perform pool expansion steps.
+2. If IsBlockDeviceExpanded flag sets false then NoOps will be performed.
 
 Currently CstorPoolInstanceBlockDevice holds below configurations 
 ```go
@@ -118,19 +122,28 @@ type CStorPoolInstanceBlockDevice struct {
 
 Step1: Set autoexpand to on in pool by triggering `zpool set autoexpand=on <pool_name>`.
 
-Step2: Remove the partition if any exists which was created by cstor-pool container(ex: sdb9).
+Step2: Remove the buffering partition if exists which was created by cstor-pool container(ex: sdb9).
 
-Step3: Expand the existing partition by executing following comamnd (parted </disk> resizepart <partition_number> 100%).
+Step3: Expand the existing partition by executing following comamnd
+       ```sh
+       parted </disk> resizepart <partition_number> 100%
+       ```
 
-Step4: Inform the pool saying disk was expanded by triggering following command zpool online -e <pool_name> <disk_name>.
-
+Step4: Inform the pool saying disk was expanded by triggering following command
+       ```sh
+       zpool online -e <pool_name> <disk_name>
+       ```
+NOTE: Above steps automates the steps mentioned in [doc](https://github.com/openebs/openebs-docs/blob/day_2_ops/docs/resize-single-disk-pool.md).
 
 ### Low Level Design
 
 #### Work Flow
-- User/Admin will set the value of IsBlockDeviceExpanded to true to expand the cstor pool which was on top of blockdevice.
+
+- User/Admin will set the value of IsBlockDeviceExpanded on CSPC to true to expand the cstor pool which was on top of blockdevice.
 - Once User/Admin updates the value CSPC controller will get update event. As part of event processing CSPC controller will identify which  CSPI needs to be updated and it will update CSPI with updated information.
-- When CSPI is updated CSPI controller will get update event and verifies which disk was expanded and performs Pool Expansion Steps only if IsBlockDeviceExpanded holds true and capacity of on blockdevice CR is greater than capacity on CStorPoolInstanceBlockDevice.
+- When CSPI is updated CSPI controller will get update event and verifies which disk was expanded and performs Pool Expansion Steps only if IsBlockDeviceExpanded holds true and capacity of on blockdevice CR is greater than capacity on CStorPoolInstanceBlockDevice[What if only one blockdevice got expanded in case of raid/mirror configuration? Pool expansion operation will be triggered but there won't be any expansion on pool].
+
+NOTE: Pool will be expanded only if all the blockdevices in raidgroup were expanded in case of mirror/raid configuration. If it is stripe configuration expanding one blockdevice will expand the pool.
 
 ## Drawbacks
 
