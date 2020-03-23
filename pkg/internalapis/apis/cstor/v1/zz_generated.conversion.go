@@ -1500,7 +1500,7 @@ func autoConvert_v1_PoolConfig_To_cstor_PoolConfig(in *v1.PoolConfig, out *cstor
 	out.Resources = (*corev1.ResourceRequirements)(unsafe.Pointer(in.Resources))
 	out.AuxResources = (*corev1.ResourceRequirements)(unsafe.Pointer(in.AuxResources))
 	out.Tolerations = *(*[]corev1.Toleration)(unsafe.Pointer(&in.Tolerations))
-	out.PriorityClassName = in.PriorityClassName
+	out.PriorityClassName = (*string)(unsafe.Pointer(in.PriorityClassName))
 	out.ROThresholdLimit = (*int)(unsafe.Pointer(in.ROThresholdLimit))
 	return nil
 }
@@ -1518,7 +1518,7 @@ func autoConvert_cstor_PoolConfig_To_v1_PoolConfig(in *cstor.PoolConfig, out *v1
 	out.Resources = (*corev1.ResourceRequirements)(unsafe.Pointer(in.Resources))
 	out.AuxResources = (*corev1.ResourceRequirements)(unsafe.Pointer(in.AuxResources))
 	out.Tolerations = *(*[]corev1.Toleration)(unsafe.Pointer(&in.Tolerations))
-	out.PriorityClassName = in.PriorityClassName
+	out.PriorityClassName = (*string)(unsafe.Pointer(in.PriorityClassName))
 	out.ROThresholdLimit = (*int)(unsafe.Pointer(in.ROThresholdLimit))
 	return nil
 }
