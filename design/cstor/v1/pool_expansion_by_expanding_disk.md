@@ -50,7 +50,7 @@ There were cases where OpenEBS users expand the pool by expanding underlying dis
 
 ### Non-Goals
 
-NA
+- If user dedicated the first part of partitioned disk for cStor and second part for third-party then pool expansion can't be performed.
 
 ## Proposal
 
@@ -60,7 +60,7 @@ As a OpenEBS user I should be able to expand the pool when underlying disk got e
 
 ### Current Implementation
 
-- When user creates the CSPC, CSPC controller which is watching for CSPC will get create request and creates cstorpoolinstances and cstorpooldeployments. CstorPoolInstance is responsible for holding the blockdevice information and other pool configurations while cStor pool deployment have 3 containers cstor-pool-mgmt, cstor-pool and m-exporter as name conveyes cstor-pool container creates pool(ZFS file system) on top of the blockdevices, where as cstor-pool-mgmt sidecar container is responsible for managing these pool. If any changes required as of day 2 operations on the pool then pool configurations will be updated by adding BlockDevices, adding RaidGroup and replacing blockdevices cstor-pool-mgmt looks for any pending pool operations for CStorPoolInstance then performs requested operation on the pool.
+- When user creates the CSPC, CSPC controller which is watching for CSPC will get create request and creates cstorpoolinstances and cstorpooldeployments. CstorPoolInstance is responsible for holding the blockdevice information and other pool configurations and cStor pool deployment have 3 containers cstor-pool-mgmt, cstor-pool and m-exporter as name conveyes cstor-pool container creates pool(ZFS file system) on top of the blockdevices, where as cstor-pool-mgmt sidecar container is responsible for managing these pool. If any changes required as of day 2 operations on the pool then pool configurations will be updated by adding BlockDevices, adding RaidGroup and replacing blockdevices cstor-pool-mgmt looks for any pending pool operations for CStorPoolInstance then performs requested operation on the pool.
 
 Below are high level info to explain the Day2 operations that are currently supported.
 
@@ -75,6 +75,8 @@ Below are high level info to explain the Day2 operations that are currently supp
 - CStor-pool Manger inbuilt CSPI controller watches for CSPI resources and tries to get the desired state via every sync operation. It will iterate over all the BlockDevices that exist on CStorPoolInstance resource and if BlockDevice resource capacity(considerable changes) is greater than the existing capacity of BlockDevice on CstorPoolInstanceBlockDevice then we can follow below-mentioned steps to perform the pool expansion:
 1. If IsBlockDeviceExpanded flag sets true then it is something like user/admin is requesting to perform pool expansion steps.
 2. If IsBlockDeviceExpanded flag sets false then NoOps will be performed.
+[What if cStor is consuming part of partitioned disk? User has to set IsBlockDeviceExpanded to true and other part of partitioned disk shouldn't have any FileSystem then only pool expansion will be triggered].
+[What if cStor is consuming entier partitioned disk? User has to set IsBlockDeviceExpanded to true then cstor-pool-mgmt will expand the partition and trigger pool expansion process].
 
 Currently CstorPoolInstanceBlockDevice holds below configurations 
 ```go
@@ -117,6 +119,9 @@ type CStorPoolInstanceBlockDevice struct {
 
 ### Steps to perform user stories
 - User has to set the value of IsBlockDeviceExpanded to true in corresponding CStorPoolInstanceBlockDevice.
+- Once the operation is completed user can unset the value of ISBlockDeviceExpanded[How users can identify
+  operation is succeeded? User can know it via events (or) Increased capacity in CStorPoolInstanceBlockDevice].
+  NOTE: Leaving IsBlockDeviceExpanded can be left set it will not cause any extra network calls.
 
 #### Pool Expansion Steps:
 
