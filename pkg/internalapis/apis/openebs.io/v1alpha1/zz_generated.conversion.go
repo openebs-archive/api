@@ -462,6 +462,10 @@ func Convert_openebsio_DeviceClaimStatus_To_v1alpha1_DeviceClaimStatus(in *opene
 
 func autoConvert_v1alpha1_DeviceDetails_To_openebsio_DeviceDetails(in *v1alpha1.DeviceDetails, out *openebsio.DeviceDetails, s conversion.Scope) error {
 	out.DeviceType = in.DeviceType
+	out.DriveType = in.DriveType
+	out.LogicalBlockSize = in.LogicalBlockSize
+	out.PhysicalBlockSize = in.PhysicalBlockSize
+	out.HardwareSectorSize = in.HardwareSectorSize
 	out.Model = in.Model
 	out.Compliance = in.Compliance
 	out.Serial = in.Serial
@@ -477,6 +481,10 @@ func Convert_v1alpha1_DeviceDetails_To_openebsio_DeviceDetails(in *v1alpha1.Devi
 
 func autoConvert_openebsio_DeviceDetails_To_v1alpha1_DeviceDetails(in *openebsio.DeviceDetails, out *v1alpha1.DeviceDetails, s conversion.Scope) error {
 	out.DeviceType = in.DeviceType
+	out.DriveType = in.DriveType
+	out.LogicalBlockSize = in.LogicalBlockSize
+	out.PhysicalBlockSize = in.PhysicalBlockSize
+	out.HardwareSectorSize = in.HardwareSectorSize
 	out.Model = in.Model
 	out.Compliance = in.Compliance
 	out.Serial = in.Serial
@@ -568,7 +576,7 @@ func Convert_openebsio_DeviceSpec_To_v1alpha1_DeviceSpec(in *openebsio.DeviceSpe
 
 func autoConvert_v1alpha1_DeviceStatus_To_openebsio_DeviceStatus(in *v1alpha1.DeviceStatus, out *openebsio.DeviceStatus, s conversion.Scope) error {
 	out.ClaimState = openebsio.DeviceClaimState(in.ClaimState)
-	out.State = in.State
+	out.State = openebsio.BlockDeviceState(in.State)
 	return nil
 }
 
@@ -579,7 +587,7 @@ func Convert_v1alpha1_DeviceStatus_To_openebsio_DeviceStatus(in *v1alpha1.Device
 
 func autoConvert_openebsio_DeviceStatus_To_v1alpha1_DeviceStatus(in *openebsio.DeviceStatus, out *v1alpha1.DeviceStatus, s conversion.Scope) error {
 	out.ClaimState = v1alpha1.DeviceClaimState(in.ClaimState)
-	out.State = in.State
+	out.State = v1alpha1.BlockDeviceState(in.State)
 	return nil
 }
 
