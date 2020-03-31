@@ -134,7 +134,7 @@ type ReplicaStatus struct {
 	ID string `json:"replicaId"`
 	// Mode represents replica status i.e. Healthy, Degraded
 	Mode string `json:"mode"`
-	// Represents IO number of replicas persisted on the disk
+	// Represents IO number of replica persisted on the disk
 	CheckpointedIOSeq string `json:"checkpointedIOSeq"`
 	// Ongoing reads I/O from target to replica
 	InflightRead string `json:"inflightRead"`

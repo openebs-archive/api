@@ -57,7 +57,8 @@ type CStorVolumeConfigSpec struct {
 	// combaination.  This will be filled only if it is a clone creation.
 	CStorVolumeSource string `json:"cstorVolumeSource,omitempty"`
 	// Provision represents the initial volume configuration for the underlying
-	// cstor volume based on the persistent volume request by user.
+	// cstor volume based on the persistent volume request by user. Provision
+	// properties are immutable
 	Provision VolumeProvision `json:"provision"`
 	// Policy contains volume specific required policies target and replicas
 	Policy CStorVolumePolicySpec `json:"policy"`
