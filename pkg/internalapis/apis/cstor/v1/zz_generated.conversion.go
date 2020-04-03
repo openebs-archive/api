@@ -1531,7 +1531,7 @@ func Convert_cstor_CVStatusResponse_To_v1_CVStatusResponse(in *cstor.CVStatusRes
 func autoConvert_v1_PoolConfig_To_cstor_PoolConfig(in *v1.PoolConfig, out *cstor.PoolConfig, s conversion.Scope) error {
 	out.DataRaidGroupType = in.DataRaidGroupType
 	out.WriteCacheGroupType = in.WriteCacheGroupType
-	out.ThickProvisioning = in.ThickProvisioning
+	out.ThickProvision = in.ThickProvision
 	out.Compression = in.Compression
 	out.Resources = (*corev1.ResourceRequirements)(unsafe.Pointer(in.Resources))
 	out.AuxResources = (*corev1.ResourceRequirements)(unsafe.Pointer(in.AuxResources))
@@ -1549,7 +1549,7 @@ func Convert_v1_PoolConfig_To_cstor_PoolConfig(in *v1.PoolConfig, out *cstor.Poo
 func autoConvert_cstor_PoolConfig_To_v1_PoolConfig(in *cstor.PoolConfig, out *v1.PoolConfig, s conversion.Scope) error {
 	out.DataRaidGroupType = in.DataRaidGroupType
 	out.WriteCacheGroupType = in.WriteCacheGroupType
-	out.ThickProvisioning = in.ThickProvisioning
+	out.ThickProvision = in.ThickProvision
 	out.Compression = in.Compression
 	out.Resources = (*corev1.ResourceRequirements)(unsafe.Pointer(in.Resources))
 	out.AuxResources = (*corev1.ResourceRequirements)(unsafe.Pointer(in.AuxResources))
