@@ -26,6 +26,7 @@ import (
 	v1alpha1 "github.com/openebs/api/pkg/apis/openebs.io/v1alpha1"
 	openebsio "github.com/openebs/api/pkg/internalapis/apis/openebs.io"
 	v1 "k8s.io/api/core/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	conversion "k8s.io/apimachinery/pkg/conversion"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 )
@@ -399,6 +400,7 @@ func Convert_openebsio_DeviceClaimResources_To_v1alpha1_DeviceClaimResources(in 
 }
 
 func autoConvert_v1alpha1_DeviceClaimSpec_To_openebsio_DeviceClaimSpec(in *v1alpha1.DeviceClaimSpec, out *openebsio.DeviceClaimSpec, s conversion.Scope) error {
+	out.Selector = (*metav1.LabelSelector)(unsafe.Pointer(in.Selector))
 	if err := Convert_v1alpha1_DeviceClaimResources_To_openebsio_DeviceClaimResources(&in.Resources, &out.Resources, s); err != nil {
 		return err
 	}
@@ -420,6 +422,7 @@ func Convert_v1alpha1_DeviceClaimSpec_To_openebsio_DeviceClaimSpec(in *v1alpha1.
 }
 
 func autoConvert_openebsio_DeviceClaimSpec_To_v1alpha1_DeviceClaimSpec(in *openebsio.DeviceClaimSpec, out *v1alpha1.DeviceClaimSpec, s conversion.Scope) error {
+	out.Selector = (*metav1.LabelSelector)(unsafe.Pointer(in.Selector))
 	if err := Convert_openebsio_DeviceClaimResources_To_v1alpha1_DeviceClaimResources(&in.Resources, &out.Resources, s); err != nil {
 		return err
 	}
