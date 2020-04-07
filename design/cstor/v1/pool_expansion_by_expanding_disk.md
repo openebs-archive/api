@@ -110,6 +110,7 @@ Step3: Inform the pool saying disk was expanded by triggering following command
        ```sh
        zpool online -e <pool_name> <disk_name>
        ```
+Step4: If above steps are successfull then `Capacity` field in CStorPoolInstanceBlockDevice will be updated with latest size.
 NOTE: Above steps automates the steps mentioned in [doc](https://github.com/openebs/openebs-docs/blob/day_2_ops/docs/resize-single-disk-pool.md).
 
 ### Low Level Design
