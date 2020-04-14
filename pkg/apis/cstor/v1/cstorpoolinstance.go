@@ -130,7 +130,7 @@ const (
 	CSPIDiskReplacement CStorPoolInstanceConditionType = "DiskReplacement"
 	// CSPIDiskUnavailable condition will be available when one (or) more
 	// disks were unavailable
-	CSPIDiskUnavailable CStorPoolInstanceConditionType = "DiskUnavialable"
+	CSPIDiskUnavailable CStorPoolInstanceConditionType = "DiskUnavailable"
 	// CSPIPoolLost condition will be available when unable to import the pool
 	CSPIPoolLost CStorPoolInstanceConditionType = "PoolLost"
 )
