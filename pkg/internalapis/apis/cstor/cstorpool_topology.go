@@ -66,6 +66,32 @@ const (
 	PoolScanFuncStates
 )
 
+// VdevState represent various device/disk states
+type VdevState uint64
+
+/*
+ * vdev states are ordered from least to most healthy.
+ * Link: https://github.com/openebs/cstor/blob/f0896898a0be2102e2865cf44b16b88c91f6bb91/include/sys/fs/zfs.h#L723
+ */
+const (
+	// VdevStateUnknown represents uninitialized vdev
+	VdevStateUnknown VdevState = iota
+	// VdevStateClosed represents vdev currently not opened
+	VdevStateClosed
+	// VdevStateOffline represents vdev not allowed to open
+	VdevStateOffline
+	// VdevStateRemoved represents vdev explicitly removed from system
+	VdevStateRemoved
+	// VdevStateCantOpen represents tried to open, but failed
+	VdevStateCantOpen
+	// VdevStateFaulted represents external request to fault device
+	VdevStateFaulted
+	// VdevStateDegraded represents Replicated vdev with unhealthy kids
+	VdevStateDegraded
+	// VdevStateHealthy represents vdev is presumed good
+	VdevStateHealthy
+)
+
 const (
 	// PoolOperator is the name of the tool that makes pool-related operations.
 	PoolOperator = "zpool"
@@ -76,6 +102,8 @@ const (
 	// VdevScanStatsScanFuncIndex point to index which inform whether device
 	// under went resilvering or not
 	VdevScanStatsScanFuncIndex = 0
+	// VdevStateIndex represents the device state information
+	VdevStateIndex = 1
 )
 
 // Topology contains the topology strucure of disks used in backend
