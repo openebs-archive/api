@@ -756,7 +756,7 @@ func Convert_v1_CStorPoolInstanceCondition_To_cstor_CStorPoolInstanceCondition(i
 }
 
 func autoConvert_cstor_CStorPoolInstanceCondition_To_v1_CStorPoolInstanceCondition(in *cstor.CStorPoolInstanceCondition, out *v1.CStorPoolInstanceCondition, s conversion.Scope) error {
-	out.Type = v1.CSPCConditionType(in.Type)
+	out.Type = v1.CStorPoolInstanceConditionType(in.Type)
 	out.Status = corev1.ConditionStatus(in.Status)
 	out.LastUpdateTime = in.LastUpdateTime
 	out.LastTransitionTime = in.LastTransitionTime
