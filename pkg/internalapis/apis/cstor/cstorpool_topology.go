@@ -66,6 +66,9 @@ const (
 	PoolScanFuncStates
 )
 
+// NOTE: 1. VdevState represent the state of the vdev/disk in pool.
+//       2. VdevAux represents gives the reason why disk/vdev are in that state.
+
 // VdevState represent various device/disk states
 type VdevState uint64
 
