@@ -190,6 +190,9 @@ type Vdev struct {
 	// 0 means partitioned disk, 1 means whole disk
 	IsWholeDisk int `json:"whole_disk,omitempty"`
 
+	// Capacity represents the size of the disk used in pool
+	Capacity uint64 `json:"asize,omitempty"`
+
 	// vdev indetailed statistics
 	VdevStats []uint64 `json:"vdev_stats,omitempty"`
 

@@ -150,8 +150,8 @@ type CStorPoolInstanceBlockDevice struct {
 	BlockDeviceName string `json:"blockDeviceName"`
 
 	// Capacity is the capacity of the block device.
-	// It is system generated
-	Capacity string `json:"capacity"`
+	// It is system generated filled by CSPI controller
+	Capacity uint64 `json:"capacity"`
 
 	// DevLink is the dev link for block devices
 	DevLink string `json:"devLink"`
