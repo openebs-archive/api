@@ -160,8 +160,10 @@ type CStorSnapshotInfo struct {
 	// space consumed by metadata.
 	LogicalReferenced uint64 `json:"logicalReferenced"`
 
+	// TODO: We will revisit when we are working on rebuild estimates
+
 	// Used is the used bytes for given snapshot
-	Used uint64 `json:"used"`
+	// Used uint64 `json:"used"`
 }
 
 // CStorVolumeCapacityDetails represents capacity information releated to volume

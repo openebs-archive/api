@@ -856,7 +856,6 @@ func Convert_cstor_CStorPoolInstanceStatus_To_v1_CStorPoolInstanceStatus(in *cst
 
 func autoConvert_v1_CStorSnapshotInfo_To_cstor_CStorSnapshotInfo(in *v1.CStorSnapshotInfo, out *cstor.CStorSnapshotInfo, s conversion.Scope) error {
 	out.LogicalReferenced = in.LogicalReferenced
-	out.Used = in.Used
 	return nil
 }
 
@@ -867,7 +866,6 @@ func Convert_v1_CStorSnapshotInfo_To_cstor_CStorSnapshotInfo(in *v1.CStorSnapsho
 
 func autoConvert_cstor_CStorSnapshotInfo_To_v1_CStorSnapshotInfo(in *cstor.CStorSnapshotInfo, out *v1.CStorSnapshotInfo, s conversion.Scope) error {
 	out.LogicalReferenced = in.LogicalReferenced
-	out.Used = in.Used
 	return nil
 }
 
