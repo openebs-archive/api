@@ -12,6 +12,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# Get the currently used golang install path (in GOPATH/bin, unless GOBIN is set)
+GOBIN := $(or $(shell go env GOBIN 2>/dev/null), $(shell go env GOPATH 2>/dev/null)/bin)
+
+# find or download controller-gen
+controller-gen:
+ifneq ($(shell controller-gen --version 2> /dev/null), Version: v0.2.9)
+	@(cd /tmp; GO111MODULE=on go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.2.9)
+CONTROLLER_GEN=$(GOBIN)/controller-gen
+else
+CONTROLLER_GEN=$(shell which controller-gen)
+endif
+
+# Generate code, CRDs and documentation
+ALL_CRDS=config/crds/all-crds.yaml
+generate: generate-crds
+
+generate-crds: controller-gen
+	# Generate manifests e.g. CRD, RBAC etc.
+	$(CONTROLLER_GEN) crd paths="./pkg/apis/cstor" output:crd:artifacts:config=config/crds/bases
+	# merge all crds into a single file
+	cat config/crds/bases/*.yaml >> $(ALL_CRDS)
+
 .PHONY: kubegen
 # code generation for custom resources
 kubegen:
