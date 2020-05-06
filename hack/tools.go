@@ -19,4 +19,7 @@ limitations under the License.
 // This package imports things required by build scripts, to force `go mod` to see them as dependencies
 package tools
 
-import _ "k8s.io/code-generator"
+import (
+	_ "github.com/ahmetb/gen-crd-api-reference-docs"
+	_ "k8s.io/code-generator"
+)
