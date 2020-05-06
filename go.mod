@@ -3,6 +3,7 @@ module github.com/openebs/api
 go 1.13
 
 require (
+	github.com/ahmetb/gen-crd-api-reference-docs v0.2.0 // indirect
 	github.com/golang/protobuf v1.3.2
 	github.com/google/go-cmp v0.4.0 // indirect
 	github.com/json-iterator/go v1.1.9 // indirect

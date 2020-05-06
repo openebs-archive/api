@@ -46,6 +46,9 @@ verify_kubegen:
 .PHONY: generated_files
 generated_files: kubegen protobuf
 
+api-docs:
+	go run github.com/ahmetb/gen-crd-api-reference-docs -api-dir ./pkg/apis/cstor -config docs/api/config.json -template-dir docs/api/template -out-file docs/api/index.html
+
 # deps ensures fresh go.mod and go.sum.
 .PHONY: deps
 deps:
