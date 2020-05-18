@@ -720,6 +720,7 @@ func autoConvert_v1_CStorPoolInstanceCapacity_To_cstor_CStorPoolInstanceCapacity
 	out.Used = in.Used
 	out.LogicalUsed = in.LogicalUsed
 	out.Free = in.Free
+	out.Total = in.Total
 	return nil
 }
 
@@ -732,6 +733,7 @@ func autoConvert_cstor_CStorPoolInstanceCapacity_To_v1_CStorPoolInstanceCapacity
 	out.Used = in.Used
 	out.LogicalUsed = in.LogicalUsed
 	out.Free = in.Free
+	out.Total = in.Total
 	return nil
 }
 

@@ -260,6 +260,9 @@ type CStorPoolInstanceCapacity struct {
 	// Free is the amount of usable space in the pool after excluding
 	// metadata and raid properties
 	Free resource.Quantity `json:"free"`
+	// Total capacity of the pool, equal to the sum of usable capacity
+	// in all data raidgroups
+	Total resource.Quantity `json:"total"`
 }
 
 type CSPIConditionType string
