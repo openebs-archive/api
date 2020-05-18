@@ -245,11 +245,21 @@ type CStorPoolInstanceStatus struct {
 	ReadOnly bool `json:"readOnly"`
 }
 
-// CStorPoolInstanceCapacity stores the pool capacity related attributes.
+// CStorPoolCapacityAttr stores the pool capacity related attributes.
 type CStorPoolInstanceCapacity struct {
-	Total resource.Quantity `json:"total"`
-	Free  resource.Quantity `json:"free"`
-	Used  resource.Quantity `json:"used"`
+	// The amount of storage space within the pool that has been
+	// physically allocated on disk
+	Used resource.Quantity `json:"used"`
+	// LogicalUsed is the amount of space that is "logically" consumed
+	// by this pool and all its descendents. The logical space ignores
+	// the effect of the compression and copies properties, giving a
+	// quantity closer to the amount of data that applications see.
+	// However, it does include space consumed by metadata.
+	// NOTE: Used and LogicalUsed can vary depends on the pool properties
+	LogicalUsed resource.Quantity `json:"logicalUsed"`
+	// Free is the amount of usable space in the pool after excluding
+	// metadata and raid properties
+	Free resource.Quantity `json:"free"`
 }
 
 type CSPIConditionType string

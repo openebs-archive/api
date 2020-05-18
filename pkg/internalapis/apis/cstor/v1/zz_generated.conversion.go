@@ -717,9 +717,9 @@ func Convert_cstor_CStorPoolInstanceBlockDevice_To_v1_CStorPoolInstanceBlockDevi
 }
 
 func autoConvert_v1_CStorPoolInstanceCapacity_To_cstor_CStorPoolInstanceCapacity(in *v1.CStorPoolInstanceCapacity, out *cstor.CStorPoolInstanceCapacity, s conversion.Scope) error {
-	out.Total = in.Total
-	out.Free = in.Free
 	out.Used = in.Used
+	out.LogicalUsed = in.LogicalUsed
+	out.Free = in.Free
 	return nil
 }
 
@@ -729,9 +729,9 @@ func Convert_v1_CStorPoolInstanceCapacity_To_cstor_CStorPoolInstanceCapacity(in 
 }
 
 func autoConvert_cstor_CStorPoolInstanceCapacity_To_v1_CStorPoolInstanceCapacity(in *cstor.CStorPoolInstanceCapacity, out *v1.CStorPoolInstanceCapacity, s conversion.Scope) error {
-	out.Total = in.Total
-	out.Free = in.Free
 	out.Used = in.Used
+	out.LogicalUsed = in.LogicalUsed
+	out.Free = in.Free
 	return nil
 }
 
