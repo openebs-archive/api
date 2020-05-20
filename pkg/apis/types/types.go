@@ -104,3 +104,12 @@ const (
 	//TotalWaitTime is the max time duration to wait for doing snapshot operation on all the replicas
 	TotalWaitTime = 60
 )
+
+const (
+	// OpenEBSDisableDependantsReconcileKey is the annotation key that decides to create
+	// children objects with OpenEBSDisableReconcileKey as true or false
+	OpenEBSDisableDependantsReconcileKey = "reconcile.openebs.io/disable-dependants"
+
+	// OldPoolName is the old pool that needs to be imported and renamed
+	OldPoolName = "cstorpoolinstance.openebs.io/oldname"
+)
