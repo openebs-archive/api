@@ -118,8 +118,8 @@ type CStorPoolInstanceCapacity struct {
 	Free resource.Quantity `json:"free"`
 	// Sum of usable capacity in all the data raidgroups
 	Total resource.Quantity `json:"total"`
-	// CapacityDetails contains advanced information about pool storage
-	CapacityDetails CapacityDetails `json:"capacityDetails"`
+	// Details contains advanced information about pool storage details
+	Details CapacityDetails `json:"capacityDetails"`
 }
 
 // CapacityDetails stores the advanced information about pool capacity related

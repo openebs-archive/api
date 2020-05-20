@@ -219,7 +219,7 @@ func (in *CStorPoolInstanceCapacity) DeepCopyInto(out *CStorPoolInstanceCapacity
 	out.Used = in.Used.DeepCopy()
 	out.Free = in.Free.DeepCopy()
 	out.Total = in.Total.DeepCopy()
-	in.CapacityDetails.DeepCopyInto(&out.CapacityDetails)
+	in.Details.DeepCopyInto(&out.Details)
 	return
 }
 

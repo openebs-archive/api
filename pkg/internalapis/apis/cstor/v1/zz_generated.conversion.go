@@ -730,7 +730,7 @@ func autoConvert_v1_CStorPoolInstanceCapacity_To_cstor_CStorPoolInstanceCapacity
 	out.Used = in.Used
 	out.Free = in.Free
 	out.Total = in.Total
-	if err := Convert_v1_CapacityDetails_To_cstor_CapacityDetails(&in.CapacityDetails, &out.CapacityDetails, s); err != nil {
+	if err := Convert_v1_CapacityDetails_To_cstor_CapacityDetails(&in.Details, &out.Details, s); err != nil {
 		return err
 	}
 	return nil
@@ -745,7 +745,7 @@ func autoConvert_cstor_CStorPoolInstanceCapacity_To_v1_CStorPoolInstanceCapacity
 	out.Used = in.Used
 	out.Free = in.Free
 	out.Total = in.Total
-	if err := Convert_cstor_CapacityDetails_To_v1_CapacityDetails(&in.CapacityDetails, &out.CapacityDetails, s); err != nil {
+	if err := Convert_cstor_CapacityDetails_To_v1_CapacityDetails(&in.Details, &out.Details, s); err != nil {
 		return err
 	}
 	return nil
