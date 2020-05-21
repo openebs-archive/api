@@ -255,13 +255,13 @@ type CStorPoolInstanceCapacity struct {
 	Free resource.Quantity `json:"free"`
 	// Sum of usable capacity in all the data raidgroups
 	Total resource.Quantity `json:"total"`
-	// Details contains advanced information about pool storage details
-	Details CapacityDetails `json:"details"`
+	// ZFSCapacityAttributes contains advanced information about pool capacity details
+	ZFS ZFSCapacityAttributes `json:"zfs"`
 }
 
-// CapacityDetails stores the advanced information about pool capacity related
+// ZFSCapacityAttributes stores the advanced information about pool capacity related
 // attributes
-type CapacityDetails struct {
+type ZFSCapacityAttributes struct {
 	// LogicalUsed is the amount of space that is "logically" consumed
 	// by this pool and all its descendents. The logical space ignores
 	// the effect of the compression and copies properties, giving a
