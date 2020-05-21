@@ -245,7 +245,7 @@ type CStorPoolInstanceStatus struct {
 	ReadOnly bool `json:"readOnly"`
 }
 
-// CStorPoolCapacityAttr stores the pool capacity related attributes.
+// CStorPoolInstanceCapacity stores the pool capacity related attributes.
 type CStorPoolInstanceCapacity struct {
 	// Amount of physical data (and its metadata) written to pool
 	// after applying compression, raid properties, etc..,
