@@ -110,7 +110,7 @@ const (
 	// children objects with OpenEBSDisableReconcileKey as true or false
 	OpenEBSDisableDependantsReconcileKey = "reconcile.openebs.io/disable-dependants"
 
-	// ExistingPoolName is the name of the pool already present on the disk
-	// that needs to be imported and renamed
-	ExistingPoolName = "import.cspi.cstor.openebs.io/existing-pool-name"
+	// OpenEBSCStorExistingPoolName is the name of the cstor pool already present on 
+	// the disk that needs to be imported and renamed
+	OpenEBSCStorExistingPoolName = "import.cspi.cstor.openebs.io/existing-pool-name"
 )
