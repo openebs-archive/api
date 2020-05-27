@@ -111,7 +111,7 @@ type CStorPoolInstanceStatus struct {
 // CStorPoolInstanceCapacity stores the pool capacity related attributes.
 type CStorPoolInstanceCapacity struct {
 	// Amount of physical data (and its metadata) written to pool
-	// after applying compression, excluding storage used to store parity, etc..,
+	// after applying compression, etc..,
 	Used resource.Quantity `json:"used"`
 	// Amount of usable space in the pool after excluding
 	// metadata and raid parity
