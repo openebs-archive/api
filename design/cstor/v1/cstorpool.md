@@ -247,9 +247,28 @@ type CStorPoolInstanceStatus struct {
 
 // CStorPoolInstanceCapacity stores the pool capacity related attributes.
 type CStorPoolInstanceCapacity struct {
+	// Amount of physical data (and its metadata) written to pool
+	// after applying compression, etc..,
+	Used resource.Quantity `json:"used"`
+	// Amount of usable space in the pool after excluding
+	// metadata and raid parity
+	Free resource.Quantity `json:"free"`
+	// Sum of usable capacity in all the data raidgroups
 	Total resource.Quantity `json:"total"`
-	Free  resource.Quantity `json:"free"`
-	Used  resource.Quantity `json:"used"`
+	// ZFSCapacityAttributes contains advanced information about pool capacity details
+	ZFS ZFSCapacityAttributes `json:"zfs"`
+}
+
+// ZFSCapacityAttributes stores the advanced information about pool capacity related
+// attributes
+type ZFSCapacityAttributes struct {
+	// LogicalUsed is the amount of space that is "logically" consumed
+	// by this pool and all its descendents. The logical space ignores
+	// the effect of the compression and copies properties, giving a
+	// quantity closer to the amount of data that applications see.
+	// However, it does include space consumed by metadata.
+	// NOTE: Used and LogicalUsed can vary depends on the pool properties
+	LogicalUsed resource.Quantity `json:"logicalUsed"`
 }
 
 type CSPIConditionType string
