@@ -847,6 +847,8 @@ func autoConvert_v1_CStorPoolInstanceStatus_To_cstor_CStorPoolInstanceStatus(in 
 		return err
 	}
 	out.ReadOnly = in.ReadOnly
+	out.ProvisionedReplicas = in.ProvisionedReplicas
+	out.HealthyReplicas = in.HealthyReplicas
 	return nil
 }
 
@@ -862,6 +864,8 @@ func autoConvert_cstor_CStorPoolInstanceStatus_To_v1_CStorPoolInstanceStatus(in 
 		return err
 	}
 	out.ReadOnly = in.ReadOnly
+	out.ProvisionedReplicas = in.ProvisionedReplicas
+	out.HealthyReplicas = in.HealthyReplicas
 	return nil
 }
 
