@@ -1,5 +1,17 @@
 # Changelog
 
+## [v1.11.0](https://github.com/openebs/api/tree/v1.11.0) (2020-06-15)
+
+**Merged pull requests:**
+
+- fix\(volume-mgmt\): handle mutual exclusion while updating istgt conf file [\#53](https://github.com/openebs/api/pull/53) ([mittachaitu](https://github.com/mittachaitu))
+- fix\(backup, restore\): add backup and restore resources into known scheme [\#52](https://github.com/openebs/api/pull/52) ([mittachaitu](https://github.com/mittachaitu))
+- feat\(backup, restore\): add backup and restore APIs [\#51](https://github.com/openebs/api/pull/51) ([mittachaitu](https://github.com/mittachaitu))
+- feat\(migrate\): add migration related keys [\#50](https://github.com/openebs/api/pull/50) ([shubham14bajpai](https://github.com/shubham14bajpai))
+- fix\(base path\): fix base path inside the containers [\#48](https://github.com/openebs/api/pull/48) ([mittachaitu](https://github.com/mittachaitu))
+- fix\(cspi\): update the Capacity fields of CStorPoolInstance [\#47](https://github.com/openebs/api/pull/47) ([mittachaitu](https://github.com/mittachaitu))
+- refact\(vendor\): remove unnecessary vendor deps [\#45](https://github.com/openebs/api/pull/45) ([prateekpandey14](https://github.com/prateekpandey14))
+
 ## [v1.10.0](https://github.com/openebs/api/tree/v1.10.0) (2020-05-15)
 
 **Merged pull requests:**
