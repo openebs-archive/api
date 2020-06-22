@@ -183,7 +183,7 @@ const (
 	Verify UpgradeStep = "VERIFY"
 	// Rollback is the step to rollback to previous version if upgrade fails
 	Rollback UpgradeStep = "ROLLBACK"
-	// PoolInstanceUpgrade is the step to verify resource before upgrade
+	// PoolInstanceUpgrade is the step to upgrade a pool (CSP or CSPI and it's deployment)
 	PoolInstanceUpgrade UpgradeStep = "POOL_INSTANCE_UPGRADE"
 )
 
