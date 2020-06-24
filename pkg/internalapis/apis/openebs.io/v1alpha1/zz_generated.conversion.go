@@ -88,6 +88,46 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}); err != nil {
 		return err
 	}
+	if err := s.AddGeneratedConversionFunc((*v1alpha1.CStorPool)(nil), (*openebsio.CStorPool)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_CStorPool_To_openebsio_CStorPool(a.(*v1alpha1.CStorPool), b.(*openebsio.CStorPool), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*openebsio.CStorPool)(nil), (*v1alpha1.CStorPool)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_openebsio_CStorPool_To_v1alpha1_CStorPool(a.(*openebsio.CStorPool), b.(*v1alpha1.CStorPool), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1alpha1.CStorPoolCluster)(nil), (*openebsio.CStorPoolCluster)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_CStorPoolCluster_To_openebsio_CStorPoolCluster(a.(*v1alpha1.CStorPoolCluster), b.(*openebsio.CStorPoolCluster), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*openebsio.CStorPoolCluster)(nil), (*v1alpha1.CStorPoolCluster)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_openebsio_CStorPoolCluster_To_v1alpha1_CStorPoolCluster(a.(*openebsio.CStorPoolCluster), b.(*v1alpha1.CStorPoolCluster), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1alpha1.CStorPoolInstance)(nil), (*openebsio.CStorPoolInstance)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_CStorPoolInstance_To_openebsio_CStorPoolInstance(a.(*v1alpha1.CStorPoolInstance), b.(*openebsio.CStorPoolInstance), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*openebsio.CStorPoolInstance)(nil), (*v1alpha1.CStorPoolInstance)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_openebsio_CStorPoolInstance_To_v1alpha1_CStorPoolInstance(a.(*openebsio.CStorPoolInstance), b.(*v1alpha1.CStorPoolInstance), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1alpha1.CStorVolume)(nil), (*openebsio.CStorVolume)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_CStorVolume_To_openebsio_CStorVolume(a.(*v1alpha1.CStorVolume), b.(*openebsio.CStorVolume), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*openebsio.CStorVolume)(nil), (*v1alpha1.CStorVolume)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_openebsio_CStorVolume_To_v1alpha1_CStorVolume(a.(*openebsio.CStorVolume), b.(*v1alpha1.CStorVolume), scope)
+	}); err != nil {
+		return err
+	}
 	if err := s.AddGeneratedConversionFunc((*v1alpha1.DeviceCapacity)(nil), (*openebsio.DeviceCapacity)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_v1alpha1_DeviceCapacity_To_openebsio_DeviceCapacity(a.(*v1alpha1.DeviceCapacity), b.(*openebsio.DeviceCapacity), scope)
 	}); err != nil {
@@ -188,6 +228,16 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}); err != nil {
 		return err
 	}
+	if err := s.AddGeneratedConversionFunc((*v1alpha1.JivaVolume)(nil), (*openebsio.JivaVolume)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_JivaVolume_To_openebsio_JivaVolume(a.(*v1alpha1.JivaVolume), b.(*openebsio.JivaVolume), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*openebsio.JivaVolume)(nil), (*v1alpha1.JivaVolume)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_openebsio_JivaVolume_To_v1alpha1_JivaVolume(a.(*openebsio.JivaVolume), b.(*v1alpha1.JivaVolume), scope)
+	}); err != nil {
+		return err
+	}
 	if err := s.AddGeneratedConversionFunc((*v1alpha1.NodeAttribute)(nil), (*openebsio.NodeAttribute)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_v1alpha1_NodeAttribute_To_openebsio_NodeAttribute(a.(*v1alpha1.NodeAttribute), b.(*openebsio.NodeAttribute), scope)
 	}); err != nil {
@@ -195,6 +245,106 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}
 	if err := s.AddGeneratedConversionFunc((*openebsio.NodeAttribute)(nil), (*v1alpha1.NodeAttribute)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_openebsio_NodeAttribute_To_v1alpha1_NodeAttribute(a.(*openebsio.NodeAttribute), b.(*v1alpha1.NodeAttribute), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1alpha1.Options)(nil), (*openebsio.Options)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_Options_To_openebsio_Options(a.(*v1alpha1.Options), b.(*openebsio.Options), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*openebsio.Options)(nil), (*v1alpha1.Options)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_openebsio_Options_To_v1alpha1_Options(a.(*openebsio.Options), b.(*v1alpha1.Options), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1alpha1.ResourceOptions)(nil), (*openebsio.ResourceOptions)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_ResourceOptions_To_openebsio_ResourceOptions(a.(*v1alpha1.ResourceOptions), b.(*openebsio.ResourceOptions), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*openebsio.ResourceOptions)(nil), (*v1alpha1.ResourceOptions)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_openebsio_ResourceOptions_To_v1alpha1_ResourceOptions(a.(*openebsio.ResourceOptions), b.(*v1alpha1.ResourceOptions), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1alpha1.ResourceSpec)(nil), (*openebsio.ResourceSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_ResourceSpec_To_openebsio_ResourceSpec(a.(*v1alpha1.ResourceSpec), b.(*openebsio.ResourceSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*openebsio.ResourceSpec)(nil), (*v1alpha1.ResourceSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_openebsio_ResourceSpec_To_v1alpha1_ResourceSpec(a.(*openebsio.ResourceSpec), b.(*v1alpha1.ResourceSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1alpha1.Status)(nil), (*openebsio.Status)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_Status_To_openebsio_Status(a.(*v1alpha1.Status), b.(*openebsio.Status), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*openebsio.Status)(nil), (*v1alpha1.Status)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_openebsio_Status_To_v1alpha1_Status(a.(*openebsio.Status), b.(*v1alpha1.Status), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1alpha1.StoragePoolClaim)(nil), (*openebsio.StoragePoolClaim)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_StoragePoolClaim_To_openebsio_StoragePoolClaim(a.(*v1alpha1.StoragePoolClaim), b.(*openebsio.StoragePoolClaim), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*openebsio.StoragePoolClaim)(nil), (*v1alpha1.StoragePoolClaim)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_openebsio_StoragePoolClaim_To_v1alpha1_StoragePoolClaim(a.(*openebsio.StoragePoolClaim), b.(*v1alpha1.StoragePoolClaim), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1alpha1.UpgradeDetailedStatuses)(nil), (*openebsio.UpgradeDetailedStatuses)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_UpgradeDetailedStatuses_To_openebsio_UpgradeDetailedStatuses(a.(*v1alpha1.UpgradeDetailedStatuses), b.(*openebsio.UpgradeDetailedStatuses), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*openebsio.UpgradeDetailedStatuses)(nil), (*v1alpha1.UpgradeDetailedStatuses)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_openebsio_UpgradeDetailedStatuses_To_v1alpha1_UpgradeDetailedStatuses(a.(*openebsio.UpgradeDetailedStatuses), b.(*v1alpha1.UpgradeDetailedStatuses), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1alpha1.UpgradeTask)(nil), (*openebsio.UpgradeTask)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_UpgradeTask_To_openebsio_UpgradeTask(a.(*v1alpha1.UpgradeTask), b.(*openebsio.UpgradeTask), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*openebsio.UpgradeTask)(nil), (*v1alpha1.UpgradeTask)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_openebsio_UpgradeTask_To_v1alpha1_UpgradeTask(a.(*openebsio.UpgradeTask), b.(*v1alpha1.UpgradeTask), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1alpha1.UpgradeTaskList)(nil), (*openebsio.UpgradeTaskList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_UpgradeTaskList_To_openebsio_UpgradeTaskList(a.(*v1alpha1.UpgradeTaskList), b.(*openebsio.UpgradeTaskList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*openebsio.UpgradeTaskList)(nil), (*v1alpha1.UpgradeTaskList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_openebsio_UpgradeTaskList_To_v1alpha1_UpgradeTaskList(a.(*openebsio.UpgradeTaskList), b.(*v1alpha1.UpgradeTaskList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1alpha1.UpgradeTaskSpec)(nil), (*openebsio.UpgradeTaskSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_UpgradeTaskSpec_To_openebsio_UpgradeTaskSpec(a.(*v1alpha1.UpgradeTaskSpec), b.(*openebsio.UpgradeTaskSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*openebsio.UpgradeTaskSpec)(nil), (*v1alpha1.UpgradeTaskSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_openebsio_UpgradeTaskSpec_To_v1alpha1_UpgradeTaskSpec(a.(*openebsio.UpgradeTaskSpec), b.(*v1alpha1.UpgradeTaskSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1alpha1.UpgradeTaskStatus)(nil), (*openebsio.UpgradeTaskStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1alpha1_UpgradeTaskStatus_To_openebsio_UpgradeTaskStatus(a.(*v1alpha1.UpgradeTaskStatus), b.(*openebsio.UpgradeTaskStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*openebsio.UpgradeTaskStatus)(nil), (*v1alpha1.UpgradeTaskStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_openebsio_UpgradeTaskStatus_To_v1alpha1_UpgradeTaskStatus(a.(*openebsio.UpgradeTaskStatus), b.(*v1alpha1.UpgradeTaskStatus), scope)
 	}); err != nil {
 		return err
 	}
@@ -329,6 +479,94 @@ func autoConvert_openebsio_BlockDeviceNodeAttributes_To_v1alpha1_BlockDeviceNode
 // Convert_openebsio_BlockDeviceNodeAttributes_To_v1alpha1_BlockDeviceNodeAttributes is an autogenerated conversion function.
 func Convert_openebsio_BlockDeviceNodeAttributes_To_v1alpha1_BlockDeviceNodeAttributes(in *openebsio.BlockDeviceNodeAttributes, out *v1alpha1.BlockDeviceNodeAttributes, s conversion.Scope) error {
 	return autoConvert_openebsio_BlockDeviceNodeAttributes_To_v1alpha1_BlockDeviceNodeAttributes(in, out, s)
+}
+
+func autoConvert_v1alpha1_CStorPool_To_openebsio_CStorPool(in *v1alpha1.CStorPool, out *openebsio.CStorPool, s conversion.Scope) error {
+	out.PoolName = in.PoolName
+	out.Options = (*openebsio.ResourceOptions)(unsafe.Pointer(in.Options))
+	return nil
+}
+
+// Convert_v1alpha1_CStorPool_To_openebsio_CStorPool is an autogenerated conversion function.
+func Convert_v1alpha1_CStorPool_To_openebsio_CStorPool(in *v1alpha1.CStorPool, out *openebsio.CStorPool, s conversion.Scope) error {
+	return autoConvert_v1alpha1_CStorPool_To_openebsio_CStorPool(in, out, s)
+}
+
+func autoConvert_openebsio_CStorPool_To_v1alpha1_CStorPool(in *openebsio.CStorPool, out *v1alpha1.CStorPool, s conversion.Scope) error {
+	out.PoolName = in.PoolName
+	out.Options = (*v1alpha1.ResourceOptions)(unsafe.Pointer(in.Options))
+	return nil
+}
+
+// Convert_openebsio_CStorPool_To_v1alpha1_CStorPool is an autogenerated conversion function.
+func Convert_openebsio_CStorPool_To_v1alpha1_CStorPool(in *openebsio.CStorPool, out *v1alpha1.CStorPool, s conversion.Scope) error {
+	return autoConvert_openebsio_CStorPool_To_v1alpha1_CStorPool(in, out, s)
+}
+
+func autoConvert_v1alpha1_CStorPoolCluster_To_openebsio_CStorPoolCluster(in *v1alpha1.CStorPoolCluster, out *openebsio.CStorPoolCluster, s conversion.Scope) error {
+	out.CSPCName = in.CSPCName
+	out.Options = (*openebsio.ResourceOptions)(unsafe.Pointer(in.Options))
+	return nil
+}
+
+// Convert_v1alpha1_CStorPoolCluster_To_openebsio_CStorPoolCluster is an autogenerated conversion function.
+func Convert_v1alpha1_CStorPoolCluster_To_openebsio_CStorPoolCluster(in *v1alpha1.CStorPoolCluster, out *openebsio.CStorPoolCluster, s conversion.Scope) error {
+	return autoConvert_v1alpha1_CStorPoolCluster_To_openebsio_CStorPoolCluster(in, out, s)
+}
+
+func autoConvert_openebsio_CStorPoolCluster_To_v1alpha1_CStorPoolCluster(in *openebsio.CStorPoolCluster, out *v1alpha1.CStorPoolCluster, s conversion.Scope) error {
+	out.CSPCName = in.CSPCName
+	out.Options = (*v1alpha1.ResourceOptions)(unsafe.Pointer(in.Options))
+	return nil
+}
+
+// Convert_openebsio_CStorPoolCluster_To_v1alpha1_CStorPoolCluster is an autogenerated conversion function.
+func Convert_openebsio_CStorPoolCluster_To_v1alpha1_CStorPoolCluster(in *openebsio.CStorPoolCluster, out *v1alpha1.CStorPoolCluster, s conversion.Scope) error {
+	return autoConvert_openebsio_CStorPoolCluster_To_v1alpha1_CStorPoolCluster(in, out, s)
+}
+
+func autoConvert_v1alpha1_CStorPoolInstance_To_openebsio_CStorPoolInstance(in *v1alpha1.CStorPoolInstance, out *openebsio.CStorPoolInstance, s conversion.Scope) error {
+	out.CSPIName = in.CSPIName
+	out.Options = (*openebsio.ResourceOptions)(unsafe.Pointer(in.Options))
+	return nil
+}
+
+// Convert_v1alpha1_CStorPoolInstance_To_openebsio_CStorPoolInstance is an autogenerated conversion function.
+func Convert_v1alpha1_CStorPoolInstance_To_openebsio_CStorPoolInstance(in *v1alpha1.CStorPoolInstance, out *openebsio.CStorPoolInstance, s conversion.Scope) error {
+	return autoConvert_v1alpha1_CStorPoolInstance_To_openebsio_CStorPoolInstance(in, out, s)
+}
+
+func autoConvert_openebsio_CStorPoolInstance_To_v1alpha1_CStorPoolInstance(in *openebsio.CStorPoolInstance, out *v1alpha1.CStorPoolInstance, s conversion.Scope) error {
+	out.CSPIName = in.CSPIName
+	out.Options = (*v1alpha1.ResourceOptions)(unsafe.Pointer(in.Options))
+	return nil
+}
+
+// Convert_openebsio_CStorPoolInstance_To_v1alpha1_CStorPoolInstance is an autogenerated conversion function.
+func Convert_openebsio_CStorPoolInstance_To_v1alpha1_CStorPoolInstance(in *openebsio.CStorPoolInstance, out *v1alpha1.CStorPoolInstance, s conversion.Scope) error {
+	return autoConvert_openebsio_CStorPoolInstance_To_v1alpha1_CStorPoolInstance(in, out, s)
+}
+
+func autoConvert_v1alpha1_CStorVolume_To_openebsio_CStorVolume(in *v1alpha1.CStorVolume, out *openebsio.CStorVolume, s conversion.Scope) error {
+	out.PVName = in.PVName
+	out.Options = (*openebsio.ResourceOptions)(unsafe.Pointer(in.Options))
+	return nil
+}
+
+// Convert_v1alpha1_CStorVolume_To_openebsio_CStorVolume is an autogenerated conversion function.
+func Convert_v1alpha1_CStorVolume_To_openebsio_CStorVolume(in *v1alpha1.CStorVolume, out *openebsio.CStorVolume, s conversion.Scope) error {
+	return autoConvert_v1alpha1_CStorVolume_To_openebsio_CStorVolume(in, out, s)
+}
+
+func autoConvert_openebsio_CStorVolume_To_v1alpha1_CStorVolume(in *openebsio.CStorVolume, out *v1alpha1.CStorVolume, s conversion.Scope) error {
+	out.PVName = in.PVName
+	out.Options = (*v1alpha1.ResourceOptions)(unsafe.Pointer(in.Options))
+	return nil
+}
+
+// Convert_openebsio_CStorVolume_To_v1alpha1_CStorVolume is an autogenerated conversion function.
+func Convert_openebsio_CStorVolume_To_v1alpha1_CStorVolume(in *openebsio.CStorVolume, out *v1alpha1.CStorVolume, s conversion.Scope) error {
+	return autoConvert_openebsio_CStorVolume_To_v1alpha1_CStorVolume(in, out, s)
 }
 
 func autoConvert_v1alpha1_DeviceCapacity_To_openebsio_DeviceCapacity(in *v1alpha1.DeviceCapacity, out *openebsio.DeviceCapacity, s conversion.Scope) error {
@@ -621,6 +859,28 @@ func Convert_openebsio_FileSystemInfo_To_v1alpha1_FileSystemInfo(in *openebsio.F
 	return autoConvert_openebsio_FileSystemInfo_To_v1alpha1_FileSystemInfo(in, out, s)
 }
 
+func autoConvert_v1alpha1_JivaVolume_To_openebsio_JivaVolume(in *v1alpha1.JivaVolume, out *openebsio.JivaVolume, s conversion.Scope) error {
+	out.PVName = in.PVName
+	out.Options = (*openebsio.ResourceOptions)(unsafe.Pointer(in.Options))
+	return nil
+}
+
+// Convert_v1alpha1_JivaVolume_To_openebsio_JivaVolume is an autogenerated conversion function.
+func Convert_v1alpha1_JivaVolume_To_openebsio_JivaVolume(in *v1alpha1.JivaVolume, out *openebsio.JivaVolume, s conversion.Scope) error {
+	return autoConvert_v1alpha1_JivaVolume_To_openebsio_JivaVolume(in, out, s)
+}
+
+func autoConvert_openebsio_JivaVolume_To_v1alpha1_JivaVolume(in *openebsio.JivaVolume, out *v1alpha1.JivaVolume, s conversion.Scope) error {
+	out.PVName = in.PVName
+	out.Options = (*v1alpha1.ResourceOptions)(unsafe.Pointer(in.Options))
+	return nil
+}
+
+// Convert_openebsio_JivaVolume_To_v1alpha1_JivaVolume is an autogenerated conversion function.
+func Convert_openebsio_JivaVolume_To_v1alpha1_JivaVolume(in *openebsio.JivaVolume, out *v1alpha1.JivaVolume, s conversion.Scope) error {
+	return autoConvert_openebsio_JivaVolume_To_v1alpha1_JivaVolume(in, out, s)
+}
+
 func autoConvert_v1alpha1_NodeAttribute_To_openebsio_NodeAttribute(in *v1alpha1.NodeAttribute, out *openebsio.NodeAttribute, s conversion.Scope) error {
 	out.NodeName = in.NodeName
 	return nil
@@ -639,4 +899,266 @@ func autoConvert_openebsio_NodeAttribute_To_v1alpha1_NodeAttribute(in *openebsio
 // Convert_openebsio_NodeAttribute_To_v1alpha1_NodeAttribute is an autogenerated conversion function.
 func Convert_openebsio_NodeAttribute_To_v1alpha1_NodeAttribute(in *openebsio.NodeAttribute, out *v1alpha1.NodeAttribute, s conversion.Scope) error {
 	return autoConvert_openebsio_NodeAttribute_To_v1alpha1_NodeAttribute(in, out, s)
+}
+
+func autoConvert_v1alpha1_Options_To_openebsio_Options(in *v1alpha1.Options, out *openebsio.Options, s conversion.Scope) error {
+	out.Timeout = in.Timeout
+	return nil
+}
+
+// Convert_v1alpha1_Options_To_openebsio_Options is an autogenerated conversion function.
+func Convert_v1alpha1_Options_To_openebsio_Options(in *v1alpha1.Options, out *openebsio.Options, s conversion.Scope) error {
+	return autoConvert_v1alpha1_Options_To_openebsio_Options(in, out, s)
+}
+
+func autoConvert_openebsio_Options_To_v1alpha1_Options(in *openebsio.Options, out *v1alpha1.Options, s conversion.Scope) error {
+	out.Timeout = in.Timeout
+	return nil
+}
+
+// Convert_openebsio_Options_To_v1alpha1_Options is an autogenerated conversion function.
+func Convert_openebsio_Options_To_v1alpha1_Options(in *openebsio.Options, out *v1alpha1.Options, s conversion.Scope) error {
+	return autoConvert_openebsio_Options_To_v1alpha1_Options(in, out, s)
+}
+
+func autoConvert_v1alpha1_ResourceOptions_To_openebsio_ResourceOptions(in *v1alpha1.ResourceOptions, out *openebsio.ResourceOptions, s conversion.Scope) error {
+	out.IgnoreStepsOnError = *(*[]string)(unsafe.Pointer(&in.IgnoreStepsOnError))
+	return nil
+}
+
+// Convert_v1alpha1_ResourceOptions_To_openebsio_ResourceOptions is an autogenerated conversion function.
+func Convert_v1alpha1_ResourceOptions_To_openebsio_ResourceOptions(in *v1alpha1.ResourceOptions, out *openebsio.ResourceOptions, s conversion.Scope) error {
+	return autoConvert_v1alpha1_ResourceOptions_To_openebsio_ResourceOptions(in, out, s)
+}
+
+func autoConvert_openebsio_ResourceOptions_To_v1alpha1_ResourceOptions(in *openebsio.ResourceOptions, out *v1alpha1.ResourceOptions, s conversion.Scope) error {
+	out.IgnoreStepsOnError = *(*[]string)(unsafe.Pointer(&in.IgnoreStepsOnError))
+	return nil
+}
+
+// Convert_openebsio_ResourceOptions_To_v1alpha1_ResourceOptions is an autogenerated conversion function.
+func Convert_openebsio_ResourceOptions_To_v1alpha1_ResourceOptions(in *openebsio.ResourceOptions, out *v1alpha1.ResourceOptions, s conversion.Scope) error {
+	return autoConvert_openebsio_ResourceOptions_To_v1alpha1_ResourceOptions(in, out, s)
+}
+
+func autoConvert_v1alpha1_ResourceSpec_To_openebsio_ResourceSpec(in *v1alpha1.ResourceSpec, out *openebsio.ResourceSpec, s conversion.Scope) error {
+	out.JivaVolume = (*openebsio.JivaVolume)(unsafe.Pointer(in.JivaVolume))
+	out.CStorVolume = (*openebsio.CStorVolume)(unsafe.Pointer(in.CStorVolume))
+	out.CStorPool = (*openebsio.CStorPool)(unsafe.Pointer(in.CStorPool))
+	out.StoragePoolClaim = (*openebsio.StoragePoolClaim)(unsafe.Pointer(in.StoragePoolClaim))
+	out.CStorPoolInstance = (*openebsio.CStorPoolInstance)(unsafe.Pointer(in.CStorPoolInstance))
+	out.CStorPoolCluster = (*openebsio.CStorPoolCluster)(unsafe.Pointer(in.CStorPoolCluster))
+	return nil
+}
+
+// Convert_v1alpha1_ResourceSpec_To_openebsio_ResourceSpec is an autogenerated conversion function.
+func Convert_v1alpha1_ResourceSpec_To_openebsio_ResourceSpec(in *v1alpha1.ResourceSpec, out *openebsio.ResourceSpec, s conversion.Scope) error {
+	return autoConvert_v1alpha1_ResourceSpec_To_openebsio_ResourceSpec(in, out, s)
+}
+
+func autoConvert_openebsio_ResourceSpec_To_v1alpha1_ResourceSpec(in *openebsio.ResourceSpec, out *v1alpha1.ResourceSpec, s conversion.Scope) error {
+	out.JivaVolume = (*v1alpha1.JivaVolume)(unsafe.Pointer(in.JivaVolume))
+	out.CStorVolume = (*v1alpha1.CStorVolume)(unsafe.Pointer(in.CStorVolume))
+	out.CStorPool = (*v1alpha1.CStorPool)(unsafe.Pointer(in.CStorPool))
+	out.StoragePoolClaim = (*v1alpha1.StoragePoolClaim)(unsafe.Pointer(in.StoragePoolClaim))
+	out.CStorPoolInstance = (*v1alpha1.CStorPoolInstance)(unsafe.Pointer(in.CStorPoolInstance))
+	out.CStorPoolCluster = (*v1alpha1.CStorPoolCluster)(unsafe.Pointer(in.CStorPoolCluster))
+	return nil
+}
+
+// Convert_openebsio_ResourceSpec_To_v1alpha1_ResourceSpec is an autogenerated conversion function.
+func Convert_openebsio_ResourceSpec_To_v1alpha1_ResourceSpec(in *openebsio.ResourceSpec, out *v1alpha1.ResourceSpec, s conversion.Scope) error {
+	return autoConvert_openebsio_ResourceSpec_To_v1alpha1_ResourceSpec(in, out, s)
+}
+
+func autoConvert_v1alpha1_Status_To_openebsio_Status(in *v1alpha1.Status, out *openebsio.Status, s conversion.Scope) error {
+	out.Phase = openebsio.StepPhase(in.Phase)
+	out.Message = in.Message
+	out.Reason = in.Reason
+	return nil
+}
+
+// Convert_v1alpha1_Status_To_openebsio_Status is an autogenerated conversion function.
+func Convert_v1alpha1_Status_To_openebsio_Status(in *v1alpha1.Status, out *openebsio.Status, s conversion.Scope) error {
+	return autoConvert_v1alpha1_Status_To_openebsio_Status(in, out, s)
+}
+
+func autoConvert_openebsio_Status_To_v1alpha1_Status(in *openebsio.Status, out *v1alpha1.Status, s conversion.Scope) error {
+	out.Phase = v1alpha1.StepPhase(in.Phase)
+	out.Message = in.Message
+	out.Reason = in.Reason
+	return nil
+}
+
+// Convert_openebsio_Status_To_v1alpha1_Status is an autogenerated conversion function.
+func Convert_openebsio_Status_To_v1alpha1_Status(in *openebsio.Status, out *v1alpha1.Status, s conversion.Scope) error {
+	return autoConvert_openebsio_Status_To_v1alpha1_Status(in, out, s)
+}
+
+func autoConvert_v1alpha1_StoragePoolClaim_To_openebsio_StoragePoolClaim(in *v1alpha1.StoragePoolClaim, out *openebsio.StoragePoolClaim, s conversion.Scope) error {
+	out.SPCName = in.SPCName
+	out.Options = (*openebsio.ResourceOptions)(unsafe.Pointer(in.Options))
+	return nil
+}
+
+// Convert_v1alpha1_StoragePoolClaim_To_openebsio_StoragePoolClaim is an autogenerated conversion function.
+func Convert_v1alpha1_StoragePoolClaim_To_openebsio_StoragePoolClaim(in *v1alpha1.StoragePoolClaim, out *openebsio.StoragePoolClaim, s conversion.Scope) error {
+	return autoConvert_v1alpha1_StoragePoolClaim_To_openebsio_StoragePoolClaim(in, out, s)
+}
+
+func autoConvert_openebsio_StoragePoolClaim_To_v1alpha1_StoragePoolClaim(in *openebsio.StoragePoolClaim, out *v1alpha1.StoragePoolClaim, s conversion.Scope) error {
+	out.SPCName = in.SPCName
+	out.Options = (*v1alpha1.ResourceOptions)(unsafe.Pointer(in.Options))
+	return nil
+}
+
+// Convert_openebsio_StoragePoolClaim_To_v1alpha1_StoragePoolClaim is an autogenerated conversion function.
+func Convert_openebsio_StoragePoolClaim_To_v1alpha1_StoragePoolClaim(in *openebsio.StoragePoolClaim, out *v1alpha1.StoragePoolClaim, s conversion.Scope) error {
+	return autoConvert_openebsio_StoragePoolClaim_To_v1alpha1_StoragePoolClaim(in, out, s)
+}
+
+func autoConvert_v1alpha1_UpgradeDetailedStatuses_To_openebsio_UpgradeDetailedStatuses(in *v1alpha1.UpgradeDetailedStatuses, out *openebsio.UpgradeDetailedStatuses, s conversion.Scope) error {
+	out.Step = openebsio.UpgradeStep(in.Step)
+	out.StartTime = in.StartTime
+	out.LastUpdatedTime = in.LastUpdatedTime
+	if err := Convert_v1alpha1_Status_To_openebsio_Status(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1alpha1_UpgradeDetailedStatuses_To_openebsio_UpgradeDetailedStatuses is an autogenerated conversion function.
+func Convert_v1alpha1_UpgradeDetailedStatuses_To_openebsio_UpgradeDetailedStatuses(in *v1alpha1.UpgradeDetailedStatuses, out *openebsio.UpgradeDetailedStatuses, s conversion.Scope) error {
+	return autoConvert_v1alpha1_UpgradeDetailedStatuses_To_openebsio_UpgradeDetailedStatuses(in, out, s)
+}
+
+func autoConvert_openebsio_UpgradeDetailedStatuses_To_v1alpha1_UpgradeDetailedStatuses(in *openebsio.UpgradeDetailedStatuses, out *v1alpha1.UpgradeDetailedStatuses, s conversion.Scope) error {
+	out.Step = v1alpha1.UpgradeStep(in.Step)
+	out.StartTime = in.StartTime
+	out.LastUpdatedTime = in.LastUpdatedTime
+	if err := Convert_openebsio_Status_To_v1alpha1_Status(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_openebsio_UpgradeDetailedStatuses_To_v1alpha1_UpgradeDetailedStatuses is an autogenerated conversion function.
+func Convert_openebsio_UpgradeDetailedStatuses_To_v1alpha1_UpgradeDetailedStatuses(in *openebsio.UpgradeDetailedStatuses, out *v1alpha1.UpgradeDetailedStatuses, s conversion.Scope) error {
+	return autoConvert_openebsio_UpgradeDetailedStatuses_To_v1alpha1_UpgradeDetailedStatuses(in, out, s)
+}
+
+func autoConvert_v1alpha1_UpgradeTask_To_openebsio_UpgradeTask(in *v1alpha1.UpgradeTask, out *openebsio.UpgradeTask, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1alpha1_UpgradeTaskSpec_To_openebsio_UpgradeTaskSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_v1alpha1_UpgradeTaskStatus_To_openebsio_UpgradeTaskStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1alpha1_UpgradeTask_To_openebsio_UpgradeTask is an autogenerated conversion function.
+func Convert_v1alpha1_UpgradeTask_To_openebsio_UpgradeTask(in *v1alpha1.UpgradeTask, out *openebsio.UpgradeTask, s conversion.Scope) error {
+	return autoConvert_v1alpha1_UpgradeTask_To_openebsio_UpgradeTask(in, out, s)
+}
+
+func autoConvert_openebsio_UpgradeTask_To_v1alpha1_UpgradeTask(in *openebsio.UpgradeTask, out *v1alpha1.UpgradeTask, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_openebsio_UpgradeTaskSpec_To_v1alpha1_UpgradeTaskSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	if err := Convert_openebsio_UpgradeTaskStatus_To_v1alpha1_UpgradeTaskStatus(&in.Status, &out.Status, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_openebsio_UpgradeTask_To_v1alpha1_UpgradeTask is an autogenerated conversion function.
+func Convert_openebsio_UpgradeTask_To_v1alpha1_UpgradeTask(in *openebsio.UpgradeTask, out *v1alpha1.UpgradeTask, s conversion.Scope) error {
+	return autoConvert_openebsio_UpgradeTask_To_v1alpha1_UpgradeTask(in, out, s)
+}
+
+func autoConvert_v1alpha1_UpgradeTaskList_To_openebsio_UpgradeTaskList(in *v1alpha1.UpgradeTaskList, out *openebsio.UpgradeTaskList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]openebsio.UpgradeTask)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1alpha1_UpgradeTaskList_To_openebsio_UpgradeTaskList is an autogenerated conversion function.
+func Convert_v1alpha1_UpgradeTaskList_To_openebsio_UpgradeTaskList(in *v1alpha1.UpgradeTaskList, out *openebsio.UpgradeTaskList, s conversion.Scope) error {
+	return autoConvert_v1alpha1_UpgradeTaskList_To_openebsio_UpgradeTaskList(in, out, s)
+}
+
+func autoConvert_openebsio_UpgradeTaskList_To_v1alpha1_UpgradeTaskList(in *openebsio.UpgradeTaskList, out *v1alpha1.UpgradeTaskList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]v1alpha1.UpgradeTask)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_openebsio_UpgradeTaskList_To_v1alpha1_UpgradeTaskList is an autogenerated conversion function.
+func Convert_openebsio_UpgradeTaskList_To_v1alpha1_UpgradeTaskList(in *openebsio.UpgradeTaskList, out *v1alpha1.UpgradeTaskList, s conversion.Scope) error {
+	return autoConvert_openebsio_UpgradeTaskList_To_v1alpha1_UpgradeTaskList(in, out, s)
+}
+
+func autoConvert_v1alpha1_UpgradeTaskSpec_To_openebsio_UpgradeTaskSpec(in *v1alpha1.UpgradeTaskSpec, out *openebsio.UpgradeTaskSpec, s conversion.Scope) error {
+	out.FromVersion = in.FromVersion
+	out.ToVersion = in.ToVersion
+	out.Options = (*openebsio.Options)(unsafe.Pointer(in.Options))
+	if err := Convert_v1alpha1_ResourceSpec_To_openebsio_ResourceSpec(&in.ResourceSpec, &out.ResourceSpec, s); err != nil {
+		return err
+	}
+	out.ImagePrefix = in.ImagePrefix
+	out.ImageTag = in.ImageTag
+	return nil
+}
+
+// Convert_v1alpha1_UpgradeTaskSpec_To_openebsio_UpgradeTaskSpec is an autogenerated conversion function.
+func Convert_v1alpha1_UpgradeTaskSpec_To_openebsio_UpgradeTaskSpec(in *v1alpha1.UpgradeTaskSpec, out *openebsio.UpgradeTaskSpec, s conversion.Scope) error {
+	return autoConvert_v1alpha1_UpgradeTaskSpec_To_openebsio_UpgradeTaskSpec(in, out, s)
+}
+
+func autoConvert_openebsio_UpgradeTaskSpec_To_v1alpha1_UpgradeTaskSpec(in *openebsio.UpgradeTaskSpec, out *v1alpha1.UpgradeTaskSpec, s conversion.Scope) error {
+	out.FromVersion = in.FromVersion
+	out.ToVersion = in.ToVersion
+	out.Options = (*v1alpha1.Options)(unsafe.Pointer(in.Options))
+	if err := Convert_openebsio_ResourceSpec_To_v1alpha1_ResourceSpec(&in.ResourceSpec, &out.ResourceSpec, s); err != nil {
+		return err
+	}
+	out.ImagePrefix = in.ImagePrefix
+	out.ImageTag = in.ImageTag
+	return nil
+}
+
+// Convert_openebsio_UpgradeTaskSpec_To_v1alpha1_UpgradeTaskSpec is an autogenerated conversion function.
+func Convert_openebsio_UpgradeTaskSpec_To_v1alpha1_UpgradeTaskSpec(in *openebsio.UpgradeTaskSpec, out *v1alpha1.UpgradeTaskSpec, s conversion.Scope) error {
+	return autoConvert_openebsio_UpgradeTaskSpec_To_v1alpha1_UpgradeTaskSpec(in, out, s)
+}
+
+func autoConvert_v1alpha1_UpgradeTaskStatus_To_openebsio_UpgradeTaskStatus(in *v1alpha1.UpgradeTaskStatus, out *openebsio.UpgradeTaskStatus, s conversion.Scope) error {
+	out.Phase = openebsio.UpgradePhase(in.Phase)
+	out.StartTime = in.StartTime
+	out.CompletedTime = in.CompletedTime
+	out.UpgradeDetailedStatuses = *(*[]openebsio.UpgradeDetailedStatuses)(unsafe.Pointer(&in.UpgradeDetailedStatuses))
+	out.Retries = in.Retries
+	return nil
+}
+
+// Convert_v1alpha1_UpgradeTaskStatus_To_openebsio_UpgradeTaskStatus is an autogenerated conversion function.
+func Convert_v1alpha1_UpgradeTaskStatus_To_openebsio_UpgradeTaskStatus(in *v1alpha1.UpgradeTaskStatus, out *openebsio.UpgradeTaskStatus, s conversion.Scope) error {
+	return autoConvert_v1alpha1_UpgradeTaskStatus_To_openebsio_UpgradeTaskStatus(in, out, s)
+}
+
+func autoConvert_openebsio_UpgradeTaskStatus_To_v1alpha1_UpgradeTaskStatus(in *openebsio.UpgradeTaskStatus, out *v1alpha1.UpgradeTaskStatus, s conversion.Scope) error {
+	out.Phase = v1alpha1.UpgradePhase(in.Phase)
+	out.StartTime = in.StartTime
+	out.CompletedTime = in.CompletedTime
+	out.UpgradeDetailedStatuses = *(*[]v1alpha1.UpgradeDetailedStatuses)(unsafe.Pointer(&in.UpgradeDetailedStatuses))
+	out.Retries = in.Retries
+	return nil
+}
+
+// Convert_openebsio_UpgradeTaskStatus_To_v1alpha1_UpgradeTaskStatus is an autogenerated conversion function.
+func Convert_openebsio_UpgradeTaskStatus_To_v1alpha1_UpgradeTaskStatus(in *openebsio.UpgradeTaskStatus, out *v1alpha1.UpgradeTaskStatus, s conversion.Scope) error {
+	return autoConvert_openebsio_UpgradeTaskStatus_To_v1alpha1_UpgradeTaskStatus(in, out, s)
 }

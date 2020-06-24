@@ -42,6 +42,8 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&BlockDeviceList{},
 		&BlockDeviceClaim{},
 		&BlockDeviceClaimList{},
+		&UpgradeTask{},
+		&UpgradeTaskList{},
 	)
 	return nil
 }
