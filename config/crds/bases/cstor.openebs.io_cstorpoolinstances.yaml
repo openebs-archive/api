@@ -8,13 +8,59 @@ metadata:
   creationTimestamp: null
   name: cstorpoolinstances.cstor.openebs.io
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .spec.hostName
+    description: Host name where cstorpool instances scheduled
+    name: HostName
+    type: string
+  - JSONPath: .status.capacity.used
+    description: The amount of storage space within the pool that has been physically
+      allocated
+    name: Allocated
+    type: string
+  - JSONPath: .status.capacity.free
+    description: The amount of usable free space available in the pool
+    name: Free
+    type: string
+  - JSONPath: .status.capacity.total
+    description: Total amount of usable space in pool
+    name: Capacity
+    type: string
+  - JSONPath: .status.readOnly
+    description: Identifies the pool read only mode
+    name: ReadOnly
+    type: boolean
+  - JSONPath: .status.provisionedReplicas
+    description: Represents no.of replicas present in the pool
+    name: ProvisionedReplicas
+    type: integer
+  - JSONPath: .status.healthyReplicas
+    description: Represents no.of healthy replicas present in the pool
+    name: HealthyReplicas
+    type: integer
+  - JSONPath: .spec.poolConfig.dataRaidGroupType
+    description: Represents the type of the storage pool
+    name: Type
+    type: string
+  - JSONPath: .status.phase
+    description: Identifies the current health of the pool
+    name: Status
+    type: string
+  - JSONPath: .metadata.creationTimestamp
+    description: Age of CStorPoolInstance
+    name: Age
+    type: date
   group: cstor.openebs.io
   names:
     kind: CStorPoolInstance
     listKind: CStorPoolInstanceList
     plural: cstorpoolinstances
+    shortNames:
+    - cspi
     singular: cstorpoolinstance
+  preserveUnknownFields: false
   scope: Namespaced
+  subresources: {}
   validation:
     openAPIV3Schema:
       description: CStorPoolInstance describes a cstor pool instance resource.
@@ -59,8 +105,6 @@ spec:
                           type: string
                       required:
                       - blockDeviceName
-                      - capacity
-                      - devLink
                       type: object
                     type: array
                 required:
@@ -84,6 +128,7 @@ spec:
                 auxResources:
                   description: AuxResources are the compute resources required by
                     the cstor-pool pod side car containers.
+                  nullable: true
                   properties:
                     limits:
                       additionalProperties:
@@ -119,10 +164,12 @@ spec:
                   description: PriorityClassName if specified applies to this pool
                     pod If left empty, DefaultPriorityClassName is applied. (See CStorPoolClusterSpec.DefaultPriorityClassName)
                     If both are empty, not priority class is applied.
+                  nullable: true
                   type: string
                 resources:
                   description: Resources are the compute resources required by the
                     cstor-pool container.
+                  nullable: true
                   properties:
                     limits:
                       additionalProperties:
@@ -154,6 +201,7 @@ spec:
                     ROThresholdLimit is set to 100 then entire    pool storage will
                     be used by default it will be set to 85%. 2. ROThresholdLimit
                     value will be 0 <= ROThresholdLimit <= 100.'
+                  nullable: true
                   type: integer
                 thickProvision:
                   description: ThickProvision to enable thick provisioning Optional
@@ -198,20 +246,13 @@ spec:
                           otherwise just a regular string.
                         type: string
                     type: object
+                  nullable: true
                   type: array
                 writeCacheGroupType:
                   description: WriteCacheGroupType is the write cache raid type.
                   type: string
               required:
-              - auxResources
-              - compression
               - dataRaidGroupType
-              - priorityClassName
-              - resources
-              - roThresholdLimit
-              - thickProvision
-              - tolerations
-              - writeCacheGroupType
               type: object
             writeCacheRaidGroups:
               description: WriteCacheRaidGroups is the write cache raid group.
@@ -237,20 +278,12 @@ spec:
                           type: string
                       required:
                       - blockDeviceName
-                      - capacity
-                      - devLink
                       type: object
                     type: array
                 required:
                 - blockDevices
                 type: object
               type: array
-          required:
-          - dataRaidGroups
-          - hostName
-          - nodeSelector
-          - poolConfig
-          - writeCacheRaidGroups
           type: object
         status:
           description: Status is the possible statuses of the cstorpoolinstance resource.
@@ -262,29 +295,48 @@ spec:
                   anyOf:
                   - type: integer
                   - type: string
-                  description: Unsed capacity in the pool
+                  description: Amount of usable space in the pool after excluding
+                    metadata and raid parity
                   pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
                   x-kubernetes-int-or-string: true
                 total:
                   anyOf:
                   - type: integer
                   - type: string
-                  description: Total capacity of the pool, equal to the sum of the
-                    all data raidgroups
+                  description: Sum of usable capacity in all the data raidgroups
                   pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
                   x-kubernetes-int-or-string: true
                 used:
                   anyOf:
                   - type: integer
                   - type: string
-                  description: The amount of capacity allocated to all datasets and
-                    internal metadata
+                  description: Amount of physical data (and its metadata) written
+                    to pool after applying compression, etc..,
                   pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
                   x-kubernetes-int-or-string: true
+                zfs:
+                  description: ZFSCapacityAttributes contains advanced information
+                    about pool capacity details
+                  properties:
+                    logicalUsed:
+                      anyOf:
+                      - type: integer
+                      - type: string
+                      description: LogicalUsed is the amount of space that is "logically"
+                        consumed by this pool and all its descendents. The logical
+                        space ignores the effect of the compression and copies properties,
+                        giving a quantity closer to the amount of data that applications
+                        see. However, it does include space consumed by metadata.
+                      pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
+                      x-kubernetes-int-or-string: true
+                  required:
+                  - logicalUsed
+                  type: object
               required:
               - free
               - total
               - used
+              - zfs
               type: object
             conditions:
               description: Current state of CSPI with details.
@@ -319,17 +371,23 @@ spec:
                 - type
                 type: object
               type: array
+            healthyReplicas:
+              description: HealthyReplicas describes the total count of healthy Volume
+                Replicas in the cstor pool
+              format: int32
+              type: integer
             phase:
               description: ' The phase of a CStorPool is a simple, high-level summary
                 of the pool state on the  node.'
               type: string
+            provisionedReplicas:
+              description: ProvisionedReplicas describes the total count of Volume
+                Replicas present in the cstor pool
+              format: int32
+              type: integer
             readOnly:
               description: ReadOnly if pool is readOnly or not
               type: boolean
-          required:
-          - capacity
-          - phase
-          - readOnly
           type: object
         versionDetails:
           description: VersionDetails is the openebs version.
@@ -356,6 +414,7 @@ spec:
                 lastUpdateTime:
                   description: LastUpdateTime is the time the status was last  updated
                   format: date-time
+                  nullable: true
                   type: string
                 message:
                   description: Message is a human readable message if some error occurs
@@ -366,20 +425,10 @@ spec:
                 state:
                   description: State is the state of reconciliation
                   type: string
-              required:
-              - current
-              - dependentsUpgraded
-              - state
               type: object
-          required:
-          - autoUpgrade
-          - desired
-          - status
           type: object
       required:
       - spec
-      - status
-      - versionDetails
       type: object
   version: v1
   versions:
