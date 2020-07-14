@@ -517,6 +517,8 @@ func (vd *VersionDetails) SetSuccessStatus() {
 // provided CVolumeReplicas
 type CVRPredicate func(*CStorVolumeReplica) bool
 
+// +k8s:deepcopy-gen=false
+
 // CVRPredicateList holds the list of Predicates
 type CVRPredicateList []CVRPredicate
 
