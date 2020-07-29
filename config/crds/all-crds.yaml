@@ -298,7 +298,11 @@ spec:
                       required:
                       - blockDevices
                       type: object
+                    nullable: true
                     type: array
+                required:
+                - dataRaidGroups
+                - nodeSelector
                 type: object
               type: array
             priorityClassName:
@@ -771,7 +775,11 @@ spec:
                 required:
                 - blockDevices
                 type: object
+              nullable: true
               type: array
+          required:
+          - dataRaidGroups
+          - nodeSelector
           type: object
         status:
           description: Status is the possible statuses of the cstorpoolinstance resource.

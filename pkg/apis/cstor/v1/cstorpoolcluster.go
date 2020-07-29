@@ -88,10 +88,11 @@ type PoolSpec struct {
 	// NodeSelector is the labels that will be used to select
 	// a node for pool provisioning.
 	// Required field
-	NodeSelector map[string]string `json:"nodeSelector,omitempty"`
+	NodeSelector map[string]string `json:"nodeSelector"`
 	// DataRaidGroups is the raid group configuration for the given pool.
-	DataRaidGroups []RaidGroup `json:"dataRaidGroups,omitempty"`
+	DataRaidGroups []RaidGroup `json:"dataRaidGroups"`
 	// WriteCacheRaidGroups is the write cache raid group.
+	// +nullable
 	WriteCacheRaidGroups []RaidGroup `json:"writeCacheRaidGroups,omitempty"`
 	// PoolConfig is the default pool config that applies to the
 	// pool on node.
