@@ -13,7 +13,10 @@ spec:
     kind: CStorVolumePolicy
     listKind: CStorVolumePolicyList
     plural: cstorvolumepolicies
+    shortNames:
+    - cvp
     singular: cstorvolumepolicy
+  preserveUnknownFields: false
   scope: Namespaced
   validation:
     openAPIV3Schema:
@@ -55,7 +58,6 @@ spec:
                     based on the given topology
                   type: boolean
               required:
-              - blockSize
               - replicaAffinity
               type: object
             replica:
@@ -396,23 +398,15 @@ spec:
                     type: object
                   type: array
               type: object
-          required:
-          - provision
-          - replica
-          - replicaPoolInfo
-          - target
           type: object
         status:
           description: CStorVolumePolicyStatus is for handling status of CstorVolumePolicy
           properties:
             phase:
               type: string
-          required:
-          - phase
           type: object
       required:
       - spec
-      - status
       type: object
   version: v1
   versions:

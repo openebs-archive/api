@@ -8,13 +8,34 @@ metadata:
   creationTimestamp: null
   name: cstorpoolclusters.cstor.openebs.io
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.healthyInstances
+    description: The number of healthy cStorPoolInstances
+    name: HealthyInstances
+    type: integer
+  - JSONPath: .status.provisionedInstances
+    description: The number of provisioned cStorPoolInstances
+    name: ProvisionedInstances
+    type: integer
+  - JSONPath: .status.desiredInstances
+    description: The number of desired cStorPoolInstances
+    name: DesiredInstances
+    type: integer
+  - JSONPath: .metadata.creationTimestamp
+    description: Age of CStorPoolCluster
+    name: Age
+    type: date
   group: cstor.openebs.io
   names:
     kind: CStorPoolCluster
     listKind: CStorPoolClusterList
     plural: cstorpoolclusters
+    shortNames:
+    - cspc
     singular: cstorpoolcluster
+  preserveUnknownFields: false
   scope: Namespaced
+  subresources: {}
   validation:
     openAPIV3Schema:
       description: CStorPoolCluster describes a CStorPoolCluster custom resource.
@@ -38,6 +59,7 @@ spec:
             auxResources:
               description: AuxResources are the compute resources required by the
                 cstor-pool pod side car containers.
+              nullable: true
               properties:
                 limits:
                   additionalProperties:
@@ -95,8 +117,6 @@ spec:
                                 type: string
                             required:
                             - blockDeviceName
-                            - capacity
-                            - devLink
                             type: object
                           type: array
                       required:
@@ -116,6 +136,7 @@ spec:
                       auxResources:
                         description: AuxResources are the compute resources required
                           by the cstor-pool pod side car containers.
+                        nullable: true
                         properties:
                           limits:
                             additionalProperties:
@@ -153,10 +174,12 @@ spec:
                           pool pod If left empty, DefaultPriorityClassName is applied.
                           (See CStorPoolClusterSpec.DefaultPriorityClassName) If both
                           are empty, not priority class is applied.
+                        nullable: true
                         type: string
                       resources:
                         description: Resources are the compute resources required
                           by the cstor-pool container.
+                        nullable: true
                         properties:
                           limits:
                             additionalProperties:
@@ -190,6 +213,7 @@ spec:
                           storage will be used by default it will be set to 85%. 2.
                           ROThresholdLimit value will be 0 <= ROThresholdLimit <=
                           100.'
+                        nullable: true
                         type: integer
                       thickProvision:
                         description: ThickProvision to enable thick provisioning Optional
@@ -236,20 +260,13 @@ spec:
                                 be empty, otherwise just a regular string.
                               type: string
                           type: object
+                        nullable: true
                         type: array
                       writeCacheGroupType:
                         description: WriteCacheGroupType is the write cache raid type.
                         type: string
                     required:
-                    - auxResources
-                    - compression
                     - dataRaidGroupType
-                    - priorityClassName
-                    - resources
-                    - roThresholdLimit
-                    - thickProvision
-                    - tolerations
-                    - writeCacheGroupType
                     type: object
                   writeCacheRaidGroups:
                     description: WriteCacheRaidGroups is the write cache raid group.
@@ -276,19 +293,16 @@ spec:
                                 type: string
                             required:
                             - blockDeviceName
-                            - capacity
-                            - devLink
                             type: object
                           type: array
                       required:
                       - blockDevices
                       type: object
+                    nullable: true
                     type: array
                 required:
                 - dataRaidGroups
                 - nodeSelector
-                - poolConfig
-                - writeCacheRaidGroups
                 type: object
               type: array
             priorityClassName:
@@ -300,6 +314,7 @@ spec:
               description: DefaultResources are the compute resources required by
                 the cstor-pool container. If the resources at PoolConfig is not specified,
                 this is written to CSPI PoolConfig.
+              nullable: true
               properties:
                 limits:
                   additionalProperties:
@@ -364,13 +379,8 @@ spec:
                       just a regular string.
                     type: string
                 type: object
+              nullable: true
               type: array
-          required:
-          - auxResources
-          - pools
-          - priorityClassName
-          - resources
-          - tolerations
           type: object
         status:
           description: CStorPoolClusterStatus represents the latest available observations
@@ -408,26 +418,25 @@ spec:
                 - status
                 - type
                 type: object
+              nullable: true
               type: array
             desiredInstances:
               description: DesiredInstances is the number of CSPI(s) that should be
                 provisioned.
               format: int32
+              nullable: true
               type: integer
             healthyInstances:
               description: HealthyInstances is the number of CSPI(s) that are healthy.
               format: int32
+              nullable: true
               type: integer
             provisionedInstances:
               description: ProvisionedInstances is the the number of CSPI present
                 at the current state.
               format: int32
+              nullable: true
               type: integer
-          required:
-          - conditions
-          - desiredInstances
-          - healthyInstances
-          - provisionedInstances
           type: object
         versionDetails:
           description: VersionDetails provides the details for upgrade
@@ -454,6 +463,7 @@ spec:
                 lastUpdateTime:
                   description: LastUpdateTime is the time the status was last  updated
                   format: date-time
+                  nullable: true
                   type: string
                 message:
                   description: Message is a human readable message if some error occurs
@@ -464,20 +474,10 @@ spec:
                 state:
                   description: State is the state of reconciliation
                   type: string
-              required:
-              - current
-              - dependentsUpgraded
-              - state
               type: object
-          required:
-          - autoUpgrade
-          - desired
-          - status
           type: object
       required:
       - spec
-      - status
-      - versionDetails
       type: object
   version: v1
   versions:

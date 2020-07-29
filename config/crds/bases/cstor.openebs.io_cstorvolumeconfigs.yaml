@@ -8,13 +8,30 @@ metadata:
   creationTimestamp: null
   name: cstorvolumeconfigs.cstor.openebs.io
 spec:
+  additionalPrinterColumns:
+  - JSONPath: .status.capacity.storage
+    description: Identifies the volume capacity
+    name: Capacity
+    type: string
+  - JSONPath: .status.phase
+    description: Identifies the volume provisioning status
+    name: Status
+    type: string
+  - JSONPath: .metadata.creationTimestamp
+    description: Age of CStorVolumeReplica
+    name: Age
+    type: date
   group: cstor.openebs.io
   names:
     kind: CStorVolumeConfig
     listKind: CStorVolumeConfigList
     plural: cstorvolumeconfigs
+    shortNames:
+    - cvc
     singular: cstorvolumeconfig
+  preserveUnknownFields: false
   scope: Namespaced
+  subresources: {}
   validation:
     openAPIV3Schema:
       description: CStorVolumeConfig describes a cstor volume config resource created
@@ -120,7 +137,6 @@ spec:
                         based on the given topology
                       type: boolean
                   required:
-                  - blockSize
                   - replicaAffinity
                   type: object
                 replica:
@@ -478,11 +494,6 @@ spec:
                         type: object
                       type: array
                   type: object
-              required:
-              - provision
-              - replica
-              - replicaPoolInfo
-              - target
               type: object
             provision:
               description: Provision represents the initial volume configuration for
@@ -569,9 +580,6 @@ spec:
               items:
                 type: string
               type: array
-          required:
-          - phase
-          - poolInfo
           type: object
         versionDetails:
           description: VersionDetails provides the details for upgrade
@@ -598,6 +606,7 @@ spec:
                 lastUpdateTime:
                   description: LastUpdateTime is the time the status was last  updated
                   format: date-time
+                  nullable: true
                   type: string
                 message:
                   description: Message is a human readable message if some error occurs
@@ -608,15 +617,7 @@ spec:
                 state:
                   description: State is the state of reconciliation
                   type: string
-              required:
-              - current
-              - dependentsUpgraded
-              - state
               type: object
-          required:
-          - autoUpgrade
-          - desired
-          - status
           type: object
       required:
       - spec
