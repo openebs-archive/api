@@ -36,22 +36,22 @@ type CStorBackup struct {
 // CStorBackupSpec is the spec for a CStorBackup resource
 type CStorBackupSpec struct {
 	// BackupName is a name of the backup or scheduled backup
-	BackupName string `json:"backupName"`
+	BackupName string `json:"backupName,omitempty"`
 
 	// VolumeName is a name of the volume for which this backup is destined
-	VolumeName string `json:"volumeName"`
+	VolumeName string `json:"volumeName,omitempty"`
 
 	// SnapName is a name of the current backup snapshot
-	SnapName string `json:"snapName"`
+	SnapName string `json:"snapName,omitempty"`
 
 	// PrevSnapName is the last completed-backup's snapshot name
-	PrevSnapName string `json:"prevSnapName"`
+	PrevSnapName string `json:"prevSnapName,omitempty"`
 
 	// BackupDest is the remote address for backup transfer
-	BackupDest string `json:"backupDest"`
+	BackupDest string `json:"backupDest,omitempty"`
 
 	// LocalSnap is flag to enable local snapshot only
-	LocalSnap bool `json:"localSnap"`
+	LocalSnap bool `json:"localSnap,omitempty"`
 }
 
 // CStorBackupStatus is to hold status of backup

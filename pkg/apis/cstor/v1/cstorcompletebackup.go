@@ -35,16 +35,16 @@ type CStorCompletedBackup struct {
 // CStorCompletedBackupSpec is the spec for a CStorBackup resource
 type CStorCompletedBackupSpec struct {
 	// BackupName is a name of the backup or scheduled backup
-	BackupName string `json:"backupName"`
+	BackupName string `json:"backupName,omitempty"`
 
 	// VolumeName is a name of the volume for which this backup is destined
-	VolumeName string `json:"volumeName"`
+	VolumeName string `json:"volumeName,omitempty"`
 
-	// SecondLastSnapName is a name of the second last completed-backup's snapshot
-	SecondLastSnapName string `json:"secondLastSnapName"`
+	// SecondLastSnapName is a name of the second last 'successfully' completed-backup's snapshot
+	SecondLastSnapName string `json:"secondLastSnapName,omitempty"`
 
 	// LastSnapName is the last completed-backup's snapshot name
-	LastSnapName string `json:"lastSnapName"`
+	LastSnapName string `json:"lastSnapName,omitempty"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

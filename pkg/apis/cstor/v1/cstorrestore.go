@@ -37,17 +37,20 @@ type CStorRestore struct {
 // CStorRestoreSpec is the spec for a CStorRestore resource
 type CStorRestoreSpec struct {
 	// RestoreName holds restore name
-	RestoreName string `json:"restoreName"`
+	RestoreName string `json:"restoreName,omitempty"`
 	// VolumeName is used to restore the data to corresponding volume
-	VolumeName string `json:"volumeName"`
+	VolumeName string `json:"volumeName,omitempty"`
 	// RestoreSrc can be ip:port in case of restore from remote or volumeName
 	// in case of local restore
-	RestoreSrc    string `json:"restoreSrc"`
-	MaxRetryCount int    `json:"maxretrycount"`
-	RetryCount    int    `json:"retrycount"`
+	RestoreSrc string `json:"restoreSrc,omitempty"`
+	// MaxRestoreRetryCount is the maximum number of attempt, will be performed to restore
+	MaxRetryCount int `json:"maxretrycount,omitempty"`
+	// RetryCount represents the number of restore attempts performed for the restore
+	RetryCount int `json:"retrycount,omitempty"`
 	// StorageClass represents name of StorageClass of restore volume
-	StorageClass string            `json:"storageClass,omitempty"`
-	Size         resource.Quantity `json:"size,omitempty"`
+	StorageClass string `json:"storageClass,omitempty"`
+	// Size represents the size of a snapshot to restore
+	Size resource.Quantity `json:"size,omitempty"`
 	// Local defines whether restore is from local/remote
 	Local bool `json:"localRestore,omitempty"` // if restore is from local backup/snapshot
 }
