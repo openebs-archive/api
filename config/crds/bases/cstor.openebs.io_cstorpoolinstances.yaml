@@ -17,6 +17,7 @@ spec:
     description: The amount of storage space within the pool that has been physically
       allocated
     name: Allocated
+    priority: 1
     type: string
   - JSONPath: .status.capacity.free
     description: The amount of usable free space available in the pool
@@ -41,6 +42,7 @@ spec:
   - JSONPath: .spec.poolConfig.dataRaidGroupType
     description: Represents the type of the storage pool
     name: Type
+    priority: 1
     type: string
   - JSONPath: .status.phase
     description: Identifies the current health of the pool
