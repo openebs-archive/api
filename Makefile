@@ -56,3 +56,19 @@ deps:
 .PHONY: test
 test:
 	go test ./...
+
+.PHONY: build.common
+build.common: license-check-go
+	
+.PHONY: license-check-go
+license-check-go:
+	@echo "--> Checking license header..."
+	@licRes=$$(for file in $$(find . -type f -iname '*.go' ! -path './vendor/*' ! -path './hack/tools.go' ) ; do \
+               awk 'NR<=3' $$file | grep -Eq "(Copyright|generated|GENERATED)" || echo $$file; \
+       done); \
+       if [ -n "$${licRes}" ]; then \
+               echo "license header checking failed:"; echo "$${licRes}"; \
+               exit 1; \
+       fi
+	@echo "--> Done checking license."
+	@echo
