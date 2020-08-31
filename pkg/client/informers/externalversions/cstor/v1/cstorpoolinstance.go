@@ -21,10 +21,10 @@ package v1
 import (
 	time "time"
 
-	cstorv1 "github.com/openebs/api/pkg/apis/cstor/v1"
-	versioned "github.com/openebs/api/pkg/client/clientset/versioned"
-	internalinterfaces "github.com/openebs/api/pkg/client/informers/externalversions/internalinterfaces"
-	v1 "github.com/openebs/api/pkg/client/listers/cstor/v1"
+	cstorv1 "github.com/openebs/api/v2/pkg/apis/cstor/v1"
+	versioned "github.com/openebs/api/v2/pkg/client/clientset/versioned"
+	internalinterfaces "github.com/openebs/api/v2/pkg/client/informers/externalversions/internalinterfaces"
+	v1 "github.com/openebs/api/v2/pkg/client/listers/cstor/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"

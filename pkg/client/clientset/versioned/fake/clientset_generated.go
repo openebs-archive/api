@@ -19,11 +19,11 @@ limitations under the License.
 package fake
 
 import (
-	clientset "github.com/openebs/api/pkg/client/clientset/versioned"
-	cstorv1 "github.com/openebs/api/pkg/client/clientset/versioned/typed/cstor/v1"
-	fakecstorv1 "github.com/openebs/api/pkg/client/clientset/versioned/typed/cstor/v1/fake"
-	openebsv1alpha1 "github.com/openebs/api/pkg/client/clientset/versioned/typed/openebs.io/v1alpha1"
-	fakeopenebsv1alpha1 "github.com/openebs/api/pkg/client/clientset/versioned/typed/openebs.io/v1alpha1/fake"
+	clientset "github.com/openebs/api/v2/pkg/client/clientset/versioned"
+	cstorv1 "github.com/openebs/api/v2/pkg/client/clientset/versioned/typed/cstor/v1"
+	fakecstorv1 "github.com/openebs/api/v2/pkg/client/clientset/versioned/typed/cstor/v1/fake"
+	openebsv1alpha1 "github.com/openebs/api/v2/pkg/client/clientset/versioned/typed/openebs.io/v1alpha1"
+	fakeopenebsv1alpha1 "github.com/openebs/api/v2/pkg/client/clientset/versioned/typed/openebs.io/v1alpha1/fake"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/watch"
 	"k8s.io/client-go/discovery"

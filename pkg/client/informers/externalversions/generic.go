@@ -21,8 +21,8 @@ package externalversions
 import (
 	"fmt"
 
-	v1 "github.com/openebs/api/pkg/apis/cstor/v1"
-	v1alpha1 "github.com/openebs/api/pkg/apis/openebs.io/v1alpha1"
+	v1 "github.com/openebs/api/v2/pkg/apis/cstor/v1"
+	v1alpha1 "github.com/openebs/api/v2/pkg/apis/openebs.io/v1alpha1"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	cache "k8s.io/client-go/tools/cache"
 )

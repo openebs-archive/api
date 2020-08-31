@@ -19,7 +19,7 @@ limitations under the License.
 package fake
 
 import (
-	cstorv1 "github.com/openebs/api/pkg/apis/cstor/v1"
+	cstorv1 "github.com/openebs/api/v2/pkg/apis/cstor/v1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
 	schema "k8s.io/apimachinery/pkg/runtime/schema"

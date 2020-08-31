@@ -19,8 +19,8 @@ package v1
 import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	"github.com/openebs/api/pkg/apis/cstor"
-	cstorapi "github.com/openebs/api/pkg/apis/cstor/v1"
+	"github.com/openebs/api/v2/pkg/apis/cstor"
+	cstorapi "github.com/openebs/api/v2/pkg/apis/cstor/v1"
 )
 
 // SchemeGroupVersion is group version used to register these objects

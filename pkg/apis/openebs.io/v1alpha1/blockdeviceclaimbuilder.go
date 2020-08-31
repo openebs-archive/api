@@ -17,7 +17,7 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"github.com/openebs/api/pkg/util"
+	"github.com/openebs/api/v2/pkg/util"
 	"github.com/pkg/errors"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
@@ -153,7 +153,7 @@ func (bdc *BlockDeviceClaim) WithBlockVolumeMode(mode corev1.PersistentVolumeMod
 // openebs.io/block-device-tag
 // This will enable the NDM to pick only devices that
 // match the node (hostname) and block device tag value.
-func (bdc *BlockDeviceClaim) WithBlockDeviceTag(bdTagValue string) *BlockDeviceClaim  {
+func (bdc *BlockDeviceClaim) WithBlockDeviceTag(bdTagValue string) *BlockDeviceClaim {
 	if bdc.Spec.Selector == nil {
 		bdc.Spec.Selector = &metav1.LabelSelector{}
 	}
