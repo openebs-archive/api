@@ -26,7 +26,7 @@ jobs:
       run: make deps
 
     - name: verify license
-      run: make license-check-go
+      run: make license-check
 
     - name: verify kubegen
       run: make verify_kubegen
