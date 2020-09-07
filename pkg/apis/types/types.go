@@ -125,6 +125,6 @@ const (
 	// OpenEBSCStorAllowedBDTagKey is the annotation key present that decides whether
 	// a particular BD with a tag is allowed in storage provisioning or not.
 	// This annotation can be used on SPC or CSPC to allow a particular BD(s) with tag
-	// for provisioning
-	OpenEBSCStorAllowedBDTagKey = "cstor.openebs.io/allowed-bd-tag"
+	// for provisioning.
+	OpenEBSAllowedBDTagKey = "openebs.io/allowed-bd-tags"
 )
