@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.0.0](https://github.com/openebs/api/tree/v2.0.0) (2020-08-05)
+
+**Merged pull requests:**
+
+- chore\(api\): add block device tag label key in types [\#62](https://github.com/openebs/api/pull/62) ([sonasingh46](https://github.com/sonasingh46))
+- chore\(prototype\): rephrase function signature and add cvr predicates [\#60](https://github.com/openebs/api/pull/60) ([mittachaitu](https://github.com/mittachaitu))
+- refact\(crds\): refactor generate cstor crds based on openAPIV3 validation [\#59](https://github.com/openebs/api/pull/59) ([prateekpandey14](https://github.com/prateekpandey14))
+
 ## [v1.12.0](https://github.com/openebs/api/tree/v1.12.0) (2020-07-15)
 
 **Merged pull requests:**
