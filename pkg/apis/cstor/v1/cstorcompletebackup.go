@@ -26,6 +26,11 @@ import (
 // +resource:path=cstorcompletedbackup
 
 // CStorCompletedBackup describes a cstor completed-backup resource created as custom resource
+// +kubebuilder:object:root=true
+// +kubebuilder:resource:scope=Namespaced,shortName=ccompletedbackup
+// +kubebuilder:printcolumn:name="Volume",type=string,JSONPath=`.spec.volumeName`,description="Volume name on which backup is performed"
+// +kubebuilder:printcolumn:name="Backup/Schedule",type=string,JSONPath=`.spec.backupName`,description="Name of the backup or scheduled backup"
+// +kubebuilder:printcolumn:name="LastSnap",type=string,JSONPath=`.spec.lastSnapName`,description="Last successfully backup snapshot"
 type CStorCompletedBackup struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`

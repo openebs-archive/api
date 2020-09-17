@@ -26,23 +26,28 @@ import (
 // +resource:path=cstorbackup
 
 // CStorBackup describes a cstor backup resource created as a custom resource
+// +kubebuilder:object:root=true
+// +kubebuilder:resource:scope=Namespaced,shortName=cbackup
+// +kubebuilder:printcolumn:name="Volume",type=string,JSONPath=`.spec.volumeName`,description="Name of the volume for which this backup is destined"
+// +kubebuilder:printcolumn:name="Backup/Schedule",type=string,JSONPath=`.spec.backupName`,description="Name of the backup or scheduled backup"
+// +kubebuilder:printcolumn:name="Status",type=string,JSONPath=`.status`,description="Identifies the phase of the backup"
 type CStorBackup struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              CStorBackupSpec   `json:"spec"`
-	Status            CStorBackupStatus `json:"status"`
+	Status            CStorBackupStatus `json:"status,omitempty"`
 }
 
 // CStorBackupSpec is the spec for a CStorBackup resource
 type CStorBackupSpec struct {
 	// BackupName is a name of the backup or scheduled backup
-	BackupName string `json:"backupName,omitempty"`
+	BackupName string `json:"backupName"`
 
 	// VolumeName is a name of the volume for which this backup is destined
-	VolumeName string `json:"volumeName,omitempty"`
+	VolumeName string `json:"volumeName"`
 
 	// SnapName is a name of the current backup snapshot
-	SnapName string `json:"snapName,omitempty"`
+	SnapName string `json:"snapName"`
 
 	// PrevSnapName is the last completed-backup's snapshot name
 	PrevSnapName string `json:"prevSnapName,omitempty"`

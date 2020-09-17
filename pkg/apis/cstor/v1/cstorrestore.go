@@ -27,22 +27,27 @@ import (
 // +resource:path=cstorrestore
 
 // CStorRestore describes a cstor restore resource created as a custom resource
+// +kubebuilder:object:root=true
+// +kubebuilder:resource:scope=Namespaced,shortName=crestore
+// +kubebuilder:printcolumn:name="Backup",type=string,JSONPath=`.spec.restoreName`,description="Name of the snapshot which is restored"
+// +kubebuilder:printcolumn:name="Volume",type=string,JSONPath=`.spec.volumeName`,description="Volume on which restore is performed"
+// +kubebuilder:printcolumn:name="Status",type=string,JSONPath=`.status`,description="Identifies the state of the restore"
 type CStorRestore struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"` // set name to restore name + volume name + something like cspi tag
 	Spec              CStorRestoreSpec            `json:"spec"`
-	Status            CStorRestoreStatus          `json:"status"`
+	Status            CStorRestoreStatus          `json:"status,omitempty"`
 }
 
 // CStorRestoreSpec is the spec for a CStorRestore resource
 type CStorRestoreSpec struct {
 	// RestoreName holds restore name
-	RestoreName string `json:"restoreName,omitempty"`
+	RestoreName string `json:"restoreName"`
 	// VolumeName is used to restore the data to corresponding volume
-	VolumeName string `json:"volumeName,omitempty"`
+	VolumeName string `json:"volumeName"`
 	// RestoreSrc can be ip:port in case of restore from remote or volumeName
 	// in case of local restore
-	RestoreSrc string `json:"restoreSrc,omitempty"`
+	RestoreSrc string `json:"restoreSrc"`
 	// MaxRestoreRetryCount is the maximum number of attempt, will be performed to restore
 	MaxRetryCount int `json:"maxretrycount,omitempty"`
 	// RetryCount represents the number of restore attempts performed for the restore
@@ -52,7 +57,7 @@ type CStorRestoreSpec struct {
 	// Size represents the size of a snapshot to restore
 	Size resource.Quantity `json:"size,omitempty"`
 	// Local defines whether restore is from local/remote
-	Local bool `json:"localRestore,omitempty"` // if restore is from local backup/snapshot
+	Local bool `json:"localRestore,omitempty"`
 }
 
 // CStorRestoreStatus is to hold result of action.
