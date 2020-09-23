@@ -26,11 +26,16 @@ import (
 // +resource:path=cstorbackup
 
 // CStorBackup describes a cstor backup resource created as a custom resource
+// +kubebuilder:object:root=true
+// +kubebuilder:resource:scope=Namespaced,shortName=cbackup
+// +kubebuilder:printcolumn:name="Volume",type=string,JSONPath=`.spec.volumeName`,description="Name of the volume for which this backup is destined"
+// +kubebuilder:printcolumn:name="Backup/Schedule",type=string,JSONPath=`.spec.backupName`,description="Name of the backup or scheduled backup"
+// +kubebuilder:printcolumn:name="Status",type=string,JSONPath=`.status`,description="Identifies the phase of the backup"
 type CStorBackup struct {
 	metav1.TypeMeta   `json:",inline"`
 	metav1.ObjectMeta `json:"metadata,omitempty"`
 	Spec              CStorBackupSpec   `json:"spec"`
-	Status            CStorBackupStatus `json:"status"`
+	Status            CStorBackupStatus `json:"status,omitempty"`
 }
 
 // CStorBackupSpec is the spec for a CStorBackup resource
@@ -45,13 +50,13 @@ type CStorBackupSpec struct {
 	SnapName string `json:"snapName"`
 
 	// PrevSnapName is the last completed-backup's snapshot name
-	PrevSnapName string `json:"prevSnapName"`
+	PrevSnapName string `json:"prevSnapName,omitempty"`
 
 	// BackupDest is the remote address for backup transfer
-	BackupDest string `json:"backupDest"`
+	BackupDest string `json:"backupDest,omitempty"`
 
 	// LocalSnap is flag to enable local snapshot only
-	LocalSnap bool `json:"localSnap"`
+	LocalSnap bool `json:"localSnap,omitempty"`
 }
 
 // CStorBackupStatus is to hold status of backup
