@@ -40,13 +40,13 @@ type CStorBackup struct {
 
 // CStorBackupSpec is the spec for a CStorBackup resource
 type CStorBackupSpec struct {
-	// BackupName is a name of the backup or scheduled backup
+	// BackupName is the name of the backup or scheduled backup
 	BackupName string `json:"backupName"`
 
-	// VolumeName is a name of the volume for which this backup is destined
+	// VolumeName is the name of the volume for which this backup is destined
 	VolumeName string `json:"volumeName"`
 
-	// SnapName is a name of the current backup snapshot
+	// SnapName is the name of the current backup snapshot
 	SnapName string `json:"snapName"`
 
 	// PrevSnapName is the last completed-backup's snapshot name
@@ -55,34 +55,35 @@ type CStorBackupSpec struct {
 	// BackupDest is the remote address for backup transfer
 	BackupDest string `json:"backupDest,omitempty"`
 
-	// LocalSnap is flag to enable local snapshot only
+	// LocalSnap is the flag to enable local snapshot only
 	LocalSnap bool `json:"localSnap,omitempty"`
 }
 
-// CStorBackupStatus is to hold status of backup
+// CStorBackupStatus is a string type that represents the status of the backup
 type CStorBackupStatus string
 
-// Status written onto CStorBackup objects.
+// Status written onto CStorBackup objects
 const (
-	// BKPCStorStatusEmpty ensures the create operation is to be done, if import fails.
+	// BKPCStorStatusEmpty represents backup resource is created and yet to
+	// be reconcile by backup controller
 	BKPCStorStatusEmpty CStorBackupStatus = ""
 
-	// BKPCStorStatusDone , backup is completed.
+	// BKPCStorStatusDone , backup is completed
 	BKPCStorStatusDone CStorBackupStatus = "Done"
 
-	// BKPCStorStatusFailed , backup is failed.
+	// BKPCStorStatusFailed , backup is failed
 	BKPCStorStatusFailed CStorBackupStatus = "Failed"
 
-	// BKPCStorStatusInit , backup is initialized.
+	// BKPCStorStatusInit , backup is initialized
 	BKPCStorStatusInit CStorBackupStatus = "Init"
 
-	// BKPCStorStatusPending , backup is pending.
+	// BKPCStorStatusPending , backup is pending
 	BKPCStorStatusPending CStorBackupStatus = "Pending"
 
-	// BKPCStorStatusInProgress , backup is in progress.
+	// BKPCStorStatusInProgress , backup is in progress
 	BKPCStorStatusInProgress CStorBackupStatus = "InProgress"
 
-	// BKPCStorStatusInvalid , backup operation is invalid.
+	// BKPCStorStatusInvalid , backup operation is invalid
 	BKPCStorStatusInvalid CStorBackupStatus = "Invalid"
 )
 

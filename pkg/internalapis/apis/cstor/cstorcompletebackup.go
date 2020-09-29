@@ -39,16 +39,16 @@ type CStorCompletedBackup struct {
 
 // CStorCompletedBackupSpec is the spec for a CStorBackup resource
 type CStorCompletedBackupSpec struct {
-	// BackupName is a name of the backup or scheduled backup
+	// BackupName is the name of backup or scheduled backup
 	BackupName string `json:"backupName,omitempty"`
 
-	// VolumeName is a name of the volume for which this backup is destined
+	// VolumeName is the name of volume for which this backup is destined
 	VolumeName string `json:"volumeName,omitempty"`
 
-	// SecondLastSnapName is a name of the second last 'successfully' completed-backup's snapshot
+	// SecondLastSnapName is the name of second last 'successfully' completed-backup's snapshot
 	SecondLastSnapName string `json:"secondLastSnapName,omitempty"`
 
-	// LastSnapName is the last completed-backup's snapshot name
+	// LastSnapName is the name of last completed-backup's snapshot name
 	LastSnapName string `json:"lastSnapName,omitempty"`
 }
 

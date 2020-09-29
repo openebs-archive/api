@@ -60,12 +60,13 @@ type CStorRestoreSpec struct {
 	Local bool `json:"localRestore,omitempty"`
 }
 
-// CStorRestoreStatus is to hold result of action.
+// CStorRestoreStatus is a string type that represents the status of the restore
 type CStorRestoreStatus string
 
 // Status written onto CStrorRestore object.
 const (
-	// RSTCStorStatusEmpty ensures the create operation is to be done, if import fails.
+	// RSTCStorStatusEmpty represents the restore resource is created and yet to
+	// be reconciled by restore controller
 	RSTCStorStatusEmpty CStorRestoreStatus = ""
 
 	// RSTCStorStatusDone , restore operation is completed.

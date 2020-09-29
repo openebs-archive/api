@@ -16,7 +16,7 @@ limitations under the License.
 
 package v1
 
-// IsFailed returns true if backup failed
+// IsFailed returns true if backup is failed
 func (backup *CStorBackup) IsFailed() bool {
 	return backup.Status == BKPCStorStatusFailed
 }
@@ -26,18 +26,18 @@ func (backup *CStorBackup) IsSucceeded() bool {
 	return backup.Status == BKPCStorStatusDone
 }
 
-// IsPending return true if the backup is in pending state
+// IsPending returns true if the backup is in pending state
 func (backup *CStorBackup) IsPending() bool {
 	return backup.Status == BKPCStorStatusPending
 }
 
-// IsInProgress return true if the backup is in progress state
+// IsInProgress returns true if the backup is in progress state
 func (backup *CStorBackup) IsInProgress() bool {
 	return backup.Status == BKPCStorStatusInProgress
 }
 
-// IsInitilized return true if the backup is in init state
-func (backup *CStorBackup) IsInitilized() bool {
+// IsInInit returns true if the backup is in init state
+func (backup *CStorBackup) IsInInit() bool {
 	return backup.Status == BKPCStorStatusInit
 }
 
@@ -63,7 +63,7 @@ func (restore *CStorRestore) IsPending() bool {
 	return restore.Status == RSTCStorStatusPending
 }
 
-// IsInitilized return true if restore is in init status
-func (restore *CStorRestore) IsInitilized() bool {
+// IsInInit return true if restore is in init status
+func (restore *CStorRestore) IsInInit() bool {
 	return restore.Status == RSTCStorStatusInit
 }
