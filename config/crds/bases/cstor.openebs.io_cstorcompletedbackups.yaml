@@ -53,17 +53,18 @@ spec:
           description: CStorCompletedBackupSpec is the spec for a CStorBackup resource
           properties:
             backupName:
-              description: BackupName is a name of the backup or scheduled backup
+              description: BackupName is the name of backup or scheduled backup
               type: string
             lastSnapName:
-              description: LastSnapName is the last completed-backup's snapshot name
+              description: LastSnapName is the name of last completed-backup's snapshot
+                name
               type: string
             secondLastSnapName:
-              description: SecondLastSnapName is a name of the second last 'successfully'
+              description: SecondLastSnapName is the name of second last 'successfully'
                 completed-backup's snapshot
               type: string
             volumeName:
-              description: VolumeName is a name of the volume for which this backup
+              description: VolumeName is the name of volume for which this backup
                 is destined
               type: string
           type: object
