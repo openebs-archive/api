@@ -14,8 +14,8 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-// +k8s:conversion-gen=github.com/openebs/api/pkg/internalapis/apis/openebs.io
-// +k8s:conversion-gen-external-types=github.com/openebs/api/pkg/apis/openebs.io/v1alpha1
+// +k8s:conversion-gen=github.com/openebs/api/v2/pkg/internalapis/apis/openebs.io
+// +k8s:conversion-gen-external-types=github.com/openebs/api/v2/pkg/apis/openebs.io/v1alpha1
 
 // +groupName=openebs.io
 package v1alpha1

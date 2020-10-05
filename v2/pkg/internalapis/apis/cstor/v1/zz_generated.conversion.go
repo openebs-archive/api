@@ -23,8 +23,8 @@ package v1
 import (
 	unsafe "unsafe"
 
-	v1 "github.com/openebs/api/pkg/apis/cstor/v1"
-	cstor "github.com/openebs/api/pkg/internalapis/apis/cstor"
+	v1 "github.com/openebs/api/v2/pkg/apis/cstor/v1"
+	cstor "github.com/openebs/api/v2/pkg/internalapis/apis/cstor"
 	corev1 "k8s.io/api/core/v1"
 	conversion "k8s.io/apimachinery/pkg/conversion"
 	runtime "k8s.io/apimachinery/pkg/runtime"
@@ -37,6 +37,66 @@ func init() {
 // RegisterConversions adds conversion functions to the given scheme.
 // Public to allow building arbitrary schemes.
 func RegisterConversions(s *runtime.Scheme) error {
+	if err := s.AddGeneratedConversionFunc((*v1.CStorBackup)(nil), (*cstor.CStorBackup)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorBackup_To_cstor_CStorBackup(a.(*v1.CStorBackup), b.(*cstor.CStorBackup), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorBackup)(nil), (*v1.CStorBackup)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorBackup_To_v1_CStorBackup(a.(*cstor.CStorBackup), b.(*v1.CStorBackup), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorBackupList)(nil), (*cstor.CStorBackupList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorBackupList_To_cstor_CStorBackupList(a.(*v1.CStorBackupList), b.(*cstor.CStorBackupList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorBackupList)(nil), (*v1.CStorBackupList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorBackupList_To_v1_CStorBackupList(a.(*cstor.CStorBackupList), b.(*v1.CStorBackupList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorBackupSpec)(nil), (*cstor.CStorBackupSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorBackupSpec_To_cstor_CStorBackupSpec(a.(*v1.CStorBackupSpec), b.(*cstor.CStorBackupSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorBackupSpec)(nil), (*v1.CStorBackupSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorBackupSpec_To_v1_CStorBackupSpec(a.(*cstor.CStorBackupSpec), b.(*v1.CStorBackupSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorCompletedBackup)(nil), (*cstor.CStorCompletedBackup)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorCompletedBackup_To_cstor_CStorCompletedBackup(a.(*v1.CStorCompletedBackup), b.(*cstor.CStorCompletedBackup), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorCompletedBackup)(nil), (*v1.CStorCompletedBackup)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorCompletedBackup_To_v1_CStorCompletedBackup(a.(*cstor.CStorCompletedBackup), b.(*v1.CStorCompletedBackup), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorCompletedBackupList)(nil), (*cstor.CStorCompletedBackupList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorCompletedBackupList_To_cstor_CStorCompletedBackupList(a.(*v1.CStorCompletedBackupList), b.(*cstor.CStorCompletedBackupList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorCompletedBackupList)(nil), (*v1.CStorCompletedBackupList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorCompletedBackupList_To_v1_CStorCompletedBackupList(a.(*cstor.CStorCompletedBackupList), b.(*v1.CStorCompletedBackupList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorCompletedBackupSpec)(nil), (*cstor.CStorCompletedBackupSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorCompletedBackupSpec_To_cstor_CStorCompletedBackupSpec(a.(*v1.CStorCompletedBackupSpec), b.(*cstor.CStorCompletedBackupSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorCompletedBackupSpec)(nil), (*v1.CStorCompletedBackupSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorCompletedBackupSpec_To_v1_CStorCompletedBackupSpec(a.(*cstor.CStorCompletedBackupSpec), b.(*v1.CStorCompletedBackupSpec), scope)
+	}); err != nil {
+		return err
+	}
 	if err := s.AddGeneratedConversionFunc((*v1.CStorPoolCluster)(nil), (*cstor.CStorPoolCluster)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_v1_CStorPoolCluster_To_cstor_CStorPoolCluster(a.(*v1.CStorPoolCluster), b.(*cstor.CStorPoolCluster), scope)
 	}); err != nil {
@@ -154,6 +214,36 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}
 	if err := s.AddGeneratedConversionFunc((*cstor.CStorPoolInstanceStatus)(nil), (*v1.CStorPoolInstanceStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_cstor_CStorPoolInstanceStatus_To_v1_CStorPoolInstanceStatus(a.(*cstor.CStorPoolInstanceStatus), b.(*v1.CStorPoolInstanceStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorRestore)(nil), (*cstor.CStorRestore)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorRestore_To_cstor_CStorRestore(a.(*v1.CStorRestore), b.(*cstor.CStorRestore), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorRestore)(nil), (*v1.CStorRestore)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorRestore_To_v1_CStorRestore(a.(*cstor.CStorRestore), b.(*v1.CStorRestore), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorRestoreList)(nil), (*cstor.CStorRestoreList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorRestoreList_To_cstor_CStorRestoreList(a.(*v1.CStorRestoreList), b.(*cstor.CStorRestoreList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorRestoreList)(nil), (*v1.CStorRestoreList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorRestoreList_To_v1_CStorRestoreList(a.(*cstor.CStorRestoreList), b.(*v1.CStorRestoreList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorRestoreSpec)(nil), (*cstor.CStorRestoreSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorRestoreSpec_To_cstor_CStorRestoreSpec(a.(*v1.CStorRestoreSpec), b.(*cstor.CStorRestoreSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorRestoreSpec)(nil), (*v1.CStorRestoreSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorRestoreSpec_To_v1_CStorRestoreSpec(a.(*cstor.CStorRestoreSpec), b.(*v1.CStorRestoreSpec), scope)
 	}); err != nil {
 		return err
 	}
@@ -520,6 +610,160 @@ func RegisterConversions(s *runtime.Scheme) error {
 	return nil
 }
 
+func autoConvert_v1_CStorBackup_To_cstor_CStorBackup(in *v1.CStorBackup, out *cstor.CStorBackup, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1_CStorBackupSpec_To_cstor_CStorBackupSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	out.Status = cstor.CStorBackupStatus(in.Status)
+	return nil
+}
+
+// Convert_v1_CStorBackup_To_cstor_CStorBackup is an autogenerated conversion function.
+func Convert_v1_CStorBackup_To_cstor_CStorBackup(in *v1.CStorBackup, out *cstor.CStorBackup, s conversion.Scope) error {
+	return autoConvert_v1_CStorBackup_To_cstor_CStorBackup(in, out, s)
+}
+
+func autoConvert_cstor_CStorBackup_To_v1_CStorBackup(in *cstor.CStorBackup, out *v1.CStorBackup, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_cstor_CStorBackupSpec_To_v1_CStorBackupSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	out.Status = v1.CStorBackupStatus(in.Status)
+	return nil
+}
+
+// Convert_cstor_CStorBackup_To_v1_CStorBackup is an autogenerated conversion function.
+func Convert_cstor_CStorBackup_To_v1_CStorBackup(in *cstor.CStorBackup, out *v1.CStorBackup, s conversion.Scope) error {
+	return autoConvert_cstor_CStorBackup_To_v1_CStorBackup(in, out, s)
+}
+
+func autoConvert_v1_CStorBackupList_To_cstor_CStorBackupList(in *v1.CStorBackupList, out *cstor.CStorBackupList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]cstor.CStorBackup)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1_CStorBackupList_To_cstor_CStorBackupList is an autogenerated conversion function.
+func Convert_v1_CStorBackupList_To_cstor_CStorBackupList(in *v1.CStorBackupList, out *cstor.CStorBackupList, s conversion.Scope) error {
+	return autoConvert_v1_CStorBackupList_To_cstor_CStorBackupList(in, out, s)
+}
+
+func autoConvert_cstor_CStorBackupList_To_v1_CStorBackupList(in *cstor.CStorBackupList, out *v1.CStorBackupList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]v1.CStorBackup)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_cstor_CStorBackupList_To_v1_CStorBackupList is an autogenerated conversion function.
+func Convert_cstor_CStorBackupList_To_v1_CStorBackupList(in *cstor.CStorBackupList, out *v1.CStorBackupList, s conversion.Scope) error {
+	return autoConvert_cstor_CStorBackupList_To_v1_CStorBackupList(in, out, s)
+}
+
+func autoConvert_v1_CStorBackupSpec_To_cstor_CStorBackupSpec(in *v1.CStorBackupSpec, out *cstor.CStorBackupSpec, s conversion.Scope) error {
+	out.BackupName = in.BackupName
+	out.VolumeName = in.VolumeName
+	out.SnapName = in.SnapName
+	out.PrevSnapName = in.PrevSnapName
+	out.BackupDest = in.BackupDest
+	out.LocalSnap = in.LocalSnap
+	return nil
+}
+
+// Convert_v1_CStorBackupSpec_To_cstor_CStorBackupSpec is an autogenerated conversion function.
+func Convert_v1_CStorBackupSpec_To_cstor_CStorBackupSpec(in *v1.CStorBackupSpec, out *cstor.CStorBackupSpec, s conversion.Scope) error {
+	return autoConvert_v1_CStorBackupSpec_To_cstor_CStorBackupSpec(in, out, s)
+}
+
+func autoConvert_cstor_CStorBackupSpec_To_v1_CStorBackupSpec(in *cstor.CStorBackupSpec, out *v1.CStorBackupSpec, s conversion.Scope) error {
+	out.BackupName = in.BackupName
+	out.VolumeName = in.VolumeName
+	out.SnapName = in.SnapName
+	out.PrevSnapName = in.PrevSnapName
+	out.BackupDest = in.BackupDest
+	out.LocalSnap = in.LocalSnap
+	return nil
+}
+
+// Convert_cstor_CStorBackupSpec_To_v1_CStorBackupSpec is an autogenerated conversion function.
+func Convert_cstor_CStorBackupSpec_To_v1_CStorBackupSpec(in *cstor.CStorBackupSpec, out *v1.CStorBackupSpec, s conversion.Scope) error {
+	return autoConvert_cstor_CStorBackupSpec_To_v1_CStorBackupSpec(in, out, s)
+}
+
+func autoConvert_v1_CStorCompletedBackup_To_cstor_CStorCompletedBackup(in *v1.CStorCompletedBackup, out *cstor.CStorCompletedBackup, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1_CStorCompletedBackupSpec_To_cstor_CStorCompletedBackupSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1_CStorCompletedBackup_To_cstor_CStorCompletedBackup is an autogenerated conversion function.
+func Convert_v1_CStorCompletedBackup_To_cstor_CStorCompletedBackup(in *v1.CStorCompletedBackup, out *cstor.CStorCompletedBackup, s conversion.Scope) error {
+	return autoConvert_v1_CStorCompletedBackup_To_cstor_CStorCompletedBackup(in, out, s)
+}
+
+func autoConvert_cstor_CStorCompletedBackup_To_v1_CStorCompletedBackup(in *cstor.CStorCompletedBackup, out *v1.CStorCompletedBackup, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_cstor_CStorCompletedBackupSpec_To_v1_CStorCompletedBackupSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_cstor_CStorCompletedBackup_To_v1_CStorCompletedBackup is an autogenerated conversion function.
+func Convert_cstor_CStorCompletedBackup_To_v1_CStorCompletedBackup(in *cstor.CStorCompletedBackup, out *v1.CStorCompletedBackup, s conversion.Scope) error {
+	return autoConvert_cstor_CStorCompletedBackup_To_v1_CStorCompletedBackup(in, out, s)
+}
+
+func autoConvert_v1_CStorCompletedBackupList_To_cstor_CStorCompletedBackupList(in *v1.CStorCompletedBackupList, out *cstor.CStorCompletedBackupList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]cstor.CStorCompletedBackup)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1_CStorCompletedBackupList_To_cstor_CStorCompletedBackupList is an autogenerated conversion function.
+func Convert_v1_CStorCompletedBackupList_To_cstor_CStorCompletedBackupList(in *v1.CStorCompletedBackupList, out *cstor.CStorCompletedBackupList, s conversion.Scope) error {
+	return autoConvert_v1_CStorCompletedBackupList_To_cstor_CStorCompletedBackupList(in, out, s)
+}
+
+func autoConvert_cstor_CStorCompletedBackupList_To_v1_CStorCompletedBackupList(in *cstor.CStorCompletedBackupList, out *v1.CStorCompletedBackupList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]v1.CStorCompletedBackup)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_cstor_CStorCompletedBackupList_To_v1_CStorCompletedBackupList is an autogenerated conversion function.
+func Convert_cstor_CStorCompletedBackupList_To_v1_CStorCompletedBackupList(in *cstor.CStorCompletedBackupList, out *v1.CStorCompletedBackupList, s conversion.Scope) error {
+	return autoConvert_cstor_CStorCompletedBackupList_To_v1_CStorCompletedBackupList(in, out, s)
+}
+
+func autoConvert_v1_CStorCompletedBackupSpec_To_cstor_CStorCompletedBackupSpec(in *v1.CStorCompletedBackupSpec, out *cstor.CStorCompletedBackupSpec, s conversion.Scope) error {
+	out.BackupName = in.BackupName
+	out.VolumeName = in.VolumeName
+	out.SecondLastSnapName = in.SecondLastSnapName
+	out.LastSnapName = in.LastSnapName
+	return nil
+}
+
+// Convert_v1_CStorCompletedBackupSpec_To_cstor_CStorCompletedBackupSpec is an autogenerated conversion function.
+func Convert_v1_CStorCompletedBackupSpec_To_cstor_CStorCompletedBackupSpec(in *v1.CStorCompletedBackupSpec, out *cstor.CStorCompletedBackupSpec, s conversion.Scope) error {
+	return autoConvert_v1_CStorCompletedBackupSpec_To_cstor_CStorCompletedBackupSpec(in, out, s)
+}
+
+func autoConvert_cstor_CStorCompletedBackupSpec_To_v1_CStorCompletedBackupSpec(in *cstor.CStorCompletedBackupSpec, out *v1.CStorCompletedBackupSpec, s conversion.Scope) error {
+	out.BackupName = in.BackupName
+	out.VolumeName = in.VolumeName
+	out.SecondLastSnapName = in.SecondLastSnapName
+	out.LastSnapName = in.LastSnapName
+	return nil
+}
+
+// Convert_cstor_CStorCompletedBackupSpec_To_v1_CStorCompletedBackupSpec is an autogenerated conversion function.
+func Convert_cstor_CStorCompletedBackupSpec_To_v1_CStorCompletedBackupSpec(in *cstor.CStorCompletedBackupSpec, out *v1.CStorCompletedBackupSpec, s conversion.Scope) error {
+	return autoConvert_cstor_CStorCompletedBackupSpec_To_v1_CStorCompletedBackupSpec(in, out, s)
+}
+
 func autoConvert_v1_CStorPoolCluster_To_cstor_CStorPoolCluster(in *v1.CStorPoolCluster, out *cstor.CStorPoolCluster, s conversion.Scope) error {
 	out.ObjectMeta = in.ObjectMeta
 	if err := Convert_v1_CStorPoolClusterSpec_To_cstor_CStorPoolClusterSpec(&in.Spec, &out.Spec, s); err != nil {
@@ -872,6 +1116,90 @@ func autoConvert_cstor_CStorPoolInstanceStatus_To_v1_CStorPoolInstanceStatus(in 
 // Convert_cstor_CStorPoolInstanceStatus_To_v1_CStorPoolInstanceStatus is an autogenerated conversion function.
 func Convert_cstor_CStorPoolInstanceStatus_To_v1_CStorPoolInstanceStatus(in *cstor.CStorPoolInstanceStatus, out *v1.CStorPoolInstanceStatus, s conversion.Scope) error {
 	return autoConvert_cstor_CStorPoolInstanceStatus_To_v1_CStorPoolInstanceStatus(in, out, s)
+}
+
+func autoConvert_v1_CStorRestore_To_cstor_CStorRestore(in *v1.CStorRestore, out *cstor.CStorRestore, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1_CStorRestoreSpec_To_cstor_CStorRestoreSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	out.Status = cstor.CStorRestoreStatus(in.Status)
+	return nil
+}
+
+// Convert_v1_CStorRestore_To_cstor_CStorRestore is an autogenerated conversion function.
+func Convert_v1_CStorRestore_To_cstor_CStorRestore(in *v1.CStorRestore, out *cstor.CStorRestore, s conversion.Scope) error {
+	return autoConvert_v1_CStorRestore_To_cstor_CStorRestore(in, out, s)
+}
+
+func autoConvert_cstor_CStorRestore_To_v1_CStorRestore(in *cstor.CStorRestore, out *v1.CStorRestore, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_cstor_CStorRestoreSpec_To_v1_CStorRestoreSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	out.Status = v1.CStorRestoreStatus(in.Status)
+	return nil
+}
+
+// Convert_cstor_CStorRestore_To_v1_CStorRestore is an autogenerated conversion function.
+func Convert_cstor_CStorRestore_To_v1_CStorRestore(in *cstor.CStorRestore, out *v1.CStorRestore, s conversion.Scope) error {
+	return autoConvert_cstor_CStorRestore_To_v1_CStorRestore(in, out, s)
+}
+
+func autoConvert_v1_CStorRestoreList_To_cstor_CStorRestoreList(in *v1.CStorRestoreList, out *cstor.CStorRestoreList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]cstor.CStorRestore)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1_CStorRestoreList_To_cstor_CStorRestoreList is an autogenerated conversion function.
+func Convert_v1_CStorRestoreList_To_cstor_CStorRestoreList(in *v1.CStorRestoreList, out *cstor.CStorRestoreList, s conversion.Scope) error {
+	return autoConvert_v1_CStorRestoreList_To_cstor_CStorRestoreList(in, out, s)
+}
+
+func autoConvert_cstor_CStorRestoreList_To_v1_CStorRestoreList(in *cstor.CStorRestoreList, out *v1.CStorRestoreList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]v1.CStorRestore)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_cstor_CStorRestoreList_To_v1_CStorRestoreList is an autogenerated conversion function.
+func Convert_cstor_CStorRestoreList_To_v1_CStorRestoreList(in *cstor.CStorRestoreList, out *v1.CStorRestoreList, s conversion.Scope) error {
+	return autoConvert_cstor_CStorRestoreList_To_v1_CStorRestoreList(in, out, s)
+}
+
+func autoConvert_v1_CStorRestoreSpec_To_cstor_CStorRestoreSpec(in *v1.CStorRestoreSpec, out *cstor.CStorRestoreSpec, s conversion.Scope) error {
+	out.RestoreName = in.RestoreName
+	out.VolumeName = in.VolumeName
+	out.RestoreSrc = in.RestoreSrc
+	out.MaxRetryCount = in.MaxRetryCount
+	out.RetryCount = in.RetryCount
+	out.StorageClass = in.StorageClass
+	out.Size = in.Size
+	out.Local = in.Local
+	return nil
+}
+
+// Convert_v1_CStorRestoreSpec_To_cstor_CStorRestoreSpec is an autogenerated conversion function.
+func Convert_v1_CStorRestoreSpec_To_cstor_CStorRestoreSpec(in *v1.CStorRestoreSpec, out *cstor.CStorRestoreSpec, s conversion.Scope) error {
+	return autoConvert_v1_CStorRestoreSpec_To_cstor_CStorRestoreSpec(in, out, s)
+}
+
+func autoConvert_cstor_CStorRestoreSpec_To_v1_CStorRestoreSpec(in *cstor.CStorRestoreSpec, out *v1.CStorRestoreSpec, s conversion.Scope) error {
+	out.RestoreName = in.RestoreName
+	out.VolumeName = in.VolumeName
+	out.RestoreSrc = in.RestoreSrc
+	out.MaxRetryCount = in.MaxRetryCount
+	out.RetryCount = in.RetryCount
+	out.StorageClass = in.StorageClass
+	out.Size = in.Size
+	out.Local = in.Local
+	return nil
+}
+
+// Convert_cstor_CStorRestoreSpec_To_v1_CStorRestoreSpec is an autogenerated conversion function.
+func Convert_cstor_CStorRestoreSpec_To_v1_CStorRestoreSpec(in *cstor.CStorRestoreSpec, out *v1.CStorRestoreSpec, s conversion.Scope) error {
+	return autoConvert_cstor_CStorRestoreSpec_To_v1_CStorRestoreSpec(in, out, s)
 }
 
 func autoConvert_v1_CStorSnapshotInfo_To_cstor_CStorSnapshotInfo(in *v1.CStorSnapshotInfo, out *cstor.CStorSnapshotInfo, s conversion.Scope) error {
