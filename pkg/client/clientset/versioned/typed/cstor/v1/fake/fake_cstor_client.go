@@ -19,7 +19,7 @@ limitations under the License.
 package fake
 
 import (
-	v1 "github.com/openebs/api/pkg/client/clientset/versioned/typed/cstor/v1"
+	v1 "github.com/openebs/api/v2/pkg/client/clientset/versioned/typed/cstor/v1"
 	rest "k8s.io/client-go/rest"
 	testing "k8s.io/client-go/testing"
 )

@@ -39,6 +39,8 @@ generate-crds: controller-gen
 # code generation for custom resources
 kubegen:
 	./hack/update-codegen.sh
+	@cp -rf v2/pkg/client/. pkg/client/
+	@rm -rf v2
 
 .PHONY: verify_kubegen
 verify_kubegen:
