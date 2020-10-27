@@ -21,10 +21,10 @@ package v1alpha1
 import (
 	time "time"
 
-	openebsiov1alpha1 "github.com/openebs/api/pkg/apis/openebs.io/v1alpha1"
-	versioned "github.com/openebs/api/pkg/client/clientset/versioned"
-	internalinterfaces "github.com/openebs/api/pkg/client/informers/externalversions/internalinterfaces"
-	v1alpha1 "github.com/openebs/api/pkg/client/listers/openebs.io/v1alpha1"
+	openebsiov1alpha1 "github.com/openebs/api/v2/pkg/apis/openebs.io/v1alpha1"
+	versioned "github.com/openebs/api/v2/pkg/client/clientset/versioned"
+	internalinterfaces "github.com/openebs/api/v2/pkg/client/informers/externalversions/internalinterfaces"
+	v1alpha1 "github.com/openebs/api/v2/pkg/client/listers/openebs.io/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
 	watch "k8s.io/apimachinery/pkg/watch"

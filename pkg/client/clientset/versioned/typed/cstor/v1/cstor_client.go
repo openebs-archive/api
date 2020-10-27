@@ -19,8 +19,8 @@ limitations under the License.
 package v1
 
 import (
-	v1 "github.com/openebs/api/pkg/apis/cstor/v1"
-	"github.com/openebs/api/pkg/client/clientset/versioned/scheme"
+	v1 "github.com/openebs/api/v2/pkg/apis/cstor/v1"
+	"github.com/openebs/api/v2/pkg/client/clientset/versioned/scheme"
 	rest "k8s.io/client-go/rest"
 )
 
