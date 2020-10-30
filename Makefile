@@ -30,7 +30,7 @@ generate: generate-crds
 
 generate-crds: controller-gen
 	# Generate manifests e.g. CRD, RBAC etc.
-	$(CONTROLLER_GEN) crd:trivialVersions=true,preserveUnknownFields=false paths="./pkg/apis/cstor/..." output:crd:artifacts:config=config/crds/bases
+	$(CONTROLLER_GEN) crd:trivialVersions=true,preserveUnknownFields=false paths="./pkg/apis/..." output:crd:artifacts:config=config/crds/bases
 	# merge all crds into a single file
 	rm $(ALL_CRDS)
 	cat config/crds/bases/*.yaml >> $(ALL_CRDS)
@@ -61,7 +61,7 @@ deps:
 .PHONY: test
 test:
 	go test ./...
-	
+
 .PHONY: license-check
 license-check:
 	@echo "--> Checking license header..."

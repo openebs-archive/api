@@ -1,0 +1,79 @@
+
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.2.9
+  creationTimestamp: null
+  name: cstorcompletedbackups.openebs.io
+spec:
+  group: openebs.io
+  names:
+    kind: CStorCompletedBackup
+    listKind: CStorCompletedBackupList
+    plural: cstorcompletedbackups
+    singular: cstorcompletedbackup
+  preserveUnknownFields: false
+  scope: Namespaced
+  validation:
+    openAPIV3Schema:
+      description: CStorCompletedBackup describes a cstor completed-backup resource
+        created as custom resource
+      properties:
+        apiVersion:
+          description: 'APIVersion defines the versioned schema of this representation
+            of an object. Servers should convert recognized schemas to the latest
+            internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+          type: string
+        kind:
+          description: 'Kind is a string value representing the REST resource this
+            object represents. Servers may infer this from the endpoint the client
+            submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+          type: string
+        metadata:
+          type: object
+        spec:
+          description: CStorBackupSpec is the spec for a CStorBackup resource
+          properties:
+            backupDest:
+              description: BackupDest is the remote address for backup transfer
+              type: string
+            backupName:
+              description: BackupName is a name of the backup or scheduled backup
+              type: string
+            localSnap:
+              description: LocalSnap is flag to enable local snapshot only
+              type: boolean
+            prevSnapName:
+              description: PrevSnapName is the last completed-backup's snapshot name
+              type: string
+            snapName:
+              description: SnapName is a name of the current backup snapshot
+              type: string
+            volumeName:
+              description: VolumeName is a name of the volume for which this backup
+                is destined
+              type: string
+          required:
+          - backupDest
+          - backupName
+          - localSnap
+          - prevSnapName
+          - snapName
+          - volumeName
+          type: object
+      required:
+      - spec
+      type: object
+  version: v1alpha1
+  versions:
+  - name: v1alpha1
+    served: true
+    storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []
