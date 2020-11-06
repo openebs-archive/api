@@ -17,8 +17,8 @@ GOBIN := $(or $(shell go env GOBIN 2>/dev/null), $(shell go env GOPATH 2>/dev/nu
 
 # find or download controller-gen
 controller-gen:
-ifneq ($(shell controller-gen --version 2> /dev/null), Version: v0.2.9)
-	@(cd /tmp; GO111MODULE=on go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.2.9)
+ifneq ($(shell controller-gen --version 2> /dev/null), Version: v0.4.0)
+	@(cd /tmp; GO111MODULE=on go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.4.0)
 CONTROLLER_GEN=$(GOBIN)/controller-gen
 else
 CONTROLLER_GEN=$(shell which controller-gen)
