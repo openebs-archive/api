@@ -52,6 +52,10 @@ func (c *FakeCstorV1) CStorVolumes(namespace string) v1.CStorVolumeInterface {
 	return &FakeCStorVolumes{c, namespace}
 }
 
+func (c *FakeCstorV1) CStorVolumeAttachments(namespace string) v1.CStorVolumeAttachmentInterface {
+	return &FakeCStorVolumeAttachments{c, namespace}
+}
+
 func (c *FakeCstorV1) CStorVolumeConfigs(namespace string) v1.CStorVolumeConfigInterface {
 	return &FakeCStorVolumeConfigs{c, namespace}
 }

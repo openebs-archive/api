@@ -66,6 +66,8 @@ func (f *sharedInformerFactory) ForResource(resource schema.GroupVersionResource
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cstor().V1().CStorRestores().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("cstorvolumes"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cstor().V1().CStorVolumes().Informer()}, nil
+	case v1.SchemeGroupVersion.WithResource("cstorvolumeattachments"):
+		return &genericInformer{resource: resource.GroupResource(), informer: f.Cstor().V1().CStorVolumeAttachments().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("cstorvolumeconfigs"):
 		return &genericInformer{resource: resource.GroupResource(), informer: f.Cstor().V1().CStorVolumeConfigs().Informer()}, nil
 	case v1.SchemeGroupVersion.WithResource("cstorvolumepolicies"):
