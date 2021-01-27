@@ -267,6 +267,36 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}); err != nil {
 		return err
 	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeAttachment)(nil), (*cstor.CStorVolumeAttachment)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeAttachment_To_cstor_CStorVolumeAttachment(a.(*v1.CStorVolumeAttachment), b.(*cstor.CStorVolumeAttachment), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeAttachment)(nil), (*v1.CStorVolumeAttachment)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeAttachment_To_v1_CStorVolumeAttachment(a.(*cstor.CStorVolumeAttachment), b.(*v1.CStorVolumeAttachment), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeAttachmentList)(nil), (*cstor.CStorVolumeAttachmentList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeAttachmentList_To_cstor_CStorVolumeAttachmentList(a.(*v1.CStorVolumeAttachmentList), b.(*cstor.CStorVolumeAttachmentList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeAttachmentList)(nil), (*v1.CStorVolumeAttachmentList)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeAttachmentList_To_v1_CStorVolumeAttachmentList(a.(*cstor.CStorVolumeAttachmentList), b.(*v1.CStorVolumeAttachmentList), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeAttachmentSpec)(nil), (*cstor.CStorVolumeAttachmentSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_CStorVolumeAttachmentSpec_To_cstor_CStorVolumeAttachmentSpec(a.(*v1.CStorVolumeAttachmentSpec), b.(*cstor.CStorVolumeAttachmentSpec), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.CStorVolumeAttachmentSpec)(nil), (*v1.CStorVolumeAttachmentSpec)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_CStorVolumeAttachmentSpec_To_v1_CStorVolumeAttachmentSpec(a.(*cstor.CStorVolumeAttachmentSpec), b.(*v1.CStorVolumeAttachmentSpec), scope)
+	}); err != nil {
+		return err
+	}
 	if err := s.AddGeneratedConversionFunc((*v1.CStorVolumeCondition)(nil), (*cstor.CStorVolumeCondition)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_v1_CStorVolumeCondition_To_cstor_CStorVolumeCondition(a.(*v1.CStorVolumeCondition), b.(*cstor.CStorVolumeCondition), scope)
 	}); err != nil {
@@ -487,6 +517,16 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}); err != nil {
 		return err
 	}
+	if err := s.AddGeneratedConversionFunc((*v1.ISCSIInfo)(nil), (*cstor.ISCSIInfo)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_ISCSIInfo_To_cstor_ISCSIInfo(a.(*v1.ISCSIInfo), b.(*cstor.ISCSIInfo), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.ISCSIInfo)(nil), (*v1.ISCSIInfo)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_ISCSIInfo_To_v1_ISCSIInfo(a.(*cstor.ISCSIInfo), b.(*v1.ISCSIInfo), scope)
+	}); err != nil {
+		return err
+	}
 	if err := s.AddGeneratedConversionFunc((*v1.PoolConfig)(nil), (*cstor.PoolConfig)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_v1_PoolConfig_To_cstor_PoolConfig(a.(*v1.PoolConfig), b.(*cstor.PoolConfig), scope)
 	}); err != nil {
@@ -584,6 +624,16 @@ func RegisterConversions(s *runtime.Scheme) error {
 	}
 	if err := s.AddGeneratedConversionFunc((*cstor.VersionStatus)(nil), (*v1.VersionStatus)(nil), func(a, b interface{}, scope conversion.Scope) error {
 		return Convert_cstor_VersionStatus_To_v1_VersionStatus(a.(*cstor.VersionStatus), b.(*v1.VersionStatus), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*v1.VolumeInfo)(nil), (*cstor.VolumeInfo)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_v1_VolumeInfo_To_cstor_VolumeInfo(a.(*v1.VolumeInfo), b.(*cstor.VolumeInfo), scope)
+	}); err != nil {
+		return err
+	}
+	if err := s.AddGeneratedConversionFunc((*cstor.VolumeInfo)(nil), (*v1.VolumeInfo)(nil), func(a, b interface{}, scope conversion.Scope) error {
+		return Convert_cstor_VolumeInfo_To_v1_VolumeInfo(a.(*cstor.VolumeInfo), b.(*v1.VolumeInfo), scope)
 	}); err != nil {
 		return err
 	}
@@ -1260,6 +1310,86 @@ func Convert_cstor_CStorVolume_To_v1_CStorVolume(in *cstor.CStorVolume, out *v1.
 	return autoConvert_cstor_CStorVolume_To_v1_CStorVolume(in, out, s)
 }
 
+func autoConvert_v1_CStorVolumeAttachment_To_cstor_CStorVolumeAttachment(in *v1.CStorVolumeAttachment, out *cstor.CStorVolumeAttachment, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_v1_CStorVolumeAttachmentSpec_To_cstor_CStorVolumeAttachmentSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	out.Status = cstor.CStorVolumeAttachmentStatus(in.Status)
+	return nil
+}
+
+// Convert_v1_CStorVolumeAttachment_To_cstor_CStorVolumeAttachment is an autogenerated conversion function.
+func Convert_v1_CStorVolumeAttachment_To_cstor_CStorVolumeAttachment(in *v1.CStorVolumeAttachment, out *cstor.CStorVolumeAttachment, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeAttachment_To_cstor_CStorVolumeAttachment(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeAttachment_To_v1_CStorVolumeAttachment(in *cstor.CStorVolumeAttachment, out *v1.CStorVolumeAttachment, s conversion.Scope) error {
+	out.ObjectMeta = in.ObjectMeta
+	if err := Convert_cstor_CStorVolumeAttachmentSpec_To_v1_CStorVolumeAttachmentSpec(&in.Spec, &out.Spec, s); err != nil {
+		return err
+	}
+	out.Status = v1.CStorVolumeAttachmentStatus(in.Status)
+	return nil
+}
+
+// Convert_cstor_CStorVolumeAttachment_To_v1_CStorVolumeAttachment is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeAttachment_To_v1_CStorVolumeAttachment(in *cstor.CStorVolumeAttachment, out *v1.CStorVolumeAttachment, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeAttachment_To_v1_CStorVolumeAttachment(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeAttachmentList_To_cstor_CStorVolumeAttachmentList(in *v1.CStorVolumeAttachmentList, out *cstor.CStorVolumeAttachmentList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]cstor.CStorVolumeAttachment)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_v1_CStorVolumeAttachmentList_To_cstor_CStorVolumeAttachmentList is an autogenerated conversion function.
+func Convert_v1_CStorVolumeAttachmentList_To_cstor_CStorVolumeAttachmentList(in *v1.CStorVolumeAttachmentList, out *cstor.CStorVolumeAttachmentList, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeAttachmentList_To_cstor_CStorVolumeAttachmentList(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeAttachmentList_To_v1_CStorVolumeAttachmentList(in *cstor.CStorVolumeAttachmentList, out *v1.CStorVolumeAttachmentList, s conversion.Scope) error {
+	out.ListMeta = in.ListMeta
+	out.Items = *(*[]v1.CStorVolumeAttachment)(unsafe.Pointer(&in.Items))
+	return nil
+}
+
+// Convert_cstor_CStorVolumeAttachmentList_To_v1_CStorVolumeAttachmentList is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeAttachmentList_To_v1_CStorVolumeAttachmentList(in *cstor.CStorVolumeAttachmentList, out *v1.CStorVolumeAttachmentList, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeAttachmentList_To_v1_CStorVolumeAttachmentList(in, out, s)
+}
+
+func autoConvert_v1_CStorVolumeAttachmentSpec_To_cstor_CStorVolumeAttachmentSpec(in *v1.CStorVolumeAttachmentSpec, out *cstor.CStorVolumeAttachmentSpec, s conversion.Scope) error {
+	if err := Convert_v1_VolumeInfo_To_cstor_VolumeInfo(&in.Volume, &out.Volume, s); err != nil {
+		return err
+	}
+	if err := Convert_v1_ISCSIInfo_To_cstor_ISCSIInfo(&in.ISCSI, &out.ISCSI, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_v1_CStorVolumeAttachmentSpec_To_cstor_CStorVolumeAttachmentSpec is an autogenerated conversion function.
+func Convert_v1_CStorVolumeAttachmentSpec_To_cstor_CStorVolumeAttachmentSpec(in *v1.CStorVolumeAttachmentSpec, out *cstor.CStorVolumeAttachmentSpec, s conversion.Scope) error {
+	return autoConvert_v1_CStorVolumeAttachmentSpec_To_cstor_CStorVolumeAttachmentSpec(in, out, s)
+}
+
+func autoConvert_cstor_CStorVolumeAttachmentSpec_To_v1_CStorVolumeAttachmentSpec(in *cstor.CStorVolumeAttachmentSpec, out *v1.CStorVolumeAttachmentSpec, s conversion.Scope) error {
+	if err := Convert_cstor_VolumeInfo_To_v1_VolumeInfo(&in.Volume, &out.Volume, s); err != nil {
+		return err
+	}
+	if err := Convert_cstor_ISCSIInfo_To_v1_ISCSIInfo(&in.ISCSI, &out.ISCSI, s); err != nil {
+		return err
+	}
+	return nil
+}
+
+// Convert_cstor_CStorVolumeAttachmentSpec_To_v1_CStorVolumeAttachmentSpec is an autogenerated conversion function.
+func Convert_cstor_CStorVolumeAttachmentSpec_To_v1_CStorVolumeAttachmentSpec(in *cstor.CStorVolumeAttachmentSpec, out *v1.CStorVolumeAttachmentSpec, s conversion.Scope) error {
+	return autoConvert_cstor_CStorVolumeAttachmentSpec_To_v1_CStorVolumeAttachmentSpec(in, out, s)
+}
+
 func autoConvert_v1_CStorVolumeCondition_To_cstor_CStorVolumeCondition(in *v1.CStorVolumeCondition, out *cstor.CStorVolumeCondition, s conversion.Scope) error {
 	out.Type = cstor.CStorVolumeConditionType(in.Type)
 	out.Status = cstor.ConditionStatus(in.Status)
@@ -1910,6 +2040,32 @@ func Convert_cstor_CVStatusResponse_To_v1_CVStatusResponse(in *cstor.CVStatusRes
 	return autoConvert_cstor_CVStatusResponse_To_v1_CVStatusResponse(in, out, s)
 }
 
+func autoConvert_v1_ISCSIInfo_To_cstor_ISCSIInfo(in *v1.ISCSIInfo, out *cstor.ISCSIInfo, s conversion.Scope) error {
+	out.Iqn = in.Iqn
+	out.TargetPortal = in.TargetPortal
+	out.IscsiInterface = in.IscsiInterface
+	out.Lun = in.Lun
+	return nil
+}
+
+// Convert_v1_ISCSIInfo_To_cstor_ISCSIInfo is an autogenerated conversion function.
+func Convert_v1_ISCSIInfo_To_cstor_ISCSIInfo(in *v1.ISCSIInfo, out *cstor.ISCSIInfo, s conversion.Scope) error {
+	return autoConvert_v1_ISCSIInfo_To_cstor_ISCSIInfo(in, out, s)
+}
+
+func autoConvert_cstor_ISCSIInfo_To_v1_ISCSIInfo(in *cstor.ISCSIInfo, out *v1.ISCSIInfo, s conversion.Scope) error {
+	out.Iqn = in.Iqn
+	out.TargetPortal = in.TargetPortal
+	out.IscsiInterface = in.IscsiInterface
+	out.Lun = in.Lun
+	return nil
+}
+
+// Convert_cstor_ISCSIInfo_To_v1_ISCSIInfo is an autogenerated conversion function.
+func Convert_cstor_ISCSIInfo_To_v1_ISCSIInfo(in *cstor.ISCSIInfo, out *v1.ISCSIInfo, s conversion.Scope) error {
+	return autoConvert_cstor_ISCSIInfo_To_v1_ISCSIInfo(in, out, s)
+}
+
 func autoConvert_v1_PoolConfig_To_cstor_PoolConfig(in *v1.PoolConfig, out *cstor.PoolConfig, s conversion.Scope) error {
 	out.DataRaidGroupType = in.DataRaidGroupType
 	out.WriteCacheGroupType = in.WriteCacheGroupType
@@ -2188,6 +2344,46 @@ func autoConvert_cstor_VersionStatus_To_v1_VersionStatus(in *cstor.VersionStatus
 // Convert_cstor_VersionStatus_To_v1_VersionStatus is an autogenerated conversion function.
 func Convert_cstor_VersionStatus_To_v1_VersionStatus(in *cstor.VersionStatus, out *v1.VersionStatus, s conversion.Scope) error {
 	return autoConvert_cstor_VersionStatus_To_v1_VersionStatus(in, out, s)
+}
+
+func autoConvert_v1_VolumeInfo_To_cstor_VolumeInfo(in *v1.VolumeInfo, out *cstor.VolumeInfo, s conversion.Scope) error {
+	out.Name = in.Name
+	out.Capacity = in.Capacity
+	out.OwnerNodeID = in.OwnerNodeID
+	out.FSType = in.FSType
+	out.AccessModes = *(*[]string)(unsafe.Pointer(&in.AccessModes))
+	out.AccessType = in.AccessType
+	out.StagingTargetPath = in.StagingTargetPath
+	out.TargetPath = in.TargetPath
+	out.ReadOnly = in.ReadOnly
+	out.MountOptions = *(*[]string)(unsafe.Pointer(&in.MountOptions))
+	out.DevicePath = in.DevicePath
+	return nil
+}
+
+// Convert_v1_VolumeInfo_To_cstor_VolumeInfo is an autogenerated conversion function.
+func Convert_v1_VolumeInfo_To_cstor_VolumeInfo(in *v1.VolumeInfo, out *cstor.VolumeInfo, s conversion.Scope) error {
+	return autoConvert_v1_VolumeInfo_To_cstor_VolumeInfo(in, out, s)
+}
+
+func autoConvert_cstor_VolumeInfo_To_v1_VolumeInfo(in *cstor.VolumeInfo, out *v1.VolumeInfo, s conversion.Scope) error {
+	out.Name = in.Name
+	out.Capacity = in.Capacity
+	out.OwnerNodeID = in.OwnerNodeID
+	out.FSType = in.FSType
+	out.AccessModes = *(*[]string)(unsafe.Pointer(&in.AccessModes))
+	out.AccessType = in.AccessType
+	out.StagingTargetPath = in.StagingTargetPath
+	out.TargetPath = in.TargetPath
+	out.ReadOnly = in.ReadOnly
+	out.MountOptions = *(*[]string)(unsafe.Pointer(&in.MountOptions))
+	out.DevicePath = in.DevicePath
+	return nil
+}
+
+// Convert_cstor_VolumeInfo_To_v1_VolumeInfo is an autogenerated conversion function.
+func Convert_cstor_VolumeInfo_To_v1_VolumeInfo(in *cstor.VolumeInfo, out *v1.VolumeInfo, s conversion.Scope) error {
+	return autoConvert_cstor_VolumeInfo_To_v1_VolumeInfo(in, out, s)
 }
 
 func autoConvert_v1_VolumeProvision_To_cstor_VolumeProvision(in *v1.VolumeProvision, out *cstor.VolumeProvision, s conversion.Scope) error {
