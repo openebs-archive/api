@@ -1,5 +1,5 @@
 /*
-Copyright 2020 The OpenEBS Authors
+Copyright 2021 The OpenEBS Authors
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
@@ -19,6 +19,8 @@ limitations under the License.
 package fake
 
 import (
+	"context"
+
 	cstorv1 "github.com/openebs/api/v2/pkg/apis/cstor/v1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
@@ -39,7 +41,7 @@ var cstorvolumeattachmentsResource = schema.GroupVersionResource{Group: "cstor.o
 var cstorvolumeattachmentsKind = schema.GroupVersionKind{Group: "cstor.openebs.io", Version: "v1", Kind: "CStorVolumeAttachment"}
 
 // Get takes name of the cStorVolumeAttachment, and returns the corresponding cStorVolumeAttachment object, and an error if there is any.
-func (c *FakeCStorVolumeAttachments) Get(name string, options v1.GetOptions) (result *cstorv1.CStorVolumeAttachment, err error) {
+func (c *FakeCStorVolumeAttachments) Get(ctx context.Context, name string, options v1.GetOptions) (result *cstorv1.CStorVolumeAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewGetAction(cstorvolumeattachmentsResource, c.ns, name), &cstorv1.CStorVolumeAttachment{})
 
@@ -50,7 +52,7 @@ func (c *FakeCStorVolumeAttachments) Get(name string, options v1.GetOptions) (re
 }
 
 // List takes label and field selectors, and returns the list of CStorVolumeAttachments that match those selectors.
-func (c *FakeCStorVolumeAttachments) List(opts v1.ListOptions) (result *cstorv1.CStorVolumeAttachmentList, err error) {
+func (c *FakeCStorVolumeAttachments) List(ctx context.Context, opts v1.ListOptions) (result *cstorv1.CStorVolumeAttachmentList, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewListAction(cstorvolumeattachmentsResource, cstorvolumeattachmentsKind, c.ns, opts), &cstorv1.CStorVolumeAttachmentList{})
 
@@ -72,14 +74,14 @@ func (c *FakeCStorVolumeAttachments) List(opts v1.ListOptions) (result *cstorv1.
 }
 
 // Watch returns a watch.Interface that watches the requested cStorVolumeAttachments.
-func (c *FakeCStorVolumeAttachments) Watch(opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCStorVolumeAttachments) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cstorvolumeattachmentsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cStorVolumeAttachment and creates it.  Returns the server's representation of the cStorVolumeAttachment, and an error, if there is any.
-func (c *FakeCStorVolumeAttachments) Create(cStorVolumeAttachment *cstorv1.CStorVolumeAttachment) (result *cstorv1.CStorVolumeAttachment, err error) {
+func (c *FakeCStorVolumeAttachments) Create(ctx context.Context, cStorVolumeAttachment *cstorv1.CStorVolumeAttachment, opts v1.CreateOptions) (result *cstorv1.CStorVolumeAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewCreateAction(cstorvolumeattachmentsResource, c.ns, cStorVolumeAttachment), &cstorv1.CStorVolumeAttachment{})
 
@@ -90,7 +92,7 @@ func (c *FakeCStorVolumeAttachments) Create(cStorVolumeAttachment *cstorv1.CStor
 }
 
 // Update takes the representation of a cStorVolumeAttachment and updates it. Returns the server's representation of the cStorVolumeAttachment, and an error, if there is any.
-func (c *FakeCStorVolumeAttachments) Update(cStorVolumeAttachment *cstorv1.CStorVolumeAttachment) (result *cstorv1.CStorVolumeAttachment, err error) {
+func (c *FakeCStorVolumeAttachments) Update(ctx context.Context, cStorVolumeAttachment *cstorv1.CStorVolumeAttachment, opts v1.UpdateOptions) (result *cstorv1.CStorVolumeAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateAction(cstorvolumeattachmentsResource, c.ns, cStorVolumeAttachment), &cstorv1.CStorVolumeAttachment{})
 
@@ -102,7 +104,7 @@ func (c *FakeCStorVolumeAttachments) Update(cStorVolumeAttachment *cstorv1.CStor
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCStorVolumeAttachments) UpdateStatus(cStorVolumeAttachment *cstorv1.CStorVolumeAttachment) (*cstorv1.CStorVolumeAttachment, error) {
+func (c *FakeCStorVolumeAttachments) UpdateStatus(ctx context.Context, cStorVolumeAttachment *cstorv1.CStorVolumeAttachment, opts v1.UpdateOptions) (*cstorv1.CStorVolumeAttachment, error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewUpdateSubresourceAction(cstorvolumeattachmentsResource, "status", c.ns, cStorVolumeAttachment), &cstorv1.CStorVolumeAttachment{})
 
@@ -113,7 +115,7 @@ func (c *FakeCStorVolumeAttachments) UpdateStatus(cStorVolumeAttachment *cstorv1
 }
 
 // Delete takes name of the cStorVolumeAttachment and deletes it. Returns an error if one occurs.
-func (c *FakeCStorVolumeAttachments) Delete(name string, options *v1.DeleteOptions) error {
+func (c *FakeCStorVolumeAttachments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
 		Invokes(testing.NewDeleteAction(cstorvolumeattachmentsResource, c.ns, name), &cstorv1.CStorVolumeAttachment{})
 
@@ -121,15 +123,15 @@ func (c *FakeCStorVolumeAttachments) Delete(name string, options *v1.DeleteOptio
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCStorVolumeAttachments) DeleteCollection(options *v1.DeleteOptions, listOptions v1.ListOptions) error {
-	action := testing.NewDeleteCollectionAction(cstorvolumeattachmentsResource, c.ns, listOptions)
+func (c *FakeCStorVolumeAttachments) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+	action := testing.NewDeleteCollectionAction(cstorvolumeattachmentsResource, c.ns, listOpts)
 
 	_, err := c.Fake.Invokes(action, &cstorv1.CStorVolumeAttachmentList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cStorVolumeAttachment.
-func (c *FakeCStorVolumeAttachments) Patch(name string, pt types.PatchType, data []byte, subresources ...string) (result *cstorv1.CStorVolumeAttachment, err error) {
+func (c *FakeCStorVolumeAttachments) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *cstorv1.CStorVolumeAttachment, err error) {
 	obj, err := c.Fake.
 		Invokes(testing.NewPatchSubresourceAction(cstorvolumeattachmentsResource, c.ns, name, pt, data, subresources...), &cstorv1.CStorVolumeAttachment{})
 
