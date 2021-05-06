@@ -416,18 +416,18 @@ func (cv *CStorVolume) BuildScaleDownConfigData(repID string) map[string]string 
 	configData := map[string]string{}
 	newReplicationFactor := cv.Spec.DesiredReplicationFactor
 	newConsistencyFactor := (newReplicationFactor / 2) + 1
-	key := fmt.Sprintf("  ReplicationFactor")
+	key := string("  ReplicationFactor")
 	value := fmt.Sprintf("  ReplicationFactor %d", newReplicationFactor)
 	configData[key] = value
-	key = fmt.Sprintf("  ConsistencyFactor")
+	key = string("  ConsistencyFactor")
 	value = fmt.Sprintf("  ConsistencyFactor %d", newConsistencyFactor)
 	configData[key] = value
-	key = fmt.Sprintf("  DesiredReplicationFactor")
+	key = string("  DesiredReplicationFactor")
 	value = fmt.Sprintf("  DesiredReplicationFactor %d",
 		cv.Spec.DesiredReplicationFactor)
 	configData[key] = value
 	key = fmt.Sprintf("  Replica %s", repID)
-	value = fmt.Sprintf("")
+	value = string("")
 	configData[key] = value
 	return configData
 }
