@@ -68,6 +68,10 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 		&UpgradeTaskList{},
 		&MigrationTask{},
 		&MigrationTaskList{},
+		&JivaVolume{},
+		&JivaVolumeList{},
+		&JivaVolumePolicy{},
+		&JivaVolumePolicyList{},
 	)
 	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil
