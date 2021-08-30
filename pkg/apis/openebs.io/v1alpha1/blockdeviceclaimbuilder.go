@@ -17,11 +17,14 @@ limitations under the License.
 package v1alpha1
 
 import (
-	"github.com/openebs/api/v2/pkg/util"
+	"strings"
+
 	"github.com/pkg/errors"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+
+	"github.com/openebs/api/v2/pkg/util"
 )
 
 const (
@@ -162,6 +165,26 @@ func (bdc *BlockDeviceClaim) WithBlockDeviceTag(bdTagValue string) *BlockDeviceC
 	}
 
 	bdc.Spec.Selector.MatchLabels[bdTagKey] = bdTagValue
+	return bdc
+}
+
+// WithSelector appends (or creates) the BDC Label Selector
+// by setting the provided key and corresponding value
+// This will enable the NDM to pick only devices that
+// match the given label and its value.
+func (bdc *BlockDeviceClaim) WithSelector(labelSelector map[string]string) *BlockDeviceClaim {
+	if bdc.Spec.Selector == nil {
+		bdc.Spec.Selector = &metav1.LabelSelector{}
+	}
+	if bdc.Spec.Selector.MatchLabels == nil {
+		bdc.Spec.Selector.MatchLabels = map[string]string{}
+	}
+
+	for key, value := range labelSelector {
+		if len(strings.TrimSpace(value)) != 0 {
+			bdc.Spec.Selector.MatchLabels[key] = value
+		}
+	}
 	return bdc
 }
 
