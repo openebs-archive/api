@@ -11,7 +11,7 @@
 This proposal highlights the limitations of current CSPC and CSPI schema and
 proposes improvements for the same.
 Please refer to the following link for cstor operator design document. 
-https://github.com/openebs/openebs/blob/master/contribute/design/1.x/cstor-operator/doc.md
+https://github.com/openebs/openebs/blob/HEAD/contribute/design/1.x/cstor-operator/doc.md
 
 # Goals
 
