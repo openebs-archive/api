@@ -120,6 +120,12 @@ func (c *Container) WithEnvsNew(envs []corev1.EnvVar) *Container {
 	return c
 }
 
+// WithTTY sets the tty boolean for container
+func (c *Container) WithTTY(tty bool) *Container {
+	c.TTY = tty
+	return c
+}
+
 // WithEnvs sets the envs of the container
 func (c *Container) WithEnvs(envs []corev1.EnvVar) *Container {
 	c.Env = append(c.Env, envs...)

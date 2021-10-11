@@ -162,6 +162,12 @@ func (p *PodTemplateSpec) WithTolerationsNew(tolerations ...corev1.Toleration) *
 	return p
 }
 
+// WithRestartPolicy sets the restart-policy for pod-spec
+func (p *PodTemplateSpec) WithRestartPolicy(policy corev1.RestartPolicy) *PodTemplateSpec {
+	p.Spec.RestartPolicy = policy
+	return p
+}
+
 // WithContainers builds the list of containerbuilder
 // provided and merges it to the containers field of the podtemplatespec
 func (p *PodTemplateSpec) WithContainers(containersList ...*Container) *PodTemplateSpec {
