@@ -19,8 +19,8 @@ limitations under the License.
 package openebs
 
 import (
-	internalinterfaces "github.com/openebs/api/v2/pkg/client/informers/externalversions/internalinterfaces"
-	v1alpha1 "github.com/openebs/api/v2/pkg/client/informers/externalversions/openebs.io/v1alpha1"
+	internalinterfaces "github.com/openebs/api/v3/pkg/client/informers/externalversions/internalinterfaces"
+	v1alpha1 "github.com/openebs/api/v3/pkg/client/informers/externalversions/openebs.io/v1alpha1"
 )
 
 // Interface provides access to each of this group's versions.

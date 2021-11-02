@@ -17,7 +17,7 @@ limitations under the License.
 package openebs
 
 import (
-	"github.com/openebs/api/v2/pkg/apis/openebs.io"
+	"github.com/openebs/api/v3/pkg/apis/openebs.io"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 )

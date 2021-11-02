@@ -48,7 +48,7 @@ set -o pipefail
 
 function codegen::join() { local IFS="$1"; shift; echo "$*"; }
 
-module_name="github.com/openebs/api/v2"
+module_name="github.com/openebs/api/v3"
 
 # Generate deepcopy functions for all internalapis and external APIs
 deepcopy_inputs=(

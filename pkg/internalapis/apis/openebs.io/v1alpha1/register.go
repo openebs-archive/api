@@ -19,8 +19,8 @@ package v1alpha1
 import (
 	"k8s.io/apimachinery/pkg/runtime/schema"
 
-	"github.com/openebs/api/v2/pkg/apis/openebs.io"
-	openebsapi "github.com/openebs/api/v2/pkg/apis/openebs.io/v1alpha1"
+	"github.com/openebs/api/v3/pkg/apis/openebs.io"
+	openebsapi "github.com/openebs/api/v3/pkg/apis/openebs.io/v1alpha1"
 )
 
 // SchemeGroupVersion is group version used to register these objects

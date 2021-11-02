@@ -20,7 +20,7 @@ import (
 	"encoding/json"
 	"strings"
 
-	"github.com/openebs/api/v2/pkg/util"
+	"github.com/openebs/api/v3/pkg/util"
 )
 
 /*
