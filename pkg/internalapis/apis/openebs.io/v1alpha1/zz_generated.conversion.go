@@ -23,8 +23,8 @@ package v1alpha1
 import (
 	unsafe "unsafe"
 
-	v1alpha1 "github.com/openebs/api/v2/pkg/apis/openebs.io/v1alpha1"
-	openebsio "github.com/openebs/api/v2/pkg/internalapis/apis/openebs.io"
+	v1alpha1 "github.com/openebs/api/v3/pkg/apis/openebs.io/v1alpha1"
+	openebsio "github.com/openebs/api/v3/pkg/internalapis/apis/openebs.io"
 	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	conversion "k8s.io/apimachinery/pkg/conversion"

@@ -17,7 +17,7 @@ limitations under the License.
 package v1
 
 import (
-	"github.com/openebs/api/v2/pkg/util"
+	"github.com/openebs/api/v3/pkg/util"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 

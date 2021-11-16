@@ -23,8 +23,8 @@ package v1
 import (
 	unsafe "unsafe"
 
-	v1 "github.com/openebs/api/v2/pkg/apis/cstor/v1"
-	cstor "github.com/openebs/api/v2/pkg/internalapis/apis/cstor"
+	v1 "github.com/openebs/api/v3/pkg/apis/cstor/v1"
+	cstor "github.com/openebs/api/v3/pkg/internalapis/apis/cstor"
 	corev1 "k8s.io/api/core/v1"
 	conversion "k8s.io/apimachinery/pkg/conversion"
 	runtime "k8s.io/apimachinery/pkg/runtime"

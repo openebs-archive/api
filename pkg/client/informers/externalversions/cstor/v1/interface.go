@@ -19,7 +19,7 @@ limitations under the License.
 package v1
 
 import (
-	internalinterfaces "github.com/openebs/api/v2/pkg/client/informers/externalversions/internalinterfaces"
+	internalinterfaces "github.com/openebs/api/v3/pkg/client/informers/externalversions/internalinterfaces"
 )
 
 // Interface provides access to all the informers in this group version.

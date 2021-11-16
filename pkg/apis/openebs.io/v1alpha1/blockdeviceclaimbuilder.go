@@ -24,7 +24,7 @@ import (
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 
-	"github.com/openebs/api/v2/pkg/util"
+	"github.com/openebs/api/v3/pkg/util"
 )
 
 const (

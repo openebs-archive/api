@@ -17,7 +17,7 @@ limitations under the License.
 package cstor
 
 import (
-	"github.com/openebs/api/v2/pkg/apis/cstor"
+	"github.com/openebs/api/v3/pkg/apis/cstor"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/runtime/schema"
 )

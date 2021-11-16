@@ -39,11 +39,11 @@ generate-crds: controller-gen
 # code generation for custom resources
 kubegen:
 	./hack/update-codegen.sh
-	@cp -rf v2/pkg/apis pkg/
-	@cp -rf v2/pkg/client pkg/
-	@cp -rf v2/pkg/internalapis/apis/cstor/v1/zz_generated.conversion.go pkg/internalapis/apis/cstor/v1/zz_generated.conversion.go
-	@cp -rf v2/pkg/internalapis/apis/cstor/zz_generated.deepcopy.go pkg/internalapis/apis/cstor/zz_generated.deepcopy.go
-	@rm -rf v2
+	@cp -rf v3/pkg/apis pkg/
+	@cp -rf v3/pkg/client pkg/
+	@cp -rf v3/pkg/internalapis/apis/cstor/v1/zz_generated.conversion.go pkg/internalapis/apis/cstor/v1/zz_generated.conversion.go
+	@cp -rf v3/pkg/internalapis/apis/cstor/zz_generated.deepcopy.go pkg/internalapis/apis/cstor/zz_generated.deepcopy.go
+	@rm -rf v3
 
 .PHONY: verify_kubegen
 verify_kubegen:

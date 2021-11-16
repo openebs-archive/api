@@ -17,7 +17,7 @@ limitations under the License.
 package openebs
 
 import (
-	"github.com/openebs/api/v2/pkg/internalapis/apis/cstor"
+	"github.com/openebs/api/v3/pkg/internalapis/apis/cstor"
 	corev1 "k8s.io/api/core/v1"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
