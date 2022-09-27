@@ -53,8 +53,8 @@ type LeaderElection struct {
 	// the namespace to store the lock resource
 	namespace string
 	// resourceLock defines the type of leaderelection that should be used
-	// valid options are resourcelock.LeasesResourceLock, resourcelock.EndpointsResourceLock,
-	// and resourcelock.ConfigMapsResourceLock
+	// valid options are resourcelock.LeasesResourceLock, resourcelock.EndpointsLeasesResourceLock,
+	// and resourcelock.ConfigMapsLeasesResourceLock
 	resourceLock string
 
 	leaseDuration time.Duration
@@ -87,7 +87,7 @@ func NewLeaderElectionWithEndpoints(clientset kubernetes.Interface, lockName str
 	return &LeaderElection{
 		runFunc:       runFunc,
 		lockName:      lockName,
-		resourceLock:  resourcelock.EndpointsResourceLock,
+		resourceLock:  resourcelock.EndpointsLeasesResourceLock,
 		leaseDuration: defaultLeaseDuration,
 		renewDeadline: defaultRenewDeadline,
 		retryPeriod:   defaultRetryPeriod,
@@ -100,7 +100,7 @@ func NewLeaderElectionWithConfigMaps(clientset kubernetes.Interface, lockName st
 	return &LeaderElection{
 		runFunc:       runFunc,
 		lockName:      lockName,
-		resourceLock:  resourcelock.ConfigMapsResourceLock,
+		resourceLock:  resourcelock.ConfigMapsLeasesResourceLock,
 		leaseDuration: defaultLeaseDuration,
 		renewDeadline: defaultRenewDeadline,
 		retryPeriod:   defaultRetryPeriod,

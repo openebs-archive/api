@@ -105,7 +105,7 @@ func (c *FakeCStorVolumeReplicas) Update(ctx context.Context, cStorVolumeReplica
 // Delete takes name of the cStorVolumeReplica and deletes it. Returns an error if one occurs.
 func (c *FakeCStorVolumeReplicas) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewDeleteAction(cstorvolumereplicasResource, c.ns, name), &cstorv1.CStorVolumeReplica{})
+		Invokes(testing.NewDeleteActionWithOptions(cstorvolumereplicasResource, c.ns, name, opts), &cstorv1.CStorVolumeReplica{})
 
 	return err
 }

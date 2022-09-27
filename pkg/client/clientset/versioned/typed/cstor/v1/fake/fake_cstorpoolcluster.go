@@ -105,7 +105,7 @@ func (c *FakeCStorPoolClusters) Update(ctx context.Context, cStorPoolCluster *cs
 // Delete takes name of the cStorPoolCluster and deletes it. Returns an error if one occurs.
 func (c *FakeCStorPoolClusters) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewDeleteAction(cstorpoolclustersResource, c.ns, name), &cstorv1.CStorPoolCluster{})
+		Invokes(testing.NewDeleteActionWithOptions(cstorpoolclustersResource, c.ns, name, opts), &cstorv1.CStorPoolCluster{})
 
 	return err
 }
