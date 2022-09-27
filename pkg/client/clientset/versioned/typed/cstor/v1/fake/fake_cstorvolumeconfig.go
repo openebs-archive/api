@@ -117,7 +117,7 @@ func (c *FakeCStorVolumeConfigs) UpdateStatus(ctx context.Context, cStorVolumeCo
 // Delete takes name of the cStorVolumeConfig and deletes it. Returns an error if one occurs.
 func (c *FakeCStorVolumeConfigs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewDeleteAction(cstorvolumeconfigsResource, c.ns, name), &cstorv1.CStorVolumeConfig{})
+		Invokes(testing.NewDeleteActionWithOptions(cstorvolumeconfigsResource, c.ns, name, opts), &cstorv1.CStorVolumeConfig{})
 
 	return err
 }

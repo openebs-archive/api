@@ -17,8 +17,8 @@ GOBIN := $(or $(shell go env GOBIN 2>/dev/null), $(shell go env GOPATH 2>/dev/nu
 
 # find or download controller-gen
 controller-gen:
-ifneq ($(shell controller-gen --version 2> /dev/null), Version: v0.4.0)
-	@(cd /tmp; GO111MODULE=on go get sigs.k8s.io/controller-tools/cmd/controller-gen@v0.4.0)
+ifneq ($(shell controller-gen --version 2> /dev/null), Version: v0.10.0)
+	@(cd /tmp; GO111MODULE=on go install sigs.k8s.io/controller-tools/cmd/controller-gen@v0.10.0)
 CONTROLLER_GEN=$(GOBIN)/controller-gen
 else
 CONTROLLER_GEN=$(shell which controller-gen)
@@ -30,7 +30,7 @@ generate: generate-crds
 
 generate-crds: controller-gen
 	# Generate manifests e.g. CRD, RBAC etc.
-	$(CONTROLLER_GEN) crd:trivialVersions=true,preserveUnknownFields=false paths="./pkg/apis/cstor/..." output:crd:artifacts:config=config/crds/bases
+	$(CONTROLLER_GEN) crd:crdVersions=v1 paths="./pkg/apis/cstor/..." output:crd:artifacts:config=config/crds/bases
 	# merge all crds into a single file
 	rm $(ALL_CRDS)
 	cat config/crds/bases/*.yaml >> $(ALL_CRDS)
@@ -65,7 +65,7 @@ test:
 .PHONY: license-check
 license-check:
 	@echo "--> Checking license header..."
-	@licRes=$$(for file in $$(find . -type f -regex '.*\.sh\|.*\.go\|.*Docker.*\|.*\Makefile*' ! -path './vendor/*') ; do \
+	@licRes=$$(for file in $$(find . -type f -regex '.*\.sh\|.*\.go\|.*Docker.*\|.*\Makefile*') ; do \
                awk 'NR<=5' $$file | grep -Eq "(Copyright|generated|GENERATED)" || echo $$file; \
        done); \
        if [ -n "$${licRes}" ]; then \

@@ -117,7 +117,7 @@ func (c *FakeCStorVolumeAttachments) UpdateStatus(ctx context.Context, cStorVolu
 // Delete takes name of the cStorVolumeAttachment and deletes it. Returns an error if one occurs.
 func (c *FakeCStorVolumeAttachments) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewDeleteAction(cstorvolumeattachmentsResource, c.ns, name), &cstorv1.CStorVolumeAttachment{})
+		Invokes(testing.NewDeleteActionWithOptions(cstorvolumeattachmentsResource, c.ns, name, opts), &cstorv1.CStorVolumeAttachment{})
 
 	return err
 }
