@@ -105,7 +105,7 @@ func (c *FakeCStorPoolInstances) Update(ctx context.Context, cStorPoolInstance *
 // Delete takes name of the cStorPoolInstance and deletes it. Returns an error if one occurs.
 func (c *FakeCStorPoolInstances) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewDeleteAction(cstorpoolinstancesResource, c.ns, name), &cstorv1.CStorPoolInstance{})
+		Invokes(testing.NewDeleteActionWithOptions(cstorpoolinstancesResource, c.ns, name, opts), &cstorv1.CStorPoolInstance{})
 
 	return err
 }

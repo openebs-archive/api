@@ -117,7 +117,7 @@ func (c *FakeBlockDeviceClaims) UpdateStatus(ctx context.Context, blockDeviceCla
 // Delete takes name of the blockDeviceClaim and deletes it. Returns an error if one occurs.
 func (c *FakeBlockDeviceClaims) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewDeleteAction(blockdeviceclaimsResource, c.ns, name), &v1alpha1.BlockDeviceClaim{})
+		Invokes(testing.NewDeleteActionWithOptions(blockdeviceclaimsResource, c.ns, name, opts), &v1alpha1.BlockDeviceClaim{})
 
 	return err
 }

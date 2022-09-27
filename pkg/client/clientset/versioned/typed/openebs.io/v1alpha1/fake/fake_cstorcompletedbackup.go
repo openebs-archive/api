@@ -105,7 +105,7 @@ func (c *FakeCStorCompletedBackups) Update(ctx context.Context, cStorCompletedBa
 // Delete takes name of the cStorCompletedBackup and deletes it. Returns an error if one occurs.
 func (c *FakeCStorCompletedBackups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewDeleteAction(cstorcompletedbackupsResource, c.ns, name), &v1alpha1.CStorCompletedBackup{})
+		Invokes(testing.NewDeleteActionWithOptions(cstorcompletedbackupsResource, c.ns, name, opts), &v1alpha1.CStorCompletedBackup{})
 
 	return err
 }
