@@ -60,6 +60,7 @@ protobuf:
 	@protoc -I $(PWD)/pkg/apis/openebs.io/v1alpha1/ \
     -I ${GOPATH}/src \
     --go_out=$(PWD)/pkg/proto \
+    --go-grpc_out=$(PWD)/pkg/proto \
     $(PWD)/pkg/apis/cstor/v1/cstorvolume.proto
 
 # deps ensures fresh go.mod and go.sum.
