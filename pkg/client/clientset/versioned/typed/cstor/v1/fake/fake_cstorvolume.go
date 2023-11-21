@@ -21,10 +21,9 @@ package fake
 import (
 	"context"
 
-	cstorv1 "github.com/openebs/api/v3/pkg/apis/cstor/v1"
-	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	v1 "github.com/openebs/api/v3/pkg/apis/cstor/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	types "k8s.io/apimachinery/pkg/types"
 	watch "k8s.io/apimachinery/pkg/watch"
 	testing "k8s.io/client-go/testing"
@@ -36,25 +35,25 @@ type FakeCStorVolumes struct {
 	ns   string
 }
 
-var cstorvolumesResource = schema.GroupVersionResource{Group: "cstor.openebs.io", Version: "v1", Resource: "cstorvolumes"}
+var cstorvolumesResource = v1.SchemeGroupVersion.WithResource("cstorvolumes")
 
-var cstorvolumesKind = schema.GroupVersionKind{Group: "cstor.openebs.io", Version: "v1", Kind: "CStorVolume"}
+var cstorvolumesKind = v1.SchemeGroupVersion.WithKind("CStorVolume")
 
 // Get takes name of the cStorVolume, and returns the corresponding cStorVolume object, and an error if there is any.
-func (c *FakeCStorVolumes) Get(ctx context.Context, name string, options v1.GetOptions) (result *cstorv1.CStorVolume, err error) {
+func (c *FakeCStorVolumes) Get(ctx context.Context, name string, options metav1.GetOptions) (result *v1.CStorVolume, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewGetAction(cstorvolumesResource, c.ns, name), &cstorv1.CStorVolume{})
+		Invokes(testing.NewGetAction(cstorvolumesResource, c.ns, name), &v1.CStorVolume{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorVolume), err
+	return obj.(*v1.CStorVolume), err
 }
 
 // List takes label and field selectors, and returns the list of CStorVolumes that match those selectors.
-func (c *FakeCStorVolumes) List(ctx context.Context, opts v1.ListOptions) (result *cstorv1.CStorVolumeList, err error) {
+func (c *FakeCStorVolumes) List(ctx context.Context, opts metav1.ListOptions) (result *v1.CStorVolumeList, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewListAction(cstorvolumesResource, cstorvolumesKind, c.ns, opts), &cstorv1.CStorVolumeList{})
+		Invokes(testing.NewListAction(cstorvolumesResource, cstorvolumesKind, c.ns, opts), &v1.CStorVolumeList{})
 
 	if obj == nil {
 		return nil, err
@@ -64,8 +63,8 @@ func (c *FakeCStorVolumes) List(ctx context.Context, opts v1.ListOptions) (resul
 	if label == nil {
 		label = labels.Everything()
 	}
-	list := &cstorv1.CStorVolumeList{ListMeta: obj.(*cstorv1.CStorVolumeList).ListMeta}
-	for _, item := range obj.(*cstorv1.CStorVolumeList).Items {
+	list := &v1.CStorVolumeList{ListMeta: obj.(*v1.CStorVolumeList).ListMeta}
+	for _, item := range obj.(*v1.CStorVolumeList).Items {
 		if label.Matches(labels.Set(item.Labels)) {
 			list.Items = append(list.Items, item)
 		}
@@ -74,69 +73,69 @@ func (c *FakeCStorVolumes) List(ctx context.Context, opts v1.ListOptions) (resul
 }
 
 // Watch returns a watch.Interface that watches the requested cStorVolumes.
-func (c *FakeCStorVolumes) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCStorVolumes) Watch(ctx context.Context, opts metav1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cstorvolumesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cStorVolume and creates it.  Returns the server's representation of the cStorVolume, and an error, if there is any.
-func (c *FakeCStorVolumes) Create(ctx context.Context, cStorVolume *cstorv1.CStorVolume, opts v1.CreateOptions) (result *cstorv1.CStorVolume, err error) {
+func (c *FakeCStorVolumes) Create(ctx context.Context, cStorVolume *v1.CStorVolume, opts metav1.CreateOptions) (result *v1.CStorVolume, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewCreateAction(cstorvolumesResource, c.ns, cStorVolume), &cstorv1.CStorVolume{})
+		Invokes(testing.NewCreateAction(cstorvolumesResource, c.ns, cStorVolume), &v1.CStorVolume{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorVolume), err
+	return obj.(*v1.CStorVolume), err
 }
 
 // Update takes the representation of a cStorVolume and updates it. Returns the server's representation of the cStorVolume, and an error, if there is any.
-func (c *FakeCStorVolumes) Update(ctx context.Context, cStorVolume *cstorv1.CStorVolume, opts v1.UpdateOptions) (result *cstorv1.CStorVolume, err error) {
+func (c *FakeCStorVolumes) Update(ctx context.Context, cStorVolume *v1.CStorVolume, opts metav1.UpdateOptions) (result *v1.CStorVolume, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewUpdateAction(cstorvolumesResource, c.ns, cStorVolume), &cstorv1.CStorVolume{})
+		Invokes(testing.NewUpdateAction(cstorvolumesResource, c.ns, cStorVolume), &v1.CStorVolume{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorVolume), err
+	return obj.(*v1.CStorVolume), err
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCStorVolumes) UpdateStatus(ctx context.Context, cStorVolume *cstorv1.CStorVolume, opts v1.UpdateOptions) (*cstorv1.CStorVolume, error) {
+func (c *FakeCStorVolumes) UpdateStatus(ctx context.Context, cStorVolume *v1.CStorVolume, opts metav1.UpdateOptions) (*v1.CStorVolume, error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewUpdateSubresourceAction(cstorvolumesResource, "status", c.ns, cStorVolume), &cstorv1.CStorVolume{})
+		Invokes(testing.NewUpdateSubresourceAction(cstorvolumesResource, "status", c.ns, cStorVolume), &v1.CStorVolume{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorVolume), err
+	return obj.(*v1.CStorVolume), err
 }
 
 // Delete takes name of the cStorVolume and deletes it. Returns an error if one occurs.
-func (c *FakeCStorVolumes) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
+func (c *FakeCStorVolumes) Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewDeleteActionWithOptions(cstorvolumesResource, c.ns, name, opts), &cstorv1.CStorVolume{})
+		Invokes(testing.NewDeleteActionWithOptions(cstorvolumesResource, c.ns, name, opts), &v1.CStorVolume{})
 
 	return err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCStorVolumes) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+func (c *FakeCStorVolumes) DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error {
 	action := testing.NewDeleteCollectionAction(cstorvolumesResource, c.ns, listOpts)
 
-	_, err := c.Fake.Invokes(action, &cstorv1.CStorVolumeList{})
+	_, err := c.Fake.Invokes(action, &v1.CStorVolumeList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cStorVolume.
-func (c *FakeCStorVolumes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *cstorv1.CStorVolume, err error) {
+func (c *FakeCStorVolumes) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts metav1.PatchOptions, subresources ...string) (result *v1.CStorVolume, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewPatchSubresourceAction(cstorvolumesResource, c.ns, name, pt, data, subresources...), &cstorv1.CStorVolume{})
+		Invokes(testing.NewPatchSubresourceAction(cstorvolumesResource, c.ns, name, pt, data, subresources...), &v1.CStorVolume{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorVolume), err
+	return obj.(*v1.CStorVolume), err
 }

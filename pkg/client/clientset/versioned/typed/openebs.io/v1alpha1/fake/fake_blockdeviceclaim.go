@@ -24,7 +24,6 @@ import (
 	v1alpha1 "github.com/openebs/api/v3/pkg/apis/openebs.io/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	types "k8s.io/apimachinery/pkg/types"
 	watch "k8s.io/apimachinery/pkg/watch"
 	testing "k8s.io/client-go/testing"
@@ -36,9 +35,9 @@ type FakeBlockDeviceClaims struct {
 	ns   string
 }
 
-var blockdeviceclaimsResource = schema.GroupVersionResource{Group: "openebs.io", Version: "v1alpha1", Resource: "blockdeviceclaims"}
+var blockdeviceclaimsResource = v1alpha1.SchemeGroupVersion.WithResource("blockdeviceclaims")
 
-var blockdeviceclaimsKind = schema.GroupVersionKind{Group: "openebs.io", Version: "v1alpha1", Kind: "BlockDeviceClaim"}
+var blockdeviceclaimsKind = v1alpha1.SchemeGroupVersion.WithKind("BlockDeviceClaim")
 
 // Get takes name of the blockDeviceClaim, and returns the corresponding blockDeviceClaim object, and an error if there is any.
 func (c *FakeBlockDeviceClaims) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.BlockDeviceClaim, err error) {

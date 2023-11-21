@@ -52,6 +52,16 @@ verify_kubegen:
 .PHONY: generated_files
 generated_files: kubegen protobuf
 
+.PHONY: protobuf
+protobuf:
+	@echo "----------------------------"
+	@echo "--> protobuf           "
+	@echo "----------------------------"
+	@protoc -I $(PWD)/pkg/apis/openebs.io/v1alpha1/ \
+    -I ${GOPATH}/src \
+    --go_out=$(PWD)/pkg/proto \
+    $(PWD)/pkg/apis/cstor/v1/cstorvolume.proto
+
 # deps ensures fresh go.mod and go.sum.
 .PHONY: deps
 deps:
