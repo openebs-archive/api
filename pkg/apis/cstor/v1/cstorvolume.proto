@@ -18,6 +18,8 @@ syntax = "proto3";
 
 package v1alpha1;
 
+option go_package = "../proto";
+
 message VolumeSnapCreateRequest {
 	int32 version = 1;
 	string volume = 2;

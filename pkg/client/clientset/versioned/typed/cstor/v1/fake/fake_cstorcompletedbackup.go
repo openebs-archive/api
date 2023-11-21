@@ -21,10 +21,9 @@ package fake
 import (
 	"context"
 
-	cstorv1 "github.com/openebs/api/v3/pkg/apis/cstor/v1"
-	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	v1 "github.com/openebs/api/v3/pkg/apis/cstor/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	types "k8s.io/apimachinery/pkg/types"
 	watch "k8s.io/apimachinery/pkg/watch"
 	testing "k8s.io/client-go/testing"
@@ -36,25 +35,25 @@ type FakeCStorCompletedBackups struct {
 	ns   string
 }
 
-var cstorcompletedbackupsResource = schema.GroupVersionResource{Group: "cstor.openebs.io", Version: "v1", Resource: "cstorcompletedbackups"}
+var cstorcompletedbackupsResource = v1.SchemeGroupVersion.WithResource("cstorcompletedbackups")
 
-var cstorcompletedbackupsKind = schema.GroupVersionKind{Group: "cstor.openebs.io", Version: "v1", Kind: "CStorCompletedBackup"}
+var cstorcompletedbackupsKind = v1.SchemeGroupVersion.WithKind("CStorCompletedBackup")
 
 // Get takes name of the cStorCompletedBackup, and returns the corresponding cStorCompletedBackup object, and an error if there is any.
-func (c *FakeCStorCompletedBackups) Get(ctx context.Context, name string, options v1.GetOptions) (result *cstorv1.CStorCompletedBackup, err error) {
+func (c *FakeCStorCompletedBackups) Get(ctx context.Context, name string, options metav1.GetOptions) (result *v1.CStorCompletedBackup, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewGetAction(cstorcompletedbackupsResource, c.ns, name), &cstorv1.CStorCompletedBackup{})
+		Invokes(testing.NewGetAction(cstorcompletedbackupsResource, c.ns, name), &v1.CStorCompletedBackup{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorCompletedBackup), err
+	return obj.(*v1.CStorCompletedBackup), err
 }
 
 // List takes label and field selectors, and returns the list of CStorCompletedBackups that match those selectors.
-func (c *FakeCStorCompletedBackups) List(ctx context.Context, opts v1.ListOptions) (result *cstorv1.CStorCompletedBackupList, err error) {
+func (c *FakeCStorCompletedBackups) List(ctx context.Context, opts metav1.ListOptions) (result *v1.CStorCompletedBackupList, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewListAction(cstorcompletedbackupsResource, cstorcompletedbackupsKind, c.ns, opts), &cstorv1.CStorCompletedBackupList{})
+		Invokes(testing.NewListAction(cstorcompletedbackupsResource, cstorcompletedbackupsKind, c.ns, opts), &v1.CStorCompletedBackupList{})
 
 	if obj == nil {
 		return nil, err
@@ -64,8 +63,8 @@ func (c *FakeCStorCompletedBackups) List(ctx context.Context, opts v1.ListOption
 	if label == nil {
 		label = labels.Everything()
 	}
-	list := &cstorv1.CStorCompletedBackupList{ListMeta: obj.(*cstorv1.CStorCompletedBackupList).ListMeta}
-	for _, item := range obj.(*cstorv1.CStorCompletedBackupList).Items {
+	list := &v1.CStorCompletedBackupList{ListMeta: obj.(*v1.CStorCompletedBackupList).ListMeta}
+	for _, item := range obj.(*v1.CStorCompletedBackupList).Items {
 		if label.Matches(labels.Set(item.Labels)) {
 			list.Items = append(list.Items, item)
 		}
@@ -74,57 +73,57 @@ func (c *FakeCStorCompletedBackups) List(ctx context.Context, opts v1.ListOption
 }
 
 // Watch returns a watch.Interface that watches the requested cStorCompletedBackups.
-func (c *FakeCStorCompletedBackups) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCStorCompletedBackups) Watch(ctx context.Context, opts metav1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cstorcompletedbackupsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cStorCompletedBackup and creates it.  Returns the server's representation of the cStorCompletedBackup, and an error, if there is any.
-func (c *FakeCStorCompletedBackups) Create(ctx context.Context, cStorCompletedBackup *cstorv1.CStorCompletedBackup, opts v1.CreateOptions) (result *cstorv1.CStorCompletedBackup, err error) {
+func (c *FakeCStorCompletedBackups) Create(ctx context.Context, cStorCompletedBackup *v1.CStorCompletedBackup, opts metav1.CreateOptions) (result *v1.CStorCompletedBackup, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewCreateAction(cstorcompletedbackupsResource, c.ns, cStorCompletedBackup), &cstorv1.CStorCompletedBackup{})
+		Invokes(testing.NewCreateAction(cstorcompletedbackupsResource, c.ns, cStorCompletedBackup), &v1.CStorCompletedBackup{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorCompletedBackup), err
+	return obj.(*v1.CStorCompletedBackup), err
 }
 
 // Update takes the representation of a cStorCompletedBackup and updates it. Returns the server's representation of the cStorCompletedBackup, and an error, if there is any.
-func (c *FakeCStorCompletedBackups) Update(ctx context.Context, cStorCompletedBackup *cstorv1.CStorCompletedBackup, opts v1.UpdateOptions) (result *cstorv1.CStorCompletedBackup, err error) {
+func (c *FakeCStorCompletedBackups) Update(ctx context.Context, cStorCompletedBackup *v1.CStorCompletedBackup, opts metav1.UpdateOptions) (result *v1.CStorCompletedBackup, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewUpdateAction(cstorcompletedbackupsResource, c.ns, cStorCompletedBackup), &cstorv1.CStorCompletedBackup{})
+		Invokes(testing.NewUpdateAction(cstorcompletedbackupsResource, c.ns, cStorCompletedBackup), &v1.CStorCompletedBackup{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorCompletedBackup), err
+	return obj.(*v1.CStorCompletedBackup), err
 }
 
 // Delete takes name of the cStorCompletedBackup and deletes it. Returns an error if one occurs.
-func (c *FakeCStorCompletedBackups) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
+func (c *FakeCStorCompletedBackups) Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewDeleteActionWithOptions(cstorcompletedbackupsResource, c.ns, name, opts), &cstorv1.CStorCompletedBackup{})
+		Invokes(testing.NewDeleteActionWithOptions(cstorcompletedbackupsResource, c.ns, name, opts), &v1.CStorCompletedBackup{})
 
 	return err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCStorCompletedBackups) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+func (c *FakeCStorCompletedBackups) DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error {
 	action := testing.NewDeleteCollectionAction(cstorcompletedbackupsResource, c.ns, listOpts)
 
-	_, err := c.Fake.Invokes(action, &cstorv1.CStorCompletedBackupList{})
+	_, err := c.Fake.Invokes(action, &v1.CStorCompletedBackupList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cStorCompletedBackup.
-func (c *FakeCStorCompletedBackups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *cstorv1.CStorCompletedBackup, err error) {
+func (c *FakeCStorCompletedBackups) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts metav1.PatchOptions, subresources ...string) (result *v1.CStorCompletedBackup, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewPatchSubresourceAction(cstorcompletedbackupsResource, c.ns, name, pt, data, subresources...), &cstorv1.CStorCompletedBackup{})
+		Invokes(testing.NewPatchSubresourceAction(cstorcompletedbackupsResource, c.ns, name, pt, data, subresources...), &v1.CStorCompletedBackup{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorCompletedBackup), err
+	return obj.(*v1.CStorCompletedBackup), err
 }

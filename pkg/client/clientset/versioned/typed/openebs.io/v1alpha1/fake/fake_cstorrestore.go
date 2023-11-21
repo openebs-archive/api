@@ -24,7 +24,6 @@ import (
 	v1alpha1 "github.com/openebs/api/v3/pkg/apis/openebs.io/v1alpha1"
 	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	types "k8s.io/apimachinery/pkg/types"
 	watch "k8s.io/apimachinery/pkg/watch"
 	testing "k8s.io/client-go/testing"
@@ -36,9 +35,9 @@ type FakeCStorRestores struct {
 	ns   string
 }
 
-var cstorrestoresResource = schema.GroupVersionResource{Group: "openebs.io", Version: "v1alpha1", Resource: "cstorrestores"}
+var cstorrestoresResource = v1alpha1.SchemeGroupVersion.WithResource("cstorrestores")
 
-var cstorrestoresKind = schema.GroupVersionKind{Group: "openebs.io", Version: "v1alpha1", Kind: "CStorRestore"}
+var cstorrestoresKind = v1alpha1.SchemeGroupVersion.WithKind("CStorRestore")
 
 // Get takes name of the cStorRestore, and returns the corresponding cStorRestore object, and an error if there is any.
 func (c *FakeCStorRestores) Get(ctx context.Context, name string, options v1.GetOptions) (result *v1alpha1.CStorRestore, err error) {

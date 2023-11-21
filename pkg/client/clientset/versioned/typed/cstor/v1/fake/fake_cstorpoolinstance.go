@@ -21,10 +21,9 @@ package fake
 import (
 	"context"
 
-	cstorv1 "github.com/openebs/api/v3/pkg/apis/cstor/v1"
-	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	v1 "github.com/openebs/api/v3/pkg/apis/cstor/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	types "k8s.io/apimachinery/pkg/types"
 	watch "k8s.io/apimachinery/pkg/watch"
 	testing "k8s.io/client-go/testing"
@@ -36,25 +35,25 @@ type FakeCStorPoolInstances struct {
 	ns   string
 }
 
-var cstorpoolinstancesResource = schema.GroupVersionResource{Group: "cstor.openebs.io", Version: "v1", Resource: "cstorpoolinstances"}
+var cstorpoolinstancesResource = v1.SchemeGroupVersion.WithResource("cstorpoolinstances")
 
-var cstorpoolinstancesKind = schema.GroupVersionKind{Group: "cstor.openebs.io", Version: "v1", Kind: "CStorPoolInstance"}
+var cstorpoolinstancesKind = v1.SchemeGroupVersion.WithKind("CStorPoolInstance")
 
 // Get takes name of the cStorPoolInstance, and returns the corresponding cStorPoolInstance object, and an error if there is any.
-func (c *FakeCStorPoolInstances) Get(ctx context.Context, name string, options v1.GetOptions) (result *cstorv1.CStorPoolInstance, err error) {
+func (c *FakeCStorPoolInstances) Get(ctx context.Context, name string, options metav1.GetOptions) (result *v1.CStorPoolInstance, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewGetAction(cstorpoolinstancesResource, c.ns, name), &cstorv1.CStorPoolInstance{})
+		Invokes(testing.NewGetAction(cstorpoolinstancesResource, c.ns, name), &v1.CStorPoolInstance{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorPoolInstance), err
+	return obj.(*v1.CStorPoolInstance), err
 }
 
 // List takes label and field selectors, and returns the list of CStorPoolInstances that match those selectors.
-func (c *FakeCStorPoolInstances) List(ctx context.Context, opts v1.ListOptions) (result *cstorv1.CStorPoolInstanceList, err error) {
+func (c *FakeCStorPoolInstances) List(ctx context.Context, opts metav1.ListOptions) (result *v1.CStorPoolInstanceList, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewListAction(cstorpoolinstancesResource, cstorpoolinstancesKind, c.ns, opts), &cstorv1.CStorPoolInstanceList{})
+		Invokes(testing.NewListAction(cstorpoolinstancesResource, cstorpoolinstancesKind, c.ns, opts), &v1.CStorPoolInstanceList{})
 
 	if obj == nil {
 		return nil, err
@@ -64,8 +63,8 @@ func (c *FakeCStorPoolInstances) List(ctx context.Context, opts v1.ListOptions) 
 	if label == nil {
 		label = labels.Everything()
 	}
-	list := &cstorv1.CStorPoolInstanceList{ListMeta: obj.(*cstorv1.CStorPoolInstanceList).ListMeta}
-	for _, item := range obj.(*cstorv1.CStorPoolInstanceList).Items {
+	list := &v1.CStorPoolInstanceList{ListMeta: obj.(*v1.CStorPoolInstanceList).ListMeta}
+	for _, item := range obj.(*v1.CStorPoolInstanceList).Items {
 		if label.Matches(labels.Set(item.Labels)) {
 			list.Items = append(list.Items, item)
 		}
@@ -74,57 +73,57 @@ func (c *FakeCStorPoolInstances) List(ctx context.Context, opts v1.ListOptions) 
 }
 
 // Watch returns a watch.Interface that watches the requested cStorPoolInstances.
-func (c *FakeCStorPoolInstances) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCStorPoolInstances) Watch(ctx context.Context, opts metav1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cstorpoolinstancesResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cStorPoolInstance and creates it.  Returns the server's representation of the cStorPoolInstance, and an error, if there is any.
-func (c *FakeCStorPoolInstances) Create(ctx context.Context, cStorPoolInstance *cstorv1.CStorPoolInstance, opts v1.CreateOptions) (result *cstorv1.CStorPoolInstance, err error) {
+func (c *FakeCStorPoolInstances) Create(ctx context.Context, cStorPoolInstance *v1.CStorPoolInstance, opts metav1.CreateOptions) (result *v1.CStorPoolInstance, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewCreateAction(cstorpoolinstancesResource, c.ns, cStorPoolInstance), &cstorv1.CStorPoolInstance{})
+		Invokes(testing.NewCreateAction(cstorpoolinstancesResource, c.ns, cStorPoolInstance), &v1.CStorPoolInstance{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorPoolInstance), err
+	return obj.(*v1.CStorPoolInstance), err
 }
 
 // Update takes the representation of a cStorPoolInstance and updates it. Returns the server's representation of the cStorPoolInstance, and an error, if there is any.
-func (c *FakeCStorPoolInstances) Update(ctx context.Context, cStorPoolInstance *cstorv1.CStorPoolInstance, opts v1.UpdateOptions) (result *cstorv1.CStorPoolInstance, err error) {
+func (c *FakeCStorPoolInstances) Update(ctx context.Context, cStorPoolInstance *v1.CStorPoolInstance, opts metav1.UpdateOptions) (result *v1.CStorPoolInstance, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewUpdateAction(cstorpoolinstancesResource, c.ns, cStorPoolInstance), &cstorv1.CStorPoolInstance{})
+		Invokes(testing.NewUpdateAction(cstorpoolinstancesResource, c.ns, cStorPoolInstance), &v1.CStorPoolInstance{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorPoolInstance), err
+	return obj.(*v1.CStorPoolInstance), err
 }
 
 // Delete takes name of the cStorPoolInstance and deletes it. Returns an error if one occurs.
-func (c *FakeCStorPoolInstances) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
+func (c *FakeCStorPoolInstances) Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewDeleteActionWithOptions(cstorpoolinstancesResource, c.ns, name, opts), &cstorv1.CStorPoolInstance{})
+		Invokes(testing.NewDeleteActionWithOptions(cstorpoolinstancesResource, c.ns, name, opts), &v1.CStorPoolInstance{})
 
 	return err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCStorPoolInstances) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+func (c *FakeCStorPoolInstances) DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error {
 	action := testing.NewDeleteCollectionAction(cstorpoolinstancesResource, c.ns, listOpts)
 
-	_, err := c.Fake.Invokes(action, &cstorv1.CStorPoolInstanceList{})
+	_, err := c.Fake.Invokes(action, &v1.CStorPoolInstanceList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cStorPoolInstance.
-func (c *FakeCStorPoolInstances) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *cstorv1.CStorPoolInstance, err error) {
+func (c *FakeCStorPoolInstances) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts metav1.PatchOptions, subresources ...string) (result *v1.CStorPoolInstance, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewPatchSubresourceAction(cstorpoolinstancesResource, c.ns, name, pt, data, subresources...), &cstorv1.CStorPoolInstance{})
+		Invokes(testing.NewPatchSubresourceAction(cstorpoolinstancesResource, c.ns, name, pt, data, subresources...), &v1.CStorPoolInstance{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorPoolInstance), err
+	return obj.(*v1.CStorPoolInstance), err
 }
