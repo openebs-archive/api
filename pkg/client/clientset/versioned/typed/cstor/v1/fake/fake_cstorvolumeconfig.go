@@ -21,10 +21,9 @@ package fake
 import (
 	"context"
 
-	cstorv1 "github.com/openebs/api/v3/pkg/apis/cstor/v1"
-	v1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	v1 "github.com/openebs/api/v3/pkg/apis/cstor/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	labels "k8s.io/apimachinery/pkg/labels"
-	schema "k8s.io/apimachinery/pkg/runtime/schema"
 	types "k8s.io/apimachinery/pkg/types"
 	watch "k8s.io/apimachinery/pkg/watch"
 	testing "k8s.io/client-go/testing"
@@ -36,25 +35,25 @@ type FakeCStorVolumeConfigs struct {
 	ns   string
 }
 
-var cstorvolumeconfigsResource = schema.GroupVersionResource{Group: "cstor.openebs.io", Version: "v1", Resource: "cstorvolumeconfigs"}
+var cstorvolumeconfigsResource = v1.SchemeGroupVersion.WithResource("cstorvolumeconfigs")
 
-var cstorvolumeconfigsKind = schema.GroupVersionKind{Group: "cstor.openebs.io", Version: "v1", Kind: "CStorVolumeConfig"}
+var cstorvolumeconfigsKind = v1.SchemeGroupVersion.WithKind("CStorVolumeConfig")
 
 // Get takes name of the cStorVolumeConfig, and returns the corresponding cStorVolumeConfig object, and an error if there is any.
-func (c *FakeCStorVolumeConfigs) Get(ctx context.Context, name string, options v1.GetOptions) (result *cstorv1.CStorVolumeConfig, err error) {
+func (c *FakeCStorVolumeConfigs) Get(ctx context.Context, name string, options metav1.GetOptions) (result *v1.CStorVolumeConfig, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewGetAction(cstorvolumeconfigsResource, c.ns, name), &cstorv1.CStorVolumeConfig{})
+		Invokes(testing.NewGetAction(cstorvolumeconfigsResource, c.ns, name), &v1.CStorVolumeConfig{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorVolumeConfig), err
+	return obj.(*v1.CStorVolumeConfig), err
 }
 
 // List takes label and field selectors, and returns the list of CStorVolumeConfigs that match those selectors.
-func (c *FakeCStorVolumeConfigs) List(ctx context.Context, opts v1.ListOptions) (result *cstorv1.CStorVolumeConfigList, err error) {
+func (c *FakeCStorVolumeConfigs) List(ctx context.Context, opts metav1.ListOptions) (result *v1.CStorVolumeConfigList, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewListAction(cstorvolumeconfigsResource, cstorvolumeconfigsKind, c.ns, opts), &cstorv1.CStorVolumeConfigList{})
+		Invokes(testing.NewListAction(cstorvolumeconfigsResource, cstorvolumeconfigsKind, c.ns, opts), &v1.CStorVolumeConfigList{})
 
 	if obj == nil {
 		return nil, err
@@ -64,8 +63,8 @@ func (c *FakeCStorVolumeConfigs) List(ctx context.Context, opts v1.ListOptions) 
 	if label == nil {
 		label = labels.Everything()
 	}
-	list := &cstorv1.CStorVolumeConfigList{ListMeta: obj.(*cstorv1.CStorVolumeConfigList).ListMeta}
-	for _, item := range obj.(*cstorv1.CStorVolumeConfigList).Items {
+	list := &v1.CStorVolumeConfigList{ListMeta: obj.(*v1.CStorVolumeConfigList).ListMeta}
+	for _, item := range obj.(*v1.CStorVolumeConfigList).Items {
 		if label.Matches(labels.Set(item.Labels)) {
 			list.Items = append(list.Items, item)
 		}
@@ -74,69 +73,69 @@ func (c *FakeCStorVolumeConfigs) List(ctx context.Context, opts v1.ListOptions) 
 }
 
 // Watch returns a watch.Interface that watches the requested cStorVolumeConfigs.
-func (c *FakeCStorVolumeConfigs) Watch(ctx context.Context, opts v1.ListOptions) (watch.Interface, error) {
+func (c *FakeCStorVolumeConfigs) Watch(ctx context.Context, opts metav1.ListOptions) (watch.Interface, error) {
 	return c.Fake.
 		InvokesWatch(testing.NewWatchAction(cstorvolumeconfigsResource, c.ns, opts))
 
 }
 
 // Create takes the representation of a cStorVolumeConfig and creates it.  Returns the server's representation of the cStorVolumeConfig, and an error, if there is any.
-func (c *FakeCStorVolumeConfigs) Create(ctx context.Context, cStorVolumeConfig *cstorv1.CStorVolumeConfig, opts v1.CreateOptions) (result *cstorv1.CStorVolumeConfig, err error) {
+func (c *FakeCStorVolumeConfigs) Create(ctx context.Context, cStorVolumeConfig *v1.CStorVolumeConfig, opts metav1.CreateOptions) (result *v1.CStorVolumeConfig, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewCreateAction(cstorvolumeconfigsResource, c.ns, cStorVolumeConfig), &cstorv1.CStorVolumeConfig{})
+		Invokes(testing.NewCreateAction(cstorvolumeconfigsResource, c.ns, cStorVolumeConfig), &v1.CStorVolumeConfig{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorVolumeConfig), err
+	return obj.(*v1.CStorVolumeConfig), err
 }
 
 // Update takes the representation of a cStorVolumeConfig and updates it. Returns the server's representation of the cStorVolumeConfig, and an error, if there is any.
-func (c *FakeCStorVolumeConfigs) Update(ctx context.Context, cStorVolumeConfig *cstorv1.CStorVolumeConfig, opts v1.UpdateOptions) (result *cstorv1.CStorVolumeConfig, err error) {
+func (c *FakeCStorVolumeConfigs) Update(ctx context.Context, cStorVolumeConfig *v1.CStorVolumeConfig, opts metav1.UpdateOptions) (result *v1.CStorVolumeConfig, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewUpdateAction(cstorvolumeconfigsResource, c.ns, cStorVolumeConfig), &cstorv1.CStorVolumeConfig{})
+		Invokes(testing.NewUpdateAction(cstorvolumeconfigsResource, c.ns, cStorVolumeConfig), &v1.CStorVolumeConfig{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorVolumeConfig), err
+	return obj.(*v1.CStorVolumeConfig), err
 }
 
 // UpdateStatus was generated because the type contains a Status member.
 // Add a +genclient:noStatus comment above the type to avoid generating UpdateStatus().
-func (c *FakeCStorVolumeConfigs) UpdateStatus(ctx context.Context, cStorVolumeConfig *cstorv1.CStorVolumeConfig, opts v1.UpdateOptions) (*cstorv1.CStorVolumeConfig, error) {
+func (c *FakeCStorVolumeConfigs) UpdateStatus(ctx context.Context, cStorVolumeConfig *v1.CStorVolumeConfig, opts metav1.UpdateOptions) (*v1.CStorVolumeConfig, error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewUpdateSubresourceAction(cstorvolumeconfigsResource, "status", c.ns, cStorVolumeConfig), &cstorv1.CStorVolumeConfig{})
+		Invokes(testing.NewUpdateSubresourceAction(cstorvolumeconfigsResource, "status", c.ns, cStorVolumeConfig), &v1.CStorVolumeConfig{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorVolumeConfig), err
+	return obj.(*v1.CStorVolumeConfig), err
 }
 
 // Delete takes name of the cStorVolumeConfig and deletes it. Returns an error if one occurs.
-func (c *FakeCStorVolumeConfigs) Delete(ctx context.Context, name string, opts v1.DeleteOptions) error {
+func (c *FakeCStorVolumeConfigs) Delete(ctx context.Context, name string, opts metav1.DeleteOptions) error {
 	_, err := c.Fake.
-		Invokes(testing.NewDeleteActionWithOptions(cstorvolumeconfigsResource, c.ns, name, opts), &cstorv1.CStorVolumeConfig{})
+		Invokes(testing.NewDeleteActionWithOptions(cstorvolumeconfigsResource, c.ns, name, opts), &v1.CStorVolumeConfig{})
 
 	return err
 }
 
 // DeleteCollection deletes a collection of objects.
-func (c *FakeCStorVolumeConfigs) DeleteCollection(ctx context.Context, opts v1.DeleteOptions, listOpts v1.ListOptions) error {
+func (c *FakeCStorVolumeConfigs) DeleteCollection(ctx context.Context, opts metav1.DeleteOptions, listOpts metav1.ListOptions) error {
 	action := testing.NewDeleteCollectionAction(cstorvolumeconfigsResource, c.ns, listOpts)
 
-	_, err := c.Fake.Invokes(action, &cstorv1.CStorVolumeConfigList{})
+	_, err := c.Fake.Invokes(action, &v1.CStorVolumeConfigList{})
 	return err
 }
 
 // Patch applies the patch and returns the patched cStorVolumeConfig.
-func (c *FakeCStorVolumeConfigs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts v1.PatchOptions, subresources ...string) (result *cstorv1.CStorVolumeConfig, err error) {
+func (c *FakeCStorVolumeConfigs) Patch(ctx context.Context, name string, pt types.PatchType, data []byte, opts metav1.PatchOptions, subresources ...string) (result *v1.CStorVolumeConfig, err error) {
 	obj, err := c.Fake.
-		Invokes(testing.NewPatchSubresourceAction(cstorvolumeconfigsResource, c.ns, name, pt, data, subresources...), &cstorv1.CStorVolumeConfig{})
+		Invokes(testing.NewPatchSubresourceAction(cstorvolumeconfigsResource, c.ns, name, pt, data, subresources...), &v1.CStorVolumeConfig{})
 
 	if obj == nil {
 		return nil, err
 	}
-	return obj.(*cstorv1.CStorVolumeConfig), err
+	return obj.(*v1.CStorVolumeConfig), err
 }

@@ -35,8 +35,7 @@ type Interface interface {
 	OpenebsV1alpha1() openebsv1alpha1.OpenebsV1alpha1Interface
 }
 
-// Clientset contains the clients for groups. Each group has exactly one
-// version included in a Clientset.
+// Clientset contains the clients for groups.
 type Clientset struct {
 	*discovery.DiscoveryClient
 	cstorV1         *cstorv1.CstorV1Client

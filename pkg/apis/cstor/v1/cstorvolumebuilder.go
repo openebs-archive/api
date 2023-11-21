@@ -24,7 +24,7 @@ import (
 	"github.com/openebs/api/v3/pkg/util"
 	"k8s.io/apimachinery/pkg/api/resource"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"k8s.io/klog"
+	"k8s.io/klog/v2"
 )
 
 const (
@@ -106,7 +106,7 @@ func (cvc *CStorVolumeConfig) WithFinalizer(finalizers ...string) *CStorVolumeCo
 }
 
 // WithOwnerReference sets the OwnerReference field in CVC with required
-//fields
+// fields
 func (cvc *CStorVolumeConfig) WithOwnerReference(reference metav1.OwnerReference) *CStorVolumeConfig {
 	cvc.OwnerReferences = append(cvc.OwnerReferences, reference)
 	return cvc
@@ -232,7 +232,7 @@ func (cv *CStorVolume) WithFinalizers(finalizers ...string) *CStorVolume {
 }
 
 // WithOwnerReference sets the OwnerReference field in CV with required
-//fields
+// fields
 func (cv *CStorVolume) WithOwnerReference(reference []metav1.OwnerReference) *CStorVolume {
 	cv.OwnerReferences = append(cv.OwnerReferences, reference...)
 	return cv
@@ -618,7 +618,7 @@ func (cvr *CStorVolumeReplica) WithFinalizers(finalizers ...string) *CStorVolume
 }
 
 // WithOwnerReference sets the OwnerReference field in CV with required
-//fields
+// fields
 func (cvr *CStorVolumeReplica) WithOwnerReference(reference []metav1.OwnerReference) *CStorVolumeReplica {
 	cvr.OwnerReferences = append(cvr.OwnerReferences, reference...)
 	return cvr
@@ -657,7 +657,7 @@ func (cvr *CStorVolumeReplica) WithCompression(compression string) *CStorVolumeR
 }
 
 // WithStatusPhase sets the Status Phase of CStorVolumeReplica with provided
-//arguments
+// arguments
 func (cvr *CStorVolumeReplica) WithStatusPhase(phase CStorVolumeReplicaPhase) *CStorVolumeReplica {
 	cvr.Status.Phase = phase
 	return cvr
