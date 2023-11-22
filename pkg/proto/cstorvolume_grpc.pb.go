@@ -73,15 +73,14 @@ func (c *runSnapCommandClient) RunVolumeSnapDeleteCommand(ctx context.Context, i
 }
 
 // RunSnapCommandServer is the server API for RunSnapCommand service.
-// All implementations must embed UnimplementedRunSnapCommandServer
+// All implementations should embed UnimplementedRunSnapCommandServer
 // for forward compatibility
 type RunSnapCommandServer interface {
 	RunVolumeSnapCreateCommand(context.Context, *VolumeSnapCreateRequest) (*VolumeSnapCreateResponse, error)
 	RunVolumeSnapDeleteCommand(context.Context, *VolumeSnapDeleteRequest) (*VolumeSnapDeleteResponse, error)
-	mustEmbedUnimplementedRunSnapCommandServer()
 }
 
-// UnimplementedRunSnapCommandServer must be embedded to have forward compatible implementations.
+// UnimplementedRunSnapCommandServer should be embedded to have forward compatible implementations.
 type UnimplementedRunSnapCommandServer struct {
 }
 
@@ -91,7 +90,6 @@ func (UnimplementedRunSnapCommandServer) RunVolumeSnapCreateCommand(context.Cont
 func (UnimplementedRunSnapCommandServer) RunVolumeSnapDeleteCommand(context.Context, *VolumeSnapDeleteRequest) (*VolumeSnapDeleteResponse, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RunVolumeSnapDeleteCommand not implemented")
 }
-func (UnimplementedRunSnapCommandServer) mustEmbedUnimplementedRunSnapCommandServer() {}
 
 // UnsafeRunSnapCommandServer may be embedded to opt out of forward compatibility for this service.
 // Use of this interface is not recommended, as added methods to RunSnapCommandServer will
