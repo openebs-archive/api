@@ -1,2 +1,7 @@
 # IDEs
 **/.idea
+
+# CRDs for deprecated APIs
+config/crds/openebs.io_cstorbackups.yaml
+config/crds/openebs.io_cstorcompletedbackups.yaml
+config/crds/openebs.io_cstorrestores.yaml
